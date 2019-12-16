@@ -28,11 +28,87 @@ Initialized empty Git repository in C:/Users/student/Desktop/til/.git/
 
 ## 2. add - staging area
 
-git으로 관리되는 파일들은 Working directory, Staging Area, Commit 단계를 거쳐 이력에 저장된다.
+> git으로 관리되는 파일들은 Working directory, Staging Area, Commit 단계를 거쳐 이력에 저장된다.
 
 ```bash
 $git add a.txt #file name
 $git add images/ #folder
-$git add .* # all files in current directory
+$git add * # all files in current directory
 ```
+
+* add 전 상태
+
+  ```bash
+  student@M160219 MINGW64 ~/Desktop/til (master)
+  $ git status
+  On branch master
+  
+  No commits yet
+  
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+          abc.jpg
+          git.md
+          image/
+          markdown.md
+  
+  nothing added to commit but untracked files present (use "git add" to track)
+  
+  ```
+
+* add 후 상태
+
+  ```bash
+  $ git status
+  On branch master
+  
+  No commits yet
+  
+  Changes to be committed:
+    (use "git rm --cached <file>..." to unstage)
+          new file:   abc.jpg
+          new file:   git.md
+          new file:   image/abc.jpg
+          new file:   image/image-20191216141838332.png
+          new file:   markdown.md
+  
+  ```
+
+## commit
+
+>  커밋은 코드에 이력을 남기는 과정이다.
+
+```bash
+$ git commit -m "커밋 메세지"
+```
+
+* 커밋 메세지는 항상 해당 이력에 대한 정보를 담을 수 있도록 작성하는 것이 좋다.
+
+* 일관적인 커밋 메세지를 작성하는 습관을 들이자.
+
+* 이력 확인을 위해서는 아래의 명령어를 활용한다.
+
+  ```bash
+  $ git log
+  commit 9ec9c576f0dac25da6b89932201715b6b0369f38 (HEAD -> master)
+  Author: Mishuni <miseon543@gmail.com>
+  Date:   Mon Dec 16 14:26:11 2019 +0900
+  
+      modification
+  ```
+
+  ```bash
+  $ git status
+  On branch master
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+          modified:   git.md
+  
+  no changes added to commit (use "git add" and/or "git commit -a")
+  ```
+
+  
+
+> 항상 status 명령어를 통해 git의 상태를 확인하자 (commit 이후에는 log 명령어를 통해 이력들을 확인하자)
 
