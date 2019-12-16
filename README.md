@@ -4,7 +4,7 @@
 
 
 
-## [JAVA](https://www.oracle.com/kr/java/)
+## [JAVA](./java)
 
 
 
