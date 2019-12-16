@@ -153,3 +153,6 @@ $git push origin master
 * 설정된 원격 저장소(origin)으로 push 
 
 폴더의 내용을 수정 및 삭세, 생성 등을 하게 된다면, add, commit 명령어를 통해서 이려을 저장하고 push 명령어를 통해 업로드 한다.
+
+
+
