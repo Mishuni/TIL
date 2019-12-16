@@ -10,7 +10,7 @@
 
 ## 기타
 
-* [Git](./git)
+* [Git](./Git)
 
 * [마크다운](./markdown.md)
 
