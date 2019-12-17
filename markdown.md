@@ -106,3 +106,21 @@ https://tech.kakao.com/blog/
 마크다운 문접 정리 툴
 
 notion
+
+
+
+## 마크다운 기반 블로그
+
+> 정적 템플릿 생성기 md -> html/css 바꿔주는 것
+
+
+
+Jekyll
+
+꽤 오래된 레퍼런스 많고, 카카오 기술블로그 기반
+
+Gatsby
+
+최신 프레임워크, github octoverse 기준으로 2019년 가장 많이 성장된 오픈소스 프로젝트 TOP 10
+
+최근 웹 트렌드 기술(react, graphql) 반형 되어 있음
