@@ -156,3 +156,10 @@ $git push origin master
 
 
 
+## 3. pull
+
+```bash
+$git pull origin master
+```
+
+* 
