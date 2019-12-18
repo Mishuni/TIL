@@ -8,7 +8,14 @@
 prices = input('물품 가격을 입력하세요: ')
 # 아래에 코드를 작성해 주세요.
 money = prices.split(";")
-money.sort()
-money.reverse()
+boxes = []
+
 for m in money:
+    boxes.append(int(m))
+
+#sort 는 원본 데이터를 정렬
+#sorted는 원본 데이터는 정렬시키지 않는다.
+boxes.sort(reverse=True)
+
+for m in boxes:
     print(m)
