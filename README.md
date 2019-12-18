@@ -14,5 +14,6 @@
 
 * [알고리즘](./Algorithm)
 
-  
+* [Python](./Python)
 
+  
