@@ -15,3 +15,4 @@ b = np.array([1,2,3])
 print(a+b)
 #a.add(input())
 print(a)
+
