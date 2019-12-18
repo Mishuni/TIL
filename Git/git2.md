@@ -66,3 +66,36 @@ $git clone {url}
    ```
 
    
+
+## 충돌 상황
+만약에 원격저장소의 이력과 로컬 저장소의 이력이 다른 경우에는 아래의 메세지가 발생한다.
+
+```bash
+$ git push origin master
+To https://github.com/Mishuni/database.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/Mishuni/database.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+# 원격저장소의 작업 내용 (work-commit)의 로컬 내용이 다르다.
+# 원격 저장소의 변경 내용을 저장하고 다시 push
+```
+
+**이 메시지를 보게 된다면, 로컬에서 git log 원격저장소(github)의 커밋 이력들을 확인하고 다른 부분을 체크하자!!**
+
+```bash
+$git pull origin master
+```
+
+VIM 구간에서 빠져나올 때 -> ESC 클릭, : 입력, wq 입력, 엔터
+
+통합 후,
+
+```bash
+$git push origin master
+```
+
