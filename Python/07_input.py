@@ -1,0 +1,16 @@
+
+print("***Input***")
+a = input()
+print("***********")
+print("value: "+a)
+print("type:",end=" ")
+print(type(a))
+
+print()
+print("***Input***")
+b=int(input())
+print("***********")
+print("value: ",end=" ")
+print(b)
+print("type:",end=" ")
+print(type(b))
