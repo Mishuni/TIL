@@ -8,4 +8,3 @@ elif dust > 100:
     print("soso")
 else:
     print("좋음")
-
