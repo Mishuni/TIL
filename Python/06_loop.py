@@ -8,3 +8,6 @@ for menu in range(1,3):
 
 for i in range(0,16,3):
     print(i,end=" ")
+
+a= [1,2,3]
+print(3 in a)
