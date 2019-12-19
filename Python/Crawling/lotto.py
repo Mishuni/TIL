@@ -4,7 +4,7 @@
 # 응답한 내용을 보기 좋게, 사용하기 좋게 만들어 줌
 # crlt + u + l   -> bash 에서 cls 와 같은 동작
 # import requests
-
+# json viewer 확장 프로그램 크롬에 하면 json 주소 내용 깔끔하게 보여 줌 
 # response = requests.get("http://www.naver.com").text
 # print(response)
 import random
