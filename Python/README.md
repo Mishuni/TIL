@@ -1,9 +1,16 @@
-# python 101
+# Python
 
-## 1. Save
-### 1) Number
+## 1. [Basic](/Basic)
 
 
-## 2. Condition
 
-## 3. Repetation
+## 2. [Crawling](/Crawling)
+
+web crawling (웹 크롤링)
+
+
+
+## 3. [Flask](/Flask)
+
+web server 구축
+
