@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import datetime
 import requests
 from bs4 import BeautifulSoup as bs
@@ -43,19 +43,22 @@ def chritsmas():
     if (result) : return "크리스마스 입니다." 
     else : return f"<h1>{(datetime.datetime(today.year,12,25).date()-today).days}일 남았습니다</h1>"
 
-
 @app.route("/soccer")
 def soccer():
     url = "https://search.naver.com/search.naver?sm=tab_sug.top&where=nexearch&query=2019%EB%8F%99%EC%95%84%EC%8B%9C%EC%95%88%EC%BB%B5&oquery=%EB%B6%80%EC%82%B0%EC%95%84%EC%8B%9C%EC%95%84%EB%93%9C%EC%A3%BC%EA%B2%BD%EA%B8%B0%EC%9E%A5&tqi=UQVbSlp0J1sssCmdrENssssssx0-144037&acq=%EB%8F%99%EC%95%84%EC%8B%9C%EC%95%88&acr=1&qdt=0"
     response = requests.get(url).text
     soup = bs(response, "html.parser")
-    play = soup.select("#main_pack > div.content_search.section > div > div.contents03_sub > div > div.tb_box > div > table > tbody > tr.first_row.tc > td:nth-child(2) > p > a")
-    return f"{play[0].text}"
+    play = soup.select_one("#main_pack > div.content_search.section > div > div.contents03_sub > div > div.tb_box > div > table > tbody")
+    return f"{play.text}"
 
+'''
+def render_template(str, **args):
+'''
 @app.route("/movies")
 def movies():
     movies = ["겨울왕국2","클라우스","어바웃타임","나홀로집에","러브 액츄얼리"]
-    return render_template("movie.html", movies = movies)
+    print("dd","ee","ff","gg")
+    return render_template("movie.html", movies = movies, text = "영화 목록")
 
 @app.route("/greeting/<name>")
 def greeting(name):
@@ -65,7 +68,6 @@ def greeting(name):
 def cube(num):
     result = num ** 3
     return str(result) 
-
 
 # 식사 메뉴 추천
 # 1. random
@@ -78,12 +80,31 @@ def cube(num):
 def lunch(num):
     menus = ["자장면","짬뽕", "오므라이스", "라면", "볶음밥", "샌드위치","닭볶음탕"]
     #choice = random.sample(range(0,len(menus)),num)
+    #random.sample(menus,num)
     lunch_menus = []
     for i in range(num):
         tmp = random.randint(0,len(menus)-1)
         print(menus[tmp])
         lunch_menus.append(menus[tmp])
-    return render_template("lunch.html",lunch_menus = lunch_menus)
+    return render_template("movie.html", movies = lunch_menus, text = "점심 메뉴")
+
+@app.route("/vonvon")
+def vonvon():
+    return render_template("vonvon.html")
+
+@app.route("/godmademe")
+def godmademe():
+    name = request.args.get("name")
+    print(name)
+    ###
+    first_list = ["평범함","잘생김","싸나움","멋짐"]
+    second_list = ["애교","쑥쓰러움","잘난척","자신감"]
+    third_list = ["허세","식욕","찌질","돈복"]
+    first = random.choice(first_list)
+    second = random.choice(second_list)
+    third = random.choice(third_list)
+    ###
+    return render_template("godmademe.html",name=name, first = first, second = second, third = third)
 
 # name == main 코드는 가장 바닥에 위치하는 것을 권장
 if __name__ == "__main__":
