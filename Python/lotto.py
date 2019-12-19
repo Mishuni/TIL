@@ -11,12 +11,9 @@ import random
 import json
 
 import requests
-from bs4 import BeautifulSoup as bs
 
-
-numbers = random.sample(range(1,46),6)
 url = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=836"
-print(numbers)
+# 회차에 맞는 로또 번호 조회 json
 
 # 브라우저에서 링크 검색하면 하는 동작과 같은 동작을 함
 # str
@@ -33,3 +30,21 @@ for i in range(1,7):
     winner.append(lotto.get(f"drwtNo{i}"))
 
 print(winner)
+
+def pick():
+    picked = sorted(random.sample(range(1,46),6))
+    print(picked)
+    matched = len(set(winner) & set(picked))
+    # 같은 숫자의 갯수 저장
+    if(matched == 6):
+        print("1th")
+    elif(matched == 5):
+        print("2th")
+    elif(matched == 4):
+        print("4th")
+    elif(matched == 3):
+        print("3th")
+    else:
+        print("fail")
+
+pick()
