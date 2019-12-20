@@ -64,3 +64,12 @@ url 이 매번 바뀌므로 ngrok 종료 시키지 말기 최대한
 
 ngrok forwarding url https -> 서버에서 돌리고 있는 주소
 /setWebhook?url=https://923506ba.ngrok.io
+
+
+
+# Flask 서버에 올리기
+
+## pythonanywhere 사용
+
+https://www.pythonanywhere.com/user/Mishuni15/
+
