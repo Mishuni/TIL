@@ -45,12 +45,13 @@ def telegram():
 
     # 앵무새
     # 실습 2 : 텔레그렘 메시지 보내기
-    if(text=="lotto" or text=="로또" or text =="로또 추천해줘"):
+    if(text=="/lotto" or text=="/로또" or text =="/로또 추천해줘" or text == "/행운의 숫자"):
+        # 로또 번호 추천
         case = sorted(random.sample(range(1,46),6))
         text = f"오늘의 행운의 숫자는 {case}입니다."
     #if 만약 / 로또 입력이되면 text > 6개 숫자를 추천
 
-    elif(text=="dollor"):
+    elif(text=="/dollor"):
         url = "https://finance.naver.com/marketindex/?tabSel=exchange#tab_section"
         response = requests.get(url).text
         soup = bs(response, "html.parser")
@@ -61,10 +62,10 @@ def telegram():
         text = f"현재 원/달러 환율은 {kospi.text}입니다."
 
     # 점심 추천
-    elif(text=="lunch"):
+    elif(text=="/lunch" or text=="/점심"):
+        # 점심 메뉴 추천
         menus = ["자장면","짬뽕", "오므라이스", "라면", "볶음밥", "샌드위치","닭볶음탕","김치찌개","순대국"]
-        tmp = random.randint(0,len(menus)-1)
-        text = menus[tmp]
+        text = random.choice(menus)
 
     elif(text=="안녕"):
         text = "안녕하세요, 저는 Shu에요."

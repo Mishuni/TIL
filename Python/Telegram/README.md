@@ -1,3 +1,5 @@
+# 가상환경 만들기
+
 ![가상환경만들기](C:\Users\student\Desktop\til\image\가상환경만들기.PNG)
 
 pip list  > 설치된 라이브러리 확인
@@ -29,8 +31,6 @@ token 자리에 내 private 암호? 입력
 
 
 
-
-
 pip install python-decouple
 
 
@@ -41,17 +41,26 @@ touch .env  > token 을 저장할 파일 생성
 
 
 
-https://ngrok.com/download
+# 로컬서버와 텔레크렘 연결
+
+## ngrok 이용
+
+[ngrok](https://ngrok.com/download)
 
 : 텔레그렘이 로컬서버에 들어가는 것을 도와주는 것
 
-
-
 cmd 창에서 ngrok http 5000 으로 실행
+
+```
+ngrok http 5000
+>>Forwarding                    http://923506ba.ngrok.io -> http://localhost:5000  
+```
+
+실행하면 나오는 forwarding 주소 io 까지 복사
 
 url 이 매번 바뀌므로 ngrok 종료 시키지 말기 최대한
 
 /setWebhook?url=<ngrok forwarding url https>
 
-ngrok forwarding url https -> 서베에서 돌리고 있는 주소
+ngrok forwarding url https -> 서버에서 돌리고 있는 주소
 /setWebhook?url=https://923506ba.ngrok.io
