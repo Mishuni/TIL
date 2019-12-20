@@ -41,7 +41,7 @@ touch .env  > token 을 저장할 파일 생성
 
 
 
-# 로컬서버와 텔레크렘 연결
+# 로컬서버와 텔레그렘 연결
 
 ## ngrok 이용
 
@@ -73,3 +73,9 @@ ngrok forwarding url https -> 서버에서 돌리고 있는 주소
 
 https://www.pythonanywhere.com/user/Mishuni15/
 
+2) pythonanywhere로 서버에 올려서 연결하는 방법 
+
+pythonanywher 실행 주소
+http://mishuni15.pythonanywhere.com/
+
+/setWebhook?url=https://mishuni15.pythonanywhere.com/<token>
