@@ -1,0 +1,260 @@
+C:\Program Files\Java\jdk1.8.0_231\bin
+->javac 실행
+\\70.12.116.90
+path
+JAVA_HOME : C:\Program Files\Java\jdk1.8.0_231
+// 기본적으로 java version 지정해주려고
+path 편집 : %JAVA_HOME%\bin 추가
+// 자바 경로로 안가도 불를 수 있도록
+classpath : .; //class를 찾아오는 경로
+elipse c드라이브 루트에 압축 품
+workspace는 c루트에 생성
+bin 디렉토리에 있는 건 실행파일
+
+C:\>cd testJava
+C:\testJava>javac Test01.java
+C:\testJava>java Test01
+web browser 만 있으면 js 돌아감(함수형)
+javax API : JAVA 에서 확장된 패키지
+java core API
+java.lang.System 
+-> system.out : display
+-> system.in : keyboard
+applet : 프로그램이 client에서 다운받아서 동작 됨 server에 올려놔서 원거리에서 server로 다운받음
+(java가 제공한 방식 -> 당시 플로피디스트로 출장가서 설치하던 시절)
+그래서 java 가 확 퍼짐, jvm 이 없으면 작동 안됨
+sevelet : server 쪽 applet ?
+annotation, lambda
+
+*lambda example 
+Person rin = new Person();
+rin.hi((a,b) ->{
+	System.out.println("This is Coding-Factory!");
+	System.out.println("Tank you Lamda");
+	System.out.println("parameter number is "+a+","+b);
+    return 7;
+});
+
+---단축키---
+java project 진행할 때, encoding 타입 세팅 매우 중요
+window -> General -> Workspace -> text file encoding  -> UTF-8	
+Java
+crtl + art + 아래/위화살표 : 복사
+art + 위화살표 : 드래그 라인 줄 이동
+crtl + D : 그 라인 제거
+crtl + shift + F : 라인 정리
+변수 이름 바꾸고 싶을 때 : 변수 클릭, Refactor, Rename
+-----------
+
+cmd 창에서 실행
+C:\workspace12_02\java01\bin>java day01.Sample01
+(bin 까지 들어가야 함)
+eclipse 기반이 아닐때, pakage 호환될 수 있게
+javac -d . Test02.java로 실행하면
+그 곳에서 pakage 생기고 pakage 폴더 안에 class 파일 생성
+
+
+System.out.println("홍길동"+'A'+true);
+이렇게 +로 연결해서 출력하는 거는 java 성능 저하의 원인
+string 객체가 내부에서 계속 생기고 있는 거라서 메모리 차지함
+printf 로 대체하면 편함
+-> 실제로 알고리즘 시험 풀 때도, println쓰면은 성능 저하 되어서 안 좋을 수 있다.
+
+cmd 창 compile
+C:\testJava>cd src
+C:\testJava\src>javac -d ../bin Test01.java
+(.. 은 부모 디렉터리를 뜻함), 빌드한 파일을 ../bin 폴더에 넣어달라
+C:\testJava\src>javac -d ../bin *.java
+도 가능 ( 그 폴더에 모든 java 파일들을 한번에 컴파일)
+java 의 모든 데이터는 string화가 가능하다.
+full name 안 써도 되는 package -> java.lang 
+(ex, String)
+소문자 - 32 = 대문자
+대문자 + 32 = 소문자\
+
+https://onsil-thegreenhouse.github.io/life/diary/2018/06/02/diary/
+
+new 로 생성되는 것(배열포함)은 heap영역에 올라감
+heap영역은 garbage collector가 처리
+import java.utils.*; 로 하면 메모리 문제가 있으므로
+잘 안한다!
+static은 new를 안해도 메모리에 뜬다?
+local value는 stack 영역에 저장
+String s1 = new String("java");
+s1 은 stack에 -> 주소 저장
+new 한 부분은 heap 에 저장
+Scanner 할당한 객체 사용 후에, close해주고
+null 값 할당해주면 더 좋다. -> null을 해야
+garbage 처리를 해주기 때문이다.
+but String 타입은 null 안해줘도 됨
+왜냐하면 static 메모리 위치에 저장되어 있어서
+garbage collector의 검사 위치에 벗어나기 때문에(?)
+
+C:\lib   :: 작업하면서 필요한 라이브러리, 파일 여기다
+Scanner sc = new Scanner(new FileInputStream("c://lib/score.txt"));
+// 파일로 입력 받는 것
+Oracle DB 는 index 1부터 시작.
+
+---StringBuilder---
+String은 immutable 객체라서 
+append 할 때 마다 객체가 생성되기 때문에 비효율적이라
+StringBuilder 를 사용하면 이를 해소할 수 있다.
+알고리즘 문제 풀 때, 이걸 사용하는게 좋을 수 있다!!!
+StringBuilder sb = new StringBuilder();
+String encodedString = sb.toString();
+
+---Switch---
+depth 가 길면 switch가 좋을 수도 있다.
+
+---setter/getter---
+source 에 있음
+
+---constructor---
+source 에 있음
+
+System.arraycopy(booklist, 0, tmp, 0, booklist.length);
+
+---Document 만들기---
+cmd 창
+javadoc *.java -encoding utf-8
+(.java 파일 경로로 들어가서)
+
+@Override와 같은 annotation은 살아있는 주석이다.
+
+
+----Vector---
+멀티스레드에서 동기화 문제를 자동으로 처리(?)
+synchronized 라는 마킹이 함수마다 각 있음
+
+typora : 마크다운 문서 작성 시스템
+
+---Git Bash---
+git init
+
+touch a.txt
+
+git status
+
+git add a.txt
+
+git config --global user.email "miseon543@gmail.com"
+
+git config --global user.name "Mishuni"
+
+git commit -m "a.txt 생성"
+
+git log
+
+
+
+---MarkDown---
+
+#  마크다운(markdown) 기초
+
+
+
+## 제목(heading)
+
+제목은 `#`을 통해 표현한다.
+
+`#의 갯수`로 제목의 레벨 표현 가능하며, 1~6까지 사용할 수 있다.
+
+### H3
+
+#### H4
+
+##### H5
+
+###### H6
+
+## 목록
+
+* 순서가 없는 목록은 `*`을 통해 표현 합니다.
+
+  * 탭을 통해 목록의 레벨을 조정할 수 있습니다.
+
+  엔터
+
+* 엔터로 여기까지
+
+1. 순서가 있는 목록
+2. 순서가 있는 목록은 1.
+   1. Tab을 통해 목록의 레벨을 조정할 수 있습니다.
+
+
+
+## 링크
+
+
+
+[GOOGLE]([https://google.com])
+
+[Google]
+
+
+
+## 코드 블록
+
+```java
+// 자바 주석
+
+import Java.utils.Scanner;
+
+int number = 0;
+System.out.println("안녕");
+```
+
+```python
+# 파이썬 주석
+// 이건 파이썬 주석 아님
+print("Hi")
+def foo():
+    return "hi"
+```
+
+
+
+## 이미지
+
+![abc](image/abc.jpg)
+
+
+
+
+
+## 표
+
+| 순번 |  이름  | 나이 |
+| :--: | :----: | :--: |
+|  1   | 유아영 |  10  |
+|  2   | 최민이 |  15  |
+|  3   | 이민지 |  12  |
+
+
+
+## 기타
+
+> 인용문은 `>` 기호를 통해 작성합니다.
+
+수직선
+
+---
+
+*이탈릭체*
+
+**볼드체**
+
+~~취소선~~
+
+https://github.com/JaeYeopHan/Interview_Question_for_Beginner
+
+https://github.com/jojoldu/junior-recruit-scheduler
+
+https://tech.kakao.com/blog/
+
+
+
+마크다운 문접 정리 툴
+
+notion
+
