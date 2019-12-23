@@ -19,6 +19,10 @@ ALTER USER madang ACCOUNT UNLOCK;
 
 conn madang/madang;
 
+DROP table orders;
+DROP table book;
+DROP table customer;
+
 CREATE TABLE Book (
   bookid      NUMBER(2) PRIMARY KEY,
   bookname    VARCHAR2(40),
@@ -32,7 +36,6 @@ CREATE TABLE  Customer (
   address     VARCHAR2(50),
   phone       VARCHAR2(20)
 );
-
 
 CREATE TABLE Orders (
   orderid NUMBER(2) PRIMARY KEY,
@@ -71,7 +74,7 @@ INSERT INTO Orders VALUES (8, 3, 10, 12000, TO_DATE('2014-07-08','yyyy-mm-dd'));
 INSERT INTO Orders VALUES (9, 2, 10, 7000, TO_DATE('2014-07-09','yyyy-mm-dd')); 
 INSERT INTO Orders VALUES (10, 3, 8, 13000, TO_DATE('2014-07-10','yyyy-mm-dd'));
 
-
+DROP table Imported_Book;
 CREATE TABLE Imported_Book (
   bookid      NUMBER ,
   bookname    VARCHAR(40),

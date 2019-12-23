@@ -6,7 +6,6 @@ DROP table orders;
 DROP table book;
 DROP table customer;
 
-
 CREATE TABLE Book (
   bookid      NUMBER(2) PRIMARY KEY,
   bookname    VARCHAR2(40),
