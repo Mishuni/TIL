@@ -2,11 +2,19 @@
 
 ## Oracle
 
+### 0. 환경설정
+
 > 데이터베이스 서버
 
-https://www.oracle.com/downloads/
+1. 필요 프로그램 다운로드 : [오라클](https://www.oracle.com/downloads/) 페이지 접속
+2. downloads > Database > Database 18c Express Edition (교육용) > 설치 
+3. Developer Tools > SQL Devleoper > windows 64-bit with JDK 8 included 설치
+4. 환경 변수 설정 : 내 PC > 속성 > 고급 시스템 설정 > 고급 > 환경 변수 > 시스템 변수 > Path > 편집
+5. C:\oraclexe\app\oracle\product\11.2.0\server\bin 추가
 
-Database password (관리자 시스템 계정) : 1234
+
+
+Database password (관리자 시스템 계정) : `1234` 
 
 ```관리자 계정으로 로그인한 sql
 c:\Users\student>sqlplus system/1234
@@ -52,7 +60,7 @@ autoextend on next 1M maxsize UNLIMITED;
 
 ```
 
-## 계정생성
+### 계정생성
 
 ```bash
 SQL> create user test01 identified by 1234
@@ -62,7 +70,7 @@ User created.
 
 ```
 
-계정을 만들고, 그 계정의 data	들이 저장될 dbf 파일을 mc로 설정
+계정을 만들고, 그 계정의 data들이 저장될 dbf 파일을 mc로 설정
 
 
 
@@ -73,6 +81,14 @@ DDL : ROLLBACK 불가(되돌리기 불가)
 DML : ROLLBACK 가능
 
 
+
+### SQL 기본 구문
+
+```mysql
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
 
 
 
