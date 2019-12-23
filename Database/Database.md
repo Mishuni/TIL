@@ -64,3 +64,18 @@ User created.
 
 계정을 만들고, 그 계정의 data	들이 저장될 dbf 파일을 mc로 설정
 
+
+
+## SQL
+
+DDL : ROLLBACK 불가(되돌리기 불가)
+
+DML : ROLLBACK 가능
+
+
+
+
+
+### 기타 참고 사이트
+
+[w3schools](https://www.w3schools.com/)
