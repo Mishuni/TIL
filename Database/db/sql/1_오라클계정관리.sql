@@ -1,4 +1,4 @@
-
+--\\70.12.60.90
 sqlplus system/1234
 
 alter user hr identified by hr account unlock;
