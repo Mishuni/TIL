@@ -24,7 +24,6 @@ autoextend on next 1M maxsize UNLIMITED;
 drop TABLESPACE mc INCLUDING CONTENTS AND Datafiles;
 
 
-
 ***************
  계정 생성, 삭제 
 ***************

@@ -41,6 +41,8 @@ User altered.
 ### TABLESPACE 생성
 
 > DBF 파일이 있으면 백업 가능
+>
+> 기본적으로 저장되는 곳은 system
 
 ```bash
 create TABLESPACE mc
@@ -60,5 +62,5 @@ User created.
 
 ```
 
-계정을 만들고, 그 계정의 DATA들이 저장될 dbf 파일을 mc로 설정
+계정을 만들고, 그 계정의 data	들이 저장될 dbf 파일을 mc로 설정
 
