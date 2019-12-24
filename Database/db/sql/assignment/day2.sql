@@ -8,8 +8,9 @@ select * from jobs;
 select e1.employee_id, e1.first_name, d.department_name,
 	   e2.first_name
 from employees e1,employees e2, departments d
-where e1.manager_id = e2.employee_id 
-	  and e1.department_id = d.department_id;
+where e1.manager_id = e2.employee_id(+)
+	  and e1.department_id = d.department_id
+order by e1.employee_id;
 	  
 -- 문제2. 자신의 매니저보다 
 -- 연봉(salary)을 많이 받는 직원들의 성(last_name)과 연봉(salary)을 출력하시오. 
@@ -31,7 +32,7 @@ where e.job_id = j.job_id
 -- 문제4. Query 문장을 작성하십시오. 
 -- 자신의 매니저보다 채용일(hire_date)이 빠른 사원의 사번(employee_id), 
 -- 성(last_name)과 채용일(hire_date)을 조회하라.
-select e1.employee_id, e1.last_name, 
+select e1.employee_id, e1.last_name,
 to_char(e1.hire_date,'yyyy-mm-dd') as hiredate
 from employees e1, employees e2
 where e1.manager_id = e2.employee_id and e1.hire_date<e2.hire_date;
@@ -42,7 +43,8 @@ where e1.manager_id = e2.employee_id and e1.hire_date<e2.hire_date;
 -- 단, 관리자가 없는 사원정보도 출력결과에 포함되어야 합니다.
 select e1.first_name, e1.hire_date, e1.employee_id, e2.first_name
 from employees e1, employees e2
-where e1.manager_id = e2.employee_id and to_char(e1.hire_date,'yy') = 8;
+where e1.manager_id = e2.employee_id(+)
+and to_char(e1.hire_date,'yy') = 8;
 
 -- 문제6. ‘Sales’부서에 속한 직원의 이름(first_name), 
 -- 급여(salary), 부서이름(department_name)을 조회하시오. 
