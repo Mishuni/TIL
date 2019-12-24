@@ -188,3 +188,44 @@ order by 4;
 conn SCOTT/TIGER;
 select dname,lower(dname),loc
 from dept;
+
+select round(44.55), round(44.55,1),trunc(44.55) from dual;
+select sal, trunc(sal*0.03) as TAX
+from emp;
+
+select ename,hiredate,substr(hiredate,4,2) as month
+from emp;
+
+-- 사원의 입사 월이 12월인 정보 추출
+select ename,hiredate,substr(hiredate,4,2) as month
+from emp
+where substr(hiredate,4,2) = 12;
+
+select sysdate,substr(sysdate,4,2),sysdate + 2 from dual;
+
+select sysdate,to_char(sysdate,'YYYY'),sysdate + 2 from dual;
+select sysdate,to_char(sysdate,'day'),sysdate + 2 from dual;
+select sysdate,to_char(sysdate,'mm'),sysdate + 2 from dual;
+select sysdate,to_char(sysdate,'dd'),sysdate + 2 from dual;
+
+-- emp 에서 사원 들의 입사월 정보를 출력
+select ename,to_char(hiredate,'mm') as "month", 
+to_char(hiredate,'day') as "day" 
+from emp
+order by "month";
+
+select sysdate , to_date('2019/12/24') from dual;
+select sysdate , to_date('2019-12-24') from dual;
+select sysdate , to_date('2019 12 24') from dual;
+select sysdate , to_date('19 12 24') from dual;
+select sysdate , to_date('49 12 24') from dual;
+select sysdate , to_date('12/24/19','mm/dd/yy') from dual;
+select sysdate , to_date('2/24/20','mm/dd/yy') from dual;
+
+-- decode 함수 (부서마다 서비스 퍼센트가 다르게)
+select ename, sal, deptno, decode(deptno, 10, round(sal*1.2),
+										  20, round(sal*0.7),
+										  sal) as "BONUS"
+from emp
+order by deptno;
+
