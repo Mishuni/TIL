@@ -184,3 +184,7 @@ from emp
 where sal+nvl(comm,0) > 2000
 order by 4;
 
+-- 단일행 함수 single row function
+conn SCOTT/TIGER;
+select dname,lower(dname),loc
+from dept;

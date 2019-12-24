@@ -8,7 +8,7 @@
 
 DROP USER madang CASCADE;
 
---mc tablespace 사용하는  madang/madang 계정 생성문장   
+-- mc tablespace 사용하는  madang/madang 계정 생성문장   
 create user madang identified by madang
 default TABLESPACE mc;
 

@@ -1,5 +1,5 @@
 --\\70.12.60.90
-sqlplus system/1234
+-- sqlplus system/1234
 
 alter user hr identified by hr account unlock;
 
@@ -36,16 +36,16 @@ drop user test01 cascade;
 create user SCOTT identified by TIGER
 default TABLESPACE mc;
 
-C:\oraclexe\app\oracle\product\11.2.0\server
-오라클 서버 프로그램
+-- C:\oraclexe\app\oracle\product\11.2.0\server
+-- 오라클 서버 프로그램
 
-@c:\lib\scott.sql;
-rem scott.sql 파일에 있는 명령이 한번에 수행이 됨
+-- @c:\lib\scott.sql;
+-- scott.sql 파일에 있는 명령이 한번에 수행이 됨
 
 select * from emp;
 
-C:\oraclexe\app\oracle\product\11.2.0\server\sqlplus\admin\glogin.sql
-// 계정 들어갈 때마다 초기에 시작하는 명령들?
+-- C:\oraclexe\app\oracle\product\11.2.0\server\sqlplus\admin\glogin.sql
+-- 계정 들어갈 때마다 초기에 시작하는 명령들?
 파일에서 
 
 set linesize 300;
@@ -58,7 +58,7 @@ col mgr for 9999;
 col comm for 9999;
 col ename for a12;
 
-추가 >> tabel 가독성 높이기 위해서
+-- 추가 >> tabel 가독성 높이기 위해서
 
 -- 오라클 휴지통 비우기
 purge recyclebin;

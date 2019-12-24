@@ -21,13 +21,15 @@
 
    C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 에 ojdbc6.jar 복사
 
+   C:\lib 에 붙여넣기
+
 4. eclipse Data Source Explorer 창
 
    Database Connections > new > Oracle > name 에 SCOTT > next > New Driver Definition> Oracle Thin Driver, 버전 11 > JAR List > Add jar > 원래 거 지우고, 3.번에서 찾은 driver 추가 > ok
 
    SCOTT/TIGER 계정을 물린 connection 을 만들겠다.
 
-5. service name : xe, Host : 127.0.0.1(SERVER IP 주소, 현재는 내 컴퓨터로 하니까 Loop back address), user name, password 설정 하고 save password 체크
+5. service name : xe, Host : 127.0.0.1(SERVER IP 주소, 현재는 내 컴퓨터로 하니까 localhost), user name, password 설정 하고 save password 체크
 
    여기서는 (SCOTT/TIGER)
 

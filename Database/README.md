@@ -7,10 +7,18 @@
 > 데이터베이스 서버
 
 1. 필요 프로그램 다운로드 : [오라클](https://www.oracle.com/downloads/) 페이지 접속
+
 2. downloads > Database > Database 18c Express Edition (교육용) > 설치 
+
 3. Developer Tools > SQL Devleoper > windows 64-bit with JDK 8 included 설치
+
 4. 환경 변수 설정 : 내 PC > 속성 > 고급 시스템 설정 > 고급 > 환경 변수 > 시스템 변수 > Path > 편집
+
 5. C:\oraclexe\app\oracle\product\11.2.0\server\bin 추가
+
+6. sqldeveloper C:\ 에 압축 풀기  
+
+   'sqldeveloper' 는 sql 문의 편집을 쉽게하고, table 모델도를 제공
 
 
 
