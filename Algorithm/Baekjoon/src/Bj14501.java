@@ -29,25 +29,24 @@ public class Bj14501 {
 
 class Day implements Comparable<Day> {
 	int start;
-	int day;
+	int end;
 	int money;
 	int money_per_day;
 	
 	Day(int start, int t, int p){
-		day = t;
-		money = p;
-		money_per_day = p / t;
+		this.start = start;
+		this.end = start + p;
+		this.money = p;
+		this.money_per_day = p / t;
 	}
 
 	@Override
 	public int compareTo(Day d) {
-		if(this.money_per_day>d.money_per_day) {
+		if(this.end>d.end) {
 			return 1;
 		}
-		else if(this.money_per_day==d.money_per_day) {
-			if(this.day>d.day) {
-				return 1;
-			}
+		else if(this.end==d.end) {
+			
 		}
 		return -1;
 	}
