@@ -39,6 +39,7 @@ from emp;
 select 20*20*4
 from dual;
 
+-- 날짜 정보
 select sysdate
 from dual;
 
@@ -102,18 +103,74 @@ select *
 from emp
 where ename = 'A';
 
+-- A가 이름에 있으면
 select *
 from emp
-where ename like '%A%';
+where upper(ename) like upper('%A%');
 
-
-
+-- A가 뒤에서 3번째 이면
 select *
 from emp
 where ename like '%A__';
 
--- 81년도에 입사한 사원 목록
+select *
+from emp
+where ename like '__A__';
 
+-- 81년도에 입사한 사원 목록
 select *
 from emp
 where HIREDATE like '81%';
+ 
+select *
+from emp
+where SUBSTR(HIREDATE,4,2) = '02';
+
+select *
+from emp
+where HIREDATE LIKE ('%05___');
+
+-- where null processing
+select * from emp
+where mgr is not null;
+
+select * from emp
+where comm is null;
+
+select ename,sal,comm,sal+nvl(comm,0) as total 
+from emp
+where comm is not null;
+
+-- where 절에서는 alliance(별칭 : 여기서는 total)사용 불가 
+select ename,sal,comm,sal+nvl(comm,0) as total 
+from emp
+where sal+nvl(comm,0) >= 2000;
+
+-- sort (default : asc 오름차순)
+select ename,sal,comm,sal+nvl(comm,0) as total
+from emp
+order by sal;
+
+select ename,sal,comm,sal+nvl(comm,0) as total
+from emp
+order by sal desc;
+
+select ename,sal,comm,sal+nvl(comm,0) as total
+from emp
+order by sal asc , comm desc;
+
+select ename,sal,sal+nvl(comm,0) as total
+from emp
+order by sal asc , comm ;
+
+select ename,sal,sal+nvl(comm,0) as total
+from emp
+where comm is not null
+order by sal asc , comm ;
+
+select ename,sal,comm,sal+nvl(comm,0) as total
+from emp
+where comm is not null
+order by  comm ;
+
+
