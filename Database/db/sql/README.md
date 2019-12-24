@@ -1,4 +1,45 @@
-## SQL
+# SQL
+
+## 0. Eclipse 와 Oracle DB연동
+
+1. java 프로젝트폴더 > new > file > db_info.properties (환경 설정 파일)
+
+>  configuration file 이 옛날에는 .properties 파일 많이 쓰다가 .XML  로 넘어갔는데 복잡해서
+>
+> .JSON 이나 .properties 가 늘어나고 있는 추세
+
+2. java 랑 특정 database 랑 connection 을 하는 환경 설정
+
+   ```
+   id = SCOTT
+   pw = TIGER
+   driver =
+   url= jdbc:oracle:thin:@127.0.0.1:1521:xe
+   ```
+
+3. Oracle 용 jdbc driver
+
+   C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 에 ojdbc6.jar 복사
+
+4. eclipse Data Source Explorer 창
+
+   Database Connections > new > Oracle > name 에 SCOTT > next > New Driver Definition> Oracle Thin Driver, 버전 11 > JAR List > Add jar > 원래 거 지우고, 3.번에서 찾은 driver 추가 > ok
+
+   SCOTT/TIGER 계정을 물린 connection 을 만들겠다.
+
+5. service name : xe, Host : 127.0.0.1(SERVER IP 주소, 현재는 내 컴퓨터로 하니까 Loop back address), user name, password 설정 하고 save password 체크
+
+   여기서는 (SCOTT/TIGER)
+
+6. Test Connection 클릭 > 성공 메세지 뜨면 ok> connectin url 복사 
+
+7. 복사한 url 을 db_infr.properties 파일에 url = 다음에 붙여넣기
+
+8. 이제 sql 파일에서 connection profile 을 앞서 설정한 것에 맞춰 선택하면 완료 !
+
+
+
+## 1. SQL 명령어
 
 DDL : ROLLBACK 불가(되돌리기 불가)
 

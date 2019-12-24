@@ -173,4 +173,14 @@ from emp
 where comm is not null
 order by  comm ;
 
+-- 정렬은 별칭 사용 가능
+select ename,sal,comm,sal+nvl(comm,0) as total
+from emp
+where sal+nvl(comm,0) > 2000
+order by  total;
+
+select ename,sal,comm,sal+nvl(comm,0) as total
+from emp
+where sal+nvl(comm,0) > 2000
+order by 4;
 
