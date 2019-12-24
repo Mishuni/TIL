@@ -49,14 +49,23 @@ select * from emp;
 파일에서 
 
 set linesize 300;
-set pagesize 20;
+set pagesize 30;
 col ename for a10;
 col job for a12;
 col deptno for 9999;
 col sal for 9999;
 col mgr for 9999;
 col comm for 9999;
-col ename for a12;
+col EMPLOYEE_ID for 9999;
+col FIRST_NAME for a10;
+col LAST_NAME  for a10;
+col EMAIL  for a10;
+col JOB_ID for a12;
+col PHONE_NUMBER for 100000;
+col SALARY for 9999;
+col COMMISSION_PCT for 9999;
+col MANAGER_ID for 9999;
+col DEPARTMENT_ID for 9999;
 
 -- 추가 >> tabel 가독성 높이기 위해서
 
