@@ -10,7 +10,7 @@
 
 * [마크다운](./markdown.md)
 
-* [JAVA](./java)
+* [Java](./Java)
 
 * [알고리즘](./Algorithm)
 
