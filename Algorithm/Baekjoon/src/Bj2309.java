@@ -12,7 +12,6 @@ public class Bj2309 {
 			ch[i] = sc.nextInt();
 			sum += ch[i];
 		}
-		int a =-1 ,b=-1;
 		for(int i=0; i<N-1; i++) {
 			for(int j=i+1; j<N; j++) {
 				if(sum - ch[i]- ch[j] == 100) {
@@ -36,4 +35,7 @@ public class Bj2309 {
 		}
 	}
 
+	
+
 }
+
