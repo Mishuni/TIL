@@ -52,6 +52,11 @@ select e1.first_name, e1.salary, d.department_name
 from employees e1, DEPARTMENTS d
 where e1.department_id = d.department_id 
 	and upper(d.department_name) = upper('Sales');
+	
+select e1.first_name, e1.salary, d.department_name
+from employees e1 join departments d
+	on e1.department_id = d.department_id
+where d.department_name = 'Sales';
 
 -- 문제7. 월 별 입사자 수를 조회하는 SQL 쿼리문을 작성하세요. 월 순으로 정렬하세요. 
 -- 출력: 월 | 입사자수

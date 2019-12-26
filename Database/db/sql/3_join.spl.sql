@@ -123,3 +123,110 @@ group by emp.deptno;
 -- count함수는 null 값은 제외하고 계산
 select avg(sal), count(*), min(sal), max(sal), count(mgr)
 from emp;
+
+select avg(sal), count(*), min(sal), max(sal), count(mgr)
+from emp
+where deptno = 10;
+
+select round(avg(sal),2) as average, 
+	count(*), min(sal), max(sal), count(mgr), deptno
+from emp
+group by deptno
+order by deptno
+
+select round(avg(sal),2) as average, 
+	count(*), min(sal), max(sal), count(mgr), d.dname
+from emp e, dept d
+where e.deptno = d.deptno
+group by d.dname;
+
+-- e.deptno 로 그룹핑 했지만 d.dname 이 불리지 않음
+-- ORA-00979: not a GROUP BY expression
+-- group by 절에 참여한 열만 select 절에 포함이 가능
+select round(avg(sal),2) as average, 
+	count(*), min(sal), max(sal), count(mgr), d.dname
+from emp e, dept d
+where e.deptno = d.deptno
+group by e.deptno;
+-- 해결법
+select round(avg(sal),2) as average, 
+	count(*), min(sal), max(sal), count(mgr), e.deptno, d.dname
+from emp e, dept d
+where e.deptno = d.deptno
+group by e.deptno, d.dname;
+
+-- Having 절 --
+-- 부서이름별 평균급여가 2000이상인 목록 출력 (집계 함수 결과에 대한 조건문)
+select round(avg(sal)) as average, e.deptno, d.dname
+from emp e, dept d
+where e.deptno = d.deptno
+group by e.deptno, d.dname
+having round(avg(sal))>2000;
+
+-- subQuery --
+-- Ford 보다 급여가 많은 사원 목록
+select sal from emp where ename = 'FORD';
+select * from emp where sal > 3000;
+
+select *
+from emp
+where sal > (select sal from emp
+			where ename = 'FORD');
+			
+-- 전체 평균 급여보다 적게 받는 사원 목록
+select * from emp
+where sal < (select avg(sal) from emp);
+-- 제일 적은 급여 받는 사원 목록
+select * from emp
+where sal = (select min(sal) from emp);
+
+-- 부서별 최고 급여를 받는 사원 목록
+select * from emp
+where sal in (select max(sal) from emp
+			group by deptno)
+order by deptno;
+-- 위 쿼리는 부서가 같은지를 확인하지 않아 오류 가능성 존재
+-- 해결법 1
+select * from emp , (select max(sal) as sal, deptno from emp
+			group by deptno) d
+where emp.sal = d.sal and emp.deptno = d.deptno
+order by emp.deptno;
+-- 해결법 2
+select * from emp
+where (deptno,sal) in (select deptno,max(sal) from emp
+			group by deptno)
+order by deptno;
+
+-- rownum --
+select ename,job,sal from emp;
+select rownum,ename,job,sal from emp;
+-- rownum 이 섞임(급여 순으로 하고 싶은데)
+select rownum,ename,job,sal from emp
+order by sal;
+-- 해결법
+select rownum,ename,job,sal 
+from (select ename,job,sal from emp order by sal desc);
+-- 급여 top 3
+select rownum,ename,job,sal 
+from (select ename,job,sal from emp order by sal desc)
+where rownum < 4;
+
+select rownum,ename,job,sal 
+from (select ename,job,sal from emp order by sal desc)
+where rownum between 1 and 3;
+
+-- oracle page 처리 --
+-- rownum은 가상의 열로 1부터 시작해서 조건을 검사해야함
+-- 밑에 쿼리의 결과는 없을 것 (에러)
+select rownum,ename,job,sal 
+from (select ename,job,sal from emp order by sal desc)
+where rownum between 4 and 7;
+-- 해결법
+select *
+from (
+	select rownum row#,ename,job,sal 
+	from (select ename,job,sal from emp order by sal desc)
+)
+where row# between 4 and 7;
+
+
