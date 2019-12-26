@@ -119,3 +119,7 @@ select round(avg(sal))||' 만원' as "평균급여" from emp;
 select deptno, round(avg(sal))||' 만원' as "부서 별 평균급여" 
 from emp
 group by emp.deptno;
+
+-- count함수는 null 값은 제외하고 계산
+select avg(sal), count(*), min(sal), max(sal), count(mgr)
+from emp;
