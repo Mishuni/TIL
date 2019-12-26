@@ -59,7 +59,9 @@ select * from book;
 -- commit 을 날려야 함
 
 commit;
---commit을 날리면 취소가 불가능함
+-- commit이 날라가야 다른 client에서도 이를 확인할 수 있음(동기화)
+-- commit 전에는 rollback(취소)가 가능
+-- commit을 날리면 취소가 불가능
 
 
 
