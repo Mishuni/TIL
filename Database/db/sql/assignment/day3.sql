@@ -45,10 +45,11 @@ insert into users(id,password,name,role)
 values('m','m','mm','user');
 
 -- 게시판 글등록
-insert into board(
-(seq,title,content,regdate,cnt,id)
-values(select nvl(max(seq),0) from board)+1,'99',
-'gg',sysdate, 1,'a'));
+drop sequence board_seq;
+create sequence board_seq;
+insert 
+into board(seq,title,content,regdate,cnt,id)
+values(board_seq.nextval,'99','gg',sysdate, 1,'a');
 insert into board(seq,title,content,regdate,cnt,id)
 values(2,'22','aa','2019/01/01', 1,'b');
 insert into board(seq,title,content,regdate,cnt,id)

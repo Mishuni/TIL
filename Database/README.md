@@ -90,3 +90,5 @@ User created.
 ### 기타 참고 사이트
 
 [w3schools](https://www.w3schools.com/)
+
+build path > configure build path > libraries > add external JARs >  ojdbc6.jar 선택 > apply
