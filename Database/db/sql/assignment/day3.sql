@@ -51,27 +51,27 @@ insert
 into board(seq,title,content,regdate,cnt,id)
 values(board_seq.nextval,'99','gg',sysdate, 1,'a');
 insert into board(seq,title,content,regdate,cnt,id)
-values(2,'22','aa','2019/01/01', 1,'b');
+values(board_seq.nextval,'22','aa','2019/01/01', 1,'b');
 insert into board(seq,title,content,regdate,cnt,id)
-values(3,'33','cc','2019/08/02', 3,'c');
+values(board_seq.nextval,'33','cc','2019/08/02', 3,'c');
 insert into board(seq,title,content,regdate,cnt,id)
-values(4,'22','dd','2019/07/03', 4,'d');
+values(board_seq.nextval,'22','dd','2019/07/03', 4,'d');
 insert into board(seq,title,content,regdate,cnt,id)
-values(5,'11','ee','2019/04/01', 10,'a');
+values(board_seq.nextval,'11','ee','2019/04/01', 10,'a');
 insert into board(seq,title,content,regdate,cnt,id)
-values(6,'55','ff','2019/05/04', 3,'e');
+values(board_seq.nextval,'55','ff','2019/05/04', 3,'e');
 insert into board(seq,title,content,regdate,cnt,id)
-values(7,'11','ii','2019/03/05', 4,'g');
+values(board_seq.nextval,'11','ii','2019/03/05', 4,'g');
 insert into board(seq,title,content,regdate,cnt,id)
-values(8,'22','dd','2019/01/06', 1,'f');
+values(board_seq.nextval,'22','dd','2019/01/06', 1,'f');
 insert into board(seq,title,content,regdate,cnt,id)
-values(9,'33','cc','2019/01/07', 1,'f');
+values(board_seq.nextval,'33','cc','2019/01/07', 1,'f');
 insert into board(seq,title,content,regdate,cnt,id)
-values(10,'333','cc','2019/01/07', 67,'h');
+values(board_seq.nextval,'333','cc','2019/01/07', 67,'h');
 insert into board(seq,title,content,regdate,cnt,id)
-values(11,'665','i like computer','2019/02/07', 67,'l');
+values(board_seq.nextval,'665','i like computer','2019/02/07', 67,'l');
 insert into board(seq,title,content,regdate,cnt,id)
-values(12,'775','I want to go there','2019/02/15', 30,'jj');
+values(board_seq.nextval,'775','I want to go there','2019/02/15', 30,'j');
 
 commit;
 
