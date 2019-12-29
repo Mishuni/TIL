@@ -25,9 +25,9 @@
 
 4. eclipse Data Source Explorer 창
 
-   Database Connections > new > Oracle > name 에 SCOTT > next > New Driver Definition> Oracle Thin Driver, 버전 11 > JAR List > Add jar > 원래 거 지우고, 3.번에서 찾은 driver 추가 > ok
+   Database Connections > new > Oracle > driver name 에 SCOTT > next > New Driver Definition> Oracle Thin Driver, 버전 11 > JAR List > Add jar > 원래 거 지우고, 3.번에서 찾은 driver 추가 > ok
 
-   SCOTT/TIGER 계정을 물린 connection 을 만들겠다.
+   SCOTT/TIGER 계정을 물린 connection 을 만들겠다. -> SCOTT/TIGER 계정이 생성 된 상태이고, connect 에 대한 권한이 그 계정에 부여된 상태에서 진행
 
 5. service name : xe, Host : 127.0.0.1(SERVER IP 주소, 현재는 내 컴퓨터로 하니까 localhost), user name, password 설정 하고 save password 체크
 

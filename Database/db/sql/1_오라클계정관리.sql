@@ -35,13 +35,15 @@ drop user test01 cascade;
 -- SCOTT/TIGER 계정 생성 
 create user SCOTT identified by TIGER
 default TABLESPACE mc;
+-- 권한 부여
+grant connect,resource,dba to SCOTT;
+
 
 -- C:\oraclexe\app\oracle\product\11.2.0\server
 -- 오라클 서버 프로그램
 
 -- @c:\lib\scott.sql;
 -- scott.sql 파일에 있는 명령이 한번에 수행이 됨
-
 select * from emp;
 
 -- C:\oraclexe\app\oracle\product\11.2.0\server\sqlplus\admin\glogin.sql

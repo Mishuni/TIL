@@ -8,24 +8,21 @@ public class Bj1182 {
 		S = sc.nextInt();
 		int[] number = new int[N];
 		result = 0;
-		int sum = 0;
-		for (int i = 0; i < N; i++) {
-			number[i] = sc.nextInt();
+		for(int i=0; i<N; i++) {
+			number[i]=sc.nextInt();
 		}
-		
 		for(int i=1; i<(1<<N); i++) {
-			sum = 0;
+			int sum = 0;
 			for(int j=0; j<N; j++) {
 				if((i&(1<<j))!=0) {
-					sum += number[j];
+					sum+=number[j];
 				}
 			}
 			if(sum==S) {
 				result++;
 			}
 		}
+	
 		System.out.println(result);
 	}
-
-
 }

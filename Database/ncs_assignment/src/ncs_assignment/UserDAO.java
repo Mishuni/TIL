@@ -98,6 +98,8 @@ public class UserDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs, con, ps);
 		}
 		// 만약 user 가 null 값이라면 로그인은 실패
 		return user;
