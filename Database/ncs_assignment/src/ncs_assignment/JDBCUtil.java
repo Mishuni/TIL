@@ -14,25 +14,25 @@ public class JDBCUtil {
 		String pw = "TIGER";
 		Connection con = null;
 		// 1. Driver클래스를 로딩
-				try {
-					Class.forName(driver);
-					con = DriverManager.getConnection(url, user, pw);
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, user, pw);
 
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				return con;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return con;
 	}
-	
+
 	public static void close(ResultSet rs, Connection con, Statement ps) {
 		try {
-			if(rs!=null)
+			if (rs != null)
 				rs.close();
-			if(con!=null)
+			if (con != null)
 				con.close();
-			if(ps!=null)
+			if (ps != null)
 				ps.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
