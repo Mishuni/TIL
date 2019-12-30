@@ -6,6 +6,8 @@ public class UserVO {
 	
 	public UserVO() {
 		super();
+		id = "";
+		
 	}
 	public UserVO(String id, int pw) {
 		super();

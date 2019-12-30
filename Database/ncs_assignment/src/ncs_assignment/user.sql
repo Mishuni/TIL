@@ -26,3 +26,5 @@ where id = 'a' and pw =11;
 select id from users
 where id = 'a' and pw =22;
 
+select * from users
+
