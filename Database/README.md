@@ -92,3 +92,9 @@ User created.
 [w3schools](https://www.w3schools.com/)
 
 build path > configure build path > libraries > add external JARs >  ojdbc6.jar 선택 > apply
+
+alter user system identified by oracle;
+
+-> system 계정 비번 oracle 로 변경
+
+create user kingsmile identified by 1234;
