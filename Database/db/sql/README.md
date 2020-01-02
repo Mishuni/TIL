@@ -45,15 +45,7 @@ C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
 
 에서, ojdbc6.jar 파일(압축된 파일)복사
 
-C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext 에다가 붙여넣기
-
-Class.forName("oracle.jdbc.driver.OracleDriver"); 를
-
-eclipse 에서 실행해 보는데 에러가 나타나면
-
-그 붙여넣은 파일 지우고, 
-
-C:\Program Files\Java\jre1.8.0_231\lib\ext 에다가 다시 붙여넣기
+C:\Program Files\Java\jre1.8.0_231\lib\ext 에다가 붙여넣기
 
 ext ? 장치 관련된 라이브러리가 저장된 곳
 

@@ -2,34 +2,57 @@ package dbConn.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
-/*연결에 관련된 모든 것을 넣을 클래스
+/*
+ 연결에 관련된 모든 것을 넣을 클래스
 DB 연결 정보 반복적으로 코딩하는 것 해결
 다른 클래스에서 아래 코드 구현을 하지 않도록 설계
-// 1. Driver 클래스를 로딩
-Class.forName("oracle.jdbc.driver.OracleDriver");
-// 2. 로딩된 Driver 클래스 이용 connection 요청
-conn = DriverManager.getConnection(
-		"jdbc:oracle:thin:@localhost:1521:xe",
-		"kingsmile",
-		"oracle");*/
+*/
+
+// ConnectionHelper.getConnecntion("mysql") or ("oracle")
+// data source name 으로 어떤 DB와 연결할지 결정
 
 public class ConnectionHelper {
-	public static void main(String[] args) {
+	
+	@SuppressWarnings("finally")
+	public static Connection getConnection(String dsn) {
+		Connection conn = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("load success!!");
-			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kingsmile",
-					"oracle");
-			System.out.println("connection success!!");
+			if (dsn.equals("mysql")) {
+				// mysql인 경우 불러오는 법
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sampleDB", "kingsmile", "mysql");
 
-		} catch (ClassNotFoundException e) {
+			} else if (dsn.equals("oracle")) {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kingsmile", "oracle");
+
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+		} finally {
+			return conn;
 		}
-		
+	}
 
+	@SuppressWarnings("finally")
+	public static Connection getConnection(String dsn, String user, String pw) {
+		Connection conn = null;
+		try {
+			if (dsn.equals("mysql")) {
+				// mysql인 경우 불러오는 법
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sampleDB", user, pw);
+
+			} else if (dsn.equals("oracle")) {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", user, pw);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return conn;
+		}
 	}
 }
