@@ -2,5 +2,7 @@
 
 전체 문제 풀이 : [Mishuni Naver Blog](https://blog.naver.com/altjs543)
 
-백준 문제 소스 코드 : [GitHub 풀이 모음](./Baekjoon/src)
+​							[Mishuni Tstory Blog](https://mishuni.tistory.com/)
+
+문제 소스 코드 : [GitHub 풀이 모음](./Baekjoon/src)
 
