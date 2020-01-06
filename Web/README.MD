@@ -14,6 +14,8 @@ server engine이 요청이 들어오면, 확장자에 따라서 server에서 해
 
 > <%now%> 	 --> 	2020/01/06
 
+---
+
 ## Client Side Script
 
 * 문서구조 : html
@@ -22,7 +24,7 @@ server engine이 요청이 들어오면, 확장자에 따라서 server에서 해
 
 web browser 에서 동작하는 web page는 tag를 이용하여 만든다.
 
-## 0.환경 설정
+### 0. 환경 설정
 
 eclipse 
 
@@ -44,7 +46,7 @@ C:\APP\apache-tomcat-8.5.50\bin\startup.bat 더블클릭 > 서버 실행
 
 oracle 서버 포트 바꿔도 되고, tomcat 의 port 를 바꿔도 된다.
 
-
+* #### Oracle 서버 포드 번호 바꾸기
 
 1. C:\APP\apache-tomcat-8.5.50\conf\server.xml  >  eidtPlus로 열기 > port = "8080" 확인
 
@@ -68,7 +70,7 @@ oracle 서버 포트 바꿔도 되고, tomcat 의 port 를 바꿔도 된다.
 
    후에, startup.bat을 실행시키고(서버 실행) localhost:8080 사이트를 들어가면 index파일이 나타난다.
 
-### eclipse server 연동
+### 1. eclipse server 연동
 
 Servers > new server > Tomcat v8.5 Server 선택 > Next
 
@@ -92,7 +94,7 @@ preferences > ceneral > content types > Text >  java properties file
 
 JSP 파일 만들었을 때 error 나는 거 > jsp lib가 없어서 나는 오류
 
-해결 법
+* #### 해결 법
 
 1. WEB-INF > lib 에 넣으면 되는데 , 이는 매번 해줘야 하니까 한번에 할 수 있는 방법으로 해결하기
 
@@ -112,11 +114,54 @@ JSP 파일 만들었을 때 error 나는 거 > jsp lib가 없어서 나는 오�
 
    -> 실행할 때, Tomcat 서버 미리 열어둔 거 없는지 확인
 
+eclipse > window > web browser > Chrome 선택 하면, run 했을 때 창이 chrome으로 나타남
+
+JSP : server에서 해석 되어서 나가야 하는 것 
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ page import = "java.util.*" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Server Test tranform</h1>
+<% Date today = new Date(); %>
+<%= today %>
+</body>
+</html>
+```
+
+위 파일을 실행하고, 페이지 소스 보기를 클릭하면
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Server Test tranform</h1>
+
+Mon Jan 06 16:54:55 KST 2020
+</body>
+</html>
+```
+
+이렇게 나온다, 서버에서 미리 해석을 한 후의 내용만 전달 된 것을 볼 수 있다.
+
 ----
 
 #### 알아두면 유용한 사이트
 
 [W3Schools](https://www.w3schools.com/)
 
-D2Coding폰트
+[D2Coding폰트]([https://github.com/naver/d2codingfont#%EB%B0%98%EB%93%AF%ED%95%9C](https://github.com/naver/d2codingfont#반듯한))
 
