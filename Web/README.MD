@@ -14,8 +14,6 @@ server engine이 요청이 들어오면, 확장자에 따라서 server에서 해
 
 > <%now%> 	 --> 	2020/01/06
 
-
-
 ## Client Side Script
 
 * 문서구조 : html
@@ -23,8 +21,6 @@ server engine이 요청이 들어오면, 확장자에 따라서 server에서 해
 * 기술, 동작 : JavaScript
 
 web browser 에서 동작하는 web page는 tag를 이용하여 만든다.
-
-
 
 ## 0.환경 설정
 
@@ -102,17 +98,19 @@ JSP 파일 만들었을 때 error 나는 거 > jsp lib가 없어서 나는 오�
 
 2. Tomcat 에 있는 .jar 파일
 
-3. 
-
-   C:\APP\apache-tomcat-8.5.50\lib
+3. C:\APP\apache-tomcat-8.5.50\lib
 
    el-api.jar
 
    jsp-api.jar
 
-   servlet-api.jar
+   servlet-api.jar 파일들 복사
 
 4. C:\Program Files\Java\jre1.8.0_231\lib\ext 에 가서 붙여 넣기
+
+5. 이제 eclipse에서 jsp가 잘 실행되는 것을 볼 수 있음
+
+   -> 실행할 때, Tomcat 서버 미리 열어둔 거 없는지 확인
 
 ----
 
