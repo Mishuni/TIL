@@ -87,6 +87,16 @@ User created.
 계정을 만들고, 그 계정의 data들이 저장될 dbf 파일을 mc로 설정
 
 
+
+### 4. Server 실행 확인 (Oracle 상태 확인)
+
+작업관리자 > 서비스 > OracleXETNSListener, OracleServiceXE, OracleXEClrAgent 가 실행 중인지 확인
+
+DB 서버가 백단에서 돌고 있어서, 컴퓨터 속도 느려지는 경우
+
+작업관리자 > 서비스 >  서비스 열기> OracleXETNSListener 더블 클릭 > 시작 유형 > 자동인지 수동인지 설정
+
+
 ### 기타 참고 사이트
 
 [w3schools](https://www.w3schools.com/)
