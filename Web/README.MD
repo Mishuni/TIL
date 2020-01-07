@@ -157,6 +157,14 @@ Mon Jan 06 16:54:55 KST 2020
 
 이렇게 나온다, 서버에서 미리 해석을 한 후의 내용만 전달 된 것을 볼 수 있다.
 
+* html 기본 템플릿 설정하기
+
+  windows > preference > web > html > templates > New 클릭
+
+  템플릿 입력 후 new HTML 만 설정하고 확인
+
+  후에 html 파일 만들 때, file name 입력 후 next 누르고 새로 만든 템플릿 선택 후 finish 클릭
+
 ----
 
 #### 알아두면 유용한 사이트
