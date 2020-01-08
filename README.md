@@ -2,8 +2,6 @@
 
 >  공부했던 자료들을 모아 놓는 곳입니다.
 
-
-
 ## Study List
 
 * [Git](./Git)
@@ -17,8 +15,7 @@
 * [Python](./Python)
 
 * [Database](./Database)
-
-  
+* [Web](./web)
 ## Posting Blog
 * [Mishuni Naver Blog](https://blog.naver.com/altjs543)
 * [Mishuni Tstory Blog](https://mishuni.tistory.com/)
