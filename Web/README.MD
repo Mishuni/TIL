@@ -174,6 +174,26 @@ Tomcat을 실행하면
 * 웹 에서 중첩되는 margin은 제일 큰 margin으로 하나만 적용된다.
 * `<nav>` 태그는 경로를 나타냄  
 
+화면 모바일, 웹 맞추기  적용한 템플릿
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="./style.css" />
+	<title> </title>
+</head>
+<body>
+
+</body>
+</html>
+```
+
+
+
 ----
 
 #### 알아두면 유용한 사이트
