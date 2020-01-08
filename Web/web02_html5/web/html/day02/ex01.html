@@ -1,0 +1,23 @@
+<!DOCTYPE html>  
+<html><head>
+<meta charset="UTF-8">
+<title> ex05_form.html - GET / POST 방식 </title>
+</head>
+<body>
+	<!-- get 방식 전송 : 글자수에 제한 있음(255자), 보안 취약하다 -->
+	<!-- <form action="result.html"  method="get">
+		이름 : <input type="text"  name="name" id="name"> <br> 
+		비번 : <input type="password"  name="pwd" > <br> <br>
+		 <input type="submit"  value="전송"> &nbsp; 
+		 <input type="reset"  value="취소">
+	</form> -->
+	<!-- post 방식 전송 : 글자수에 제한 없음, 약한 보안이다 -->
+	<!-- 개발자 도구에서 element 에서 Form Data 칸에서 확인할 수 있음 -->
+	<form action="../../jsp/result.jsp"  method="post">
+		이름 : <input type="text"  name="name" id="name" placeholder="이름입력요망"> <br> 
+		비번 : <input type="password"  name="pwd" required placeholder="비밀번호 입력하세요"> <br> <br>
+		 <input type="submit"  value="전송"> &nbsp; 
+		 <input type="reset"  value="취소">
+	</form>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form input tag</title>
+<style type="text/css">
+.start{
+color: red;
+font-style:bold;
+}
+
+caption{
+
+caption-side: bottom;
+border: 2px dashed MediumBlue;
+padding: 10px;
+
+}
+div{
+width:100%;
+position: relative;
+left:15%;
+
+
+}
+
+td input{
+   text-align: center;
+}
+table, caption{
+background-color:PaleGoldenRod ;
+
+}
+table, tr, td{
+border: 2px dashed MediumBlue;
+border-collapse: collapse;
+text-align: center;
+padding: 10px;
+}
+table{
+width: 70%;
+height: 500px;
+}
+h1{
+text-align: center;
+}
+</style>
+</head>
+<body>
+	
+	<h1>회원 정보 입력</h1><br><hr><br>
+	<div>
+	<form action="../../jsp/result.jsp" method="post">
+	<table>
+	<tr>
+	<td>ID<span class="start">*</span></td>
+	<td>
+	 <input type="text" name="id" placeholder="put your ID" required><br></td>
+	</tr>
+	<tr>
+	<td>이름<span class="start">*</span></td>
+	<td>
+	 <input type="text" name="name" placeholder="put your name" required><br></td>
+	</tr>
+	<tr>
+	<td>비밀번호<span class="start">*</span></td>
+	<td><input type="password" name="pass" placeholder="put your password" required><br></td>
+	</tr>
+	<tr>
+	<td>전화번호</td>
+	<td>
+	<select>
+	<option>010</option>
+	<option>016</option>
+	<option>017</option>
+	<option>011</option>
+	</select> - 
+	<input type="text" name="tel" width="5"> - 
+	<input type="text" name="tel" width="5">
+	</td>
+	</tr>
+	<tr>
+	<td>직업</td>
+	<td><select>
+	<option>선 택</option>
+	<option>학생</option>
+	<option>백수</option>
+	<option>갑부</option>
+	</select></td>
+	</tr>
+	<tr>
+	<td>성별</td>
+	<td>
+	<input type="radio" name="gender" checked>여자 &nbsp;
+	<input type="radio" name="gender">남자 &nbsp;
+	</td>
+	</tr>
+	<tr>
+	<td>취미</td>
+	<td>
+	<input type="checkbox" name="hobby" checked>독 서&nbsp;
+	<input type="checkbox" name="hobby" >음악감상&nbsp;
+	<input type="checkbox" name="hobby" checked>게 임&nbsp;
+	<input type="checkbox" name="hobby" >등 산&nbsp;
+	<input type="checkbox" name="hobby" >운 동&nbsp;
+	</td>
+	</tr>
+	<caption>
+	<input type="submit" value="등록하기">&nbsp;&nbsp;
+	<input type="reset" value="취소하기">
+	</caption>
+	</table>
+	</form>
+	</div>
+</body>
+</html>

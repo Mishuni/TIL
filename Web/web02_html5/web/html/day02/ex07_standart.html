@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>웹 표준을 지킨 문서</title>
+<style type="text/css">
+body {
+	background-color: white;
+}
+
+a.style:link {
+	color: red;
+}
+
+a.style:hover {
+	color: blue;
+	font-size: 150%;
+	background: white;
+}
+
+ul {
+	list-style:none;
+	text-align:center;
+	border-top:1px solid red; border-bottom: 1px solid red; padding:10px 0;
+}
+
+ul li{
+	display : inline;
+	text-transform:uppercase;
+	padding:0 10px; letter-spacing : 10px;
+}
+
+ul li a{
+	text-decoration:none;
+	color:gray;
+}
+ul li a:hover{
+	text-decoration:underline;
+}
+.accent {
+	font-szie: 20px;
+	color: red;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<p>
+		이제 <span class="accent">웹 표준</span>의 역할은 아주 <span class="accent">중요</span>합니다.
+	</p>
+	<a class="style" href="">링크입니다</a>
+	<ul>
+		<li>Cat</li>
+		<li>dog</li>
+		<li><a href="">puppy</a></li>
+	</ul>
+</body>
+</html>

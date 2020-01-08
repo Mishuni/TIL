@@ -165,6 +165,15 @@ Mon Jan 06 16:54:55 KST 2020
 
   후에 html 파일 만들 때, file name 입력 후 next 누르고 새로 만든 템플릿 선택 후 finish 클릭
 
+Tomcat을 실행하면 
+
+`C:\APP\apache-tomcat-8.5.50\work\Catalina` 볼 수 있음eclipse에서  Servers창에 해당 Tomcat 서버 우클릭하고, `Clean Tomcat Work directory` 누르고, `clean` 누르면, work 폴더가 초기화 됨
+
+크롬 > 설정 > 고급 > 인터넷 사용 기록 삭제
+
+* 웹 에서 중첩되는 margin은 제일 큰 margin으로 하나만 적용된다.
+* `<nav>` 태그는 경로를 나타냄  
+
 ----
 
 #### 알아두면 유용한 사이트
