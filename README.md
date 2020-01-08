@@ -15,7 +15,7 @@
 * [Python](./Python)
 
 * [Database](./Database)
-* [Web](./web)
+* [Web](./Web)
 ## Posting Blog
 * [Mishuni Naver Blog](https://blog.naver.com/altjs543)
 * [Mishuni Tstory Blog](https://mishuni.tistory.com/)
