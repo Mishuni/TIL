@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	
+	<title> </title>
+	
+	<script>
+	
+		 window.onload=function(){
+			//alert("innerHTML: "+document.body.innerHTML+'\n'+
+			//		"innerText: "+document.body.innerText+'\n');
+			
+				var list = '154';
+			 	list += "<ul>";
+				list += "<li>Hello</li>";
+				list += "<li>Java</li>";
+				list += "<li>JSP</li>";
+				list += "<li>Python</li>";
+				list += "</ul>"; 	
+				
+				//document.div.innerHTML = list;
+				document.getElementById("demo").innerHTML=list;
+		} 
+	
+		
+		
+		function change(){
+			document.getElementById("demo").innerText="Change surprise!";
+		}
+		
+		function nameShow(){
+			document.getElementById("n").innerText = "miseon";
+		}
+		
+	</script>
+</head>
+
+<body>
+<h5>good!</h5>
+<div id="demo">I will </div>
+<button type="button" onclick="change();">click</button>
+<div id="n">name</div>
+<input type="button" value="name" onclick="nameShow();" />
+</body>
+</html>

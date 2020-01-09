@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+<title></title>
+	<script>
+		document.write("<h1>gugudan</h1>");
+
+		// 1.
+		var count = 0;
+		var sum = 0;
+		for (var a = 1; a < 101; ++a) {
+			if (a % 3 == 0) {
+				++count;
+				sum += a;
+			}
+		}
+		document.write("<b>1~100까지 3의 배수:</b> " + count + "<br>");
+		document.write("<b>1~100까지 3의 배수의 합:</b> " + sum + "<br>");
+
+		// 2.
+		document.write("<table border=2 width=50%>");
+		for (var i = 1; i <= 9; ++i) {
+
+			document.write("<tr>");
+			document.write("<td>" + i + "*" + 1 + "=" + i + "</td>");
+
+			for (var j = 2; j <= 9; ++j) {
+				document.write("<td>" + i + "*" + j + "=" + i * j + "</td>");
+			}
+			document.write("</tr>");
+		}
+
+		document.write("</table><br>");
+
+		// 3.
+		function check() {
+			return confirm("전달 답변");
+		}
+
+		if (check()) {
+			document.write("true");
+		} else {
+			document.write("false");
+		}
+
+		function gugu(n) {
+			/* var x = */
+
+			frm.result.value = "";
+			for (var j = 2; j <= 9; ++j) {
+				frm.result.value += +n + "*" + j + "=" + n * j + "\n";
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="..." name="frm">
+		<input type="button" value="   2단  " onclick="gugu('2')"> <input
+			type="button" value="   3단  " onclick="gugu('3')"> <br>
+		<textarea rows="50" cols="50" id="result">
+	
+	</textarea>
+	</form>
+
+
+</body>
+</html>
