@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+
+<script type="text/javascript">
+	var person = {
+			name: "홍길동",
+			phone: "010-9872-0202",
+			addr: "서울 서대문구 연희동",
+			
+			info : function() {
+				var list = '';
+					
+				/* list += "name : " + this.name + "\n";
+				list += "phone : " + this.phone + "\n";
+				list += "addr : " + this.addr  */
+				
+				with(this) {
+					list += "name : " + name + "\n";
+					list += "phone : " + phone + "\n";
+					list += "addr : " + addr 
+				}
+
+				alert(list);
+			} // info end		
+	};
+
+	person.info();
+</script>
+
+</head>
+<body>
+	
+</body>
+</html>

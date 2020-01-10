@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+<script type="text/javascript">
+	function hello() {
+		alert("안녕");
+		var sum = 0;
+		for(var i = 0; i < 5; i++ ){
+			document.write(i +"\t");
+			sum += i;
+		} // for end
+		document.write(sum);
+	}
+</script>
+
+</head>
+<!-- <body onload="javascript:alert('안녕');"> -->
+<body onload="hello();">
+	<p><font color="red" size="5">브라우저에서 출력</font></p>
+</body>
+</html>

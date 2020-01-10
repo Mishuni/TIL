@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+<title></title>
+<script>
+	function countIncrease() {
+		var spanObj = document.getElementById("countSpan");
+		spanObj.innerHTML = parseInt(spanObj.innerHTML) + 1;
+
+		/* 		if(parseInt(spanObj.innerHTML) > 10){
+		 alert("do not click");
+		 spanObj.innerHTML = 0;
+		 } */
+
+	}
+	var cal = "";
+	function clickNumber(data) {
+		if (data == "clear") {
+			document.getElementById("monitor").value = " ";
+			cal = "";
+			return;
+		}
+		else if (data == "="){
+			document.getElementById("monitor").value = eval(cal);
+			car = "";
+		}
+		else if( data=="+" || data=="-"){
+			document.getElementById("monitor").value = data;
+			car+=data;
+		else {
+			document.getElementById("monitor").value = data;
+			cal += data;
+		}
+	}
+</script>
+</head>
+<body>
+	<span id='countSpan'>0</span>번 클릭&nbsp; &nbsp;
+	<input type="button" value="click" onclick="countIncrease()">
+	<hr>
+	<input type="text" id="monitor">
+	<br />
+	<input type="button" value="1" onclick="clickNumber(this.value)" />
+	<input type="button" value="2" onclick="clickNumber(this.value)" />
+	<input type="button" value="3" onclick="clickNumber(this.value)" />
+	<br />
+	<input type="button" value="+" onclick="clickNumber(this.value)" />
+	<input type="button" value="-" onclick="clickNumber(this.value)" />
+	<input type="button" value="=" onclick="clickNumber(this.value)" />
+	<br />
+	<input type="button" value="clear" onclick="clickNumber(this.value)" />
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+</head>
+<body>
+<script type="text/javascript">
+	//논리연산자
+	var calculator;  // 초기화 되어 있지 않을 경우 undefined 값을 가진다. undefined == false
+	// && 연산
+	calculator && document.writeln('caluclator.plus(2,3) : ' + caluclator.plus(2,3)  );
+	
+	calculator = {
+		plus : function(su1, su2) {
+			return su1 + su2; 
+		}	
+	}; 
+	
+	// &&연산에서는 좌측 표현식이 0, undefined, null, NaN, "" 이외의 값을 가지면 true로 평가됨
+	calculator && document.writeln('caluclator.plus(2,3) : ' + calculator.plus(2,3)  );
+	
+	// || 연산
+	calculator.subtract || ( calculator.subtract = function(su1, su2) { return su1 - su2; } ) ;
+	document.write("<br />");
+	calculator && document.writeln('calculator.subtract(2,3) : ' + calculator.subtract(2, 3)  );
+	
+</script>
+</body>
+</html>
