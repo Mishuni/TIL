@@ -19,7 +19,6 @@ public class Bj1654 {
 			return;
 		}
 		else {
-			
 			long left = lines[K-1]/N ;
 			long right = (K==1)?lines[K-1]+1:lines[K-2]+1;
 			max_result = 0 ;
@@ -35,7 +34,7 @@ public class Bj1654 {
 					sum += lines[i]/half;
 				}
 				if(sum<N) {
-					right = half;
+					right = --half;
 
 				}else {
 					if(half>max_result) {
