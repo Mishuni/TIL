@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class Bj1654 {
 	public static long max_result;
@@ -8,30 +9,33 @@ public class Bj1654 {
 		int K = sc.nextInt();
 		int N = sc.nextInt();
 		lines = new long[K];
-		max_result = 0;
 		for(int i=0; i<K; ++i) {
 			lines[i] = sc.nextInt();
-			if(max_result<lines[i]) {
-				max_result = lines[i];
-			}
 		}
 		sc.close(); sc= null;
+		Arrays.sort(lines);
 		if(N==1) {
-			System.out.println(max_result);
+			System.out.println(lines[K-1]);
 			return;
 		}
 		else {
+			
+			long left = lines[K-1]/N ;
+			long right = (K==1)?lines[K-1]+1:lines[K-2]+1;
 			max_result = 0 ;
-			long left = 0 ;
-			long right = lines[lines.length-1];
+			if(left>=right) {
+				System.out.println(left);
+				return;
+			}
+			
 			while(left<=right) {
 				long half = (left+right)/(long)2;
 				long sum = 0 ;
-				for(int i=0; i<lines.length; ++i) {
+				for(int i=0; i<K; ++i) {
 					sum += lines[i]/half;
 				}
 				if(sum<N) {
-					right = --half;
+					right = half;
 
 				}else {
 					if(half>max_result) {
