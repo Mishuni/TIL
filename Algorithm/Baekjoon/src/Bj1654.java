@@ -7,7 +7,7 @@ public class Bj1654 {
 		Scanner sc = new Scanner(System.in);
 		
 		int K = sc.nextInt();
-		int N = sc.nextInt();
+		long N = sc.nextInt();
 		lines = new long[K];
 		for(int i=0; i<K; ++i) {
 			lines[i] = sc.nextInt();
@@ -18,9 +18,17 @@ public class Bj1654 {
 			System.out.println(lines[K-1]);
 			return;
 		}
+		else if(K==1) {
+			System.out.println(lines[K-1]/N);
+			return;
+		}
+		else if(N==2) {
+			System.out.println((lines[K-1]/2 > lines[K-2])? lines[K-1]/2 : lines[K-2]);
+			return;
+		}
 		else {
 			long left = lines[K-1]/N ;
-			long right = (K==1)?lines[K-1]+1:lines[K-2]+1;
+			long right = lines[K-2]+1;
 			max_result = 0 ;
 			if(left>=right) {
 				System.out.println(left);
@@ -29,6 +37,7 @@ public class Bj1654 {
 			
 			while(left<=right) {
 				long half = (left+right)/(long)2;
+				if(half==0) half = 1;
 				long sum = 0 ;
 				for(int i=0; i<K; ++i) {
 					sum += lines[i]/half;
