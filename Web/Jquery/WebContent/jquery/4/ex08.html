@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#mouse').hover(function(){
+			$(this).css('background', 'yellow');
+		},  function() {
+			$(this).css('background', 'blue');	
+		});
+		
+		$('#mouse').mouseenter(function(){
+			alert('문장 안으로 집입했습니다.');
+		});
+		
+		$('#mouse').mouseleave(function(){
+			alert('문장을 벗어났습니다.');
+		});
+	});
+	
+/* 	이벤트 핸들러
+	- Mouse : click, dbclick, mouseenter, mouseleave
+	- Keyboard : keydown, keyup, keypress
+	- Form : submit, focus, blur
+	- Document / Window : load, unload, resize, scroll */
+	
+</script>
+</head>
+<body>
+	<h1 id="mouse">마우스를 접근시켜 보세요</h1>
+</body>
+</html>

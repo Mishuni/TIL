@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+			//$("ul li:first").hide();
+			//$("ul li:first-child").hide();
+			$("ul li:first-child").fadeOut();
+	});
+</script> -->
+
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		//$("a[href]").hide();
+		$("a[target='_blank']").hide();
+	});
+</script> -->
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		//$("input:button").hide();
+		//$(':button').hide();
+		//$('button').hide();
+		$(':button').click(function(){
+			//$('h1').hide();
+			$(this).hide();
+		});
+	});
+</script>
+
+</head>
+<body>
+<h1>-----------------------------------</h1>
+	<input type="button" value="버튼1" />
+	<button>버튼2</button>
+	<input type="reset" value="reset" />
+	<input type="submit" value="submit" />
+	<h1>-----------------------------------</h1>
+	<hr />
+	<h1>a Tag전</h1>
+	<a href="http://www.naver.com">네이버</a>
+	<a href="http://www.daum.net" target="_blank">다음</a>
+	<h1>a Tag후</h1>
+	<hr />
+	<h1>동물 종류</h1>
+	<ul>
+		<li>호랑이</li>
+		<li>기린</li>
+		<li>사자</li>
+		<li>곰</li>
+	</ul>
+
+	<h1>음식 종류</h1>
+	<ul>
+		<li>자장면</li>
+		<li>짬뽕</li>
+		<li>볶음밥</li>
+	</ul>
+</body>
+</html>

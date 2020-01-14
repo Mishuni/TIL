@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>jQuery test</title>
+<!-- CDN -->
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		//alert("!");
+		//$("h1").hide();
+		//$("#id1").hide();
+		//$(".c1").hide();
+		//$("h2.c2").hide();
+		//$("*").hide();
+		//$("h1:first").hide();
+		//$("h1:last").hide();
+		$("h1, p, div").hide();
+	});
+</script>
+</head>
+<body>
+	<h1 id="id1">Hello
+		<p>포함된 p태그</p>
+	</h1>
+	<h2>1283949494</h2>
+	<h1 id="id2"> 안녕</h1>
+	<hr />
+	
+	<div>
+			영역지정함
+	</div>
+	
+	<h1 class="c1">Hello</h1>
+	<h2 class="c2">Hello</h2>
+	<h1>안녕하세요. 반갑습니다.</h1>
+	<p> 여러 선택자 선택 가능</p>
+</body>
+</html>
+
+
+
+

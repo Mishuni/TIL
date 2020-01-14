@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#bnt01').click(function() {
+			$('#text1').text('<i>Hello jQuery</i>');
+		});
+
+		$('#bnt02').click(function() {
+			$('#text2').html('<i>Hello jQuery</i>');
+		});
+
+		$('#bnt03').click(function() {
+			$('#site').attr('href', 'http://www.kosta.or.kr');
+		});
+
+		$('#bnt04').click(function() {
+			$('p').text(function(i, oriText) {
+				return i + ' : ' + oriText + '...';
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<a href="http://edu.kosta.or.kr" target="_black" id="site">사이트이동</a>
+	<br />
+	<p id="text1">첫번째 문장입니다.</p>
+	<p id="text2">두번째 문장입니다.</p>
+	<button id="bnt01">TEXT변환</button>
+	<button id="bnt02">HTML변환</button>
+	<button id="bnt03">주소변환</button>
+	<button id="bnt04">문장변환</button>
+</body>
+</html>

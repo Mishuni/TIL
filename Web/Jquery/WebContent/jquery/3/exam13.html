@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#bnt01').click(function() {
+			//$('div').append('<h2>세번째 문장 </h2>');
+			$('div').prepend('<h2>세번째 문장 </h2>');
+		});
+
+		$('#bnt02').click(function() {
+			$('ol').prepend('<li>핑크</li>');
+		});
+
+		$('#bnt03').click(function() {
+			$('body').append('<h4>추가한 문장</h4>', '<h1>또 추가한 문장</h1>', '<h6>마지막으로 추가한 문장</h6>');
+			 var text1 = '<h4>추가한 문장</h4>';
+			var text2 = '<h1>또 추가한 문장</h1>';
+			var text3 = '<h6>마지막으로 추가한 문장</h6>';
+			$('body').prepend(text1, text2, text3); 
+		});
+	});
+</script>
+</head>
+<body>
+	<div>
+		<h2>첫번째 문장</h2>
+		<h2>두번째 문장</h2>
+	</div>
+	색상표
+	<ol>
+		<li>블랙</li>
+		<li>레드</li>
+		<li>블루</li>
+	</ol>
+	<br />
+	<button id="bnt01">문장추가</button>
+	<button id="bnt02">색상추가</button>
+	<button id="bnt03">본문추가</button>
+</body>
+</html>

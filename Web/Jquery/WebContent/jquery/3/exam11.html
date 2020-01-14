@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ 
+  <script> 
+ 	$(document).ready(function() {
+ 		
+ 		var html = $('p').html();
+		var text = $('p').text();
+		alert('추출된 html() : ' + html + '\n'
+				+ '추출된 text() : ' + text + '\n');
+		
+ 		
+ 		var attr = $('a').attr('href'); 
+ 		alert('추출된 주소 : ' + attr + "\n");
+ 		
+ 		$('button').click(function() {
+			var id = $('#id').val();
+			alert('입력한 아이디 : ' + id + '\n');
+		});
+ 	});
+ </script>
+ 
+</head>
+<body>
+	<a href="http://edu.kosta.or.kr">KOSTA</a> <br />
+	<p>내이름은 <b>강감찬</b>이고 별명은 <i>장군</i>이다.</p>
+	<p>내이름은 <b>홍길수</b>이고 별명은 <i>의적</i>이다.</p>
+	아이디 : <input type="text" size="10" id="id" />
+	<button>중복체크 </button>
+</body>
+</html>
+
+
+
+

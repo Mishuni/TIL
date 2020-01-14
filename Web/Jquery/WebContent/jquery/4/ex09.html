@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('tr:odd').css('background', '#FE2');
+		$('tr:even').css('background', 'pink');
+		$('th').css('background', 'white');
+		
+		/* $('button').click(function(){
+			$('h1:first').hide();
+		}); */
+		
+		/*  $('h1').click(function(){
+			$(this).hide();
+		   });  */
+		   
+		   $('body > h1').click(function(){
+			  $(this).hide(); 
+		   });
+	});
+	
+	
+</script>
+</head>
+<body>
+	<h1> 첫번째 문장입니다.</h1>
+	<div>
+		<h1> 두번째 문장입니다.</h1>
+	</div>
+	
+	<h1> 세번째 문장입니다.</h1>
+	<h1> 네번째 문장입니다.</h1>
+	<button>클릭하세요.</button>
+	<hr />
+	
+	<h2>회원명부</h2>
+	<table border="1">
+		<tr>
+			<th>이름</th>
+			<th>전화번호</th>
+		</tr>
+		<tr>
+			<td>강감찬</td>
+			<td>000-111-2222</td>
+		</tr>
+		
+		<tr>
+			<td>이도연</td>
+			<td>000-9999-2222</td>
+		</tr>
+		
+		<tr>
+			<td>김영삼</td>
+			<td>000-3333-3333</td>
+		</tr>
+		
+		<tr>
+			<td>강감찬</td>
+			<td>000-111-2222</td>
+		</tr>
+		<tr>
+			<td>강감찬</td>
+			<td>000-111-2222</td>
+		</tr>
+		<tr>
+			<td>강감찬</td>
+			<td>000-111-2222</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+

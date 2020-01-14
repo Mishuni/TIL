@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="web_page" path="/web_page" reloadable="true" source="org.eclipse.jst.jee.server:web_page"/><Context docBase="web_html02" path="/web_html02" reloadable="true" source="org.eclipse.jst.jee.server:web_html02"/><Context docBase="web_html01" path="/web_html01" reloadable="true" source="org.eclipse.jst.jee.server:web_html01"/><Context docBase="web_js01" path="/web_js01" reloadable="true" source="org.eclipse.jst.jee.server:web_js01"/><Context docBase="web_team_mini" path="/web_team_mini" reloadable="true" source="org.eclipse.jst.jee.server:web_team_mini"/></Host>
+      <Context docBase="web_page" path="/web_page" reloadable="true" source="org.eclipse.jst.jee.server:web_page"/><Context docBase="web_html02" path="/web_html02" reloadable="true" source="org.eclipse.jst.jee.server:web_html02"/><Context docBase="web_html01" path="/web_html01" reloadable="true" source="org.eclipse.jst.jee.server:web_html01"/><Context docBase="web_js01" path="/web_js01" reloadable="true" source="org.eclipse.jst.jee.server:web_js01"/><Context docBase="web_team_mini" path="/web_team_mini" reloadable="true" source="org.eclipse.jst.jee.server:web_team_mini"/><Context docBase="Jquery" path="/Jquery" reloadable="true" source="org.eclipse.jst.jee.server:Jquery"/></Host>
     </Engine>
   </Service>
 </Server>

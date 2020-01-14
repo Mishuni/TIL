@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			//$('#div').remove();
+			//$('#div').empty();
+			//$('p').remove('.del01, .del02');
+			$('#div > *').remove('.del01');
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="div" style="width:300px; height: 300px; border: 1px solid black">
+		<p class="del01" >
+					나는 문장입니다.</p><br />
+		나는 도연입니다.<br />
+		<p class="del02">나는 길순입니다.</p><br />
+		<p class="del01">나는 최길동입니다.</p><br />
+	</div>
+	<button>지우기</button>
+</body>
+</html>

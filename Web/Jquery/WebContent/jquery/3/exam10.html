@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ 
+  <script> 
+ 	$(document).ready(function() {
+ 		/* $('button').click(function(){
+ 			$('h1').hide(2000, function(){
+ 				alert('문장이 보이니?');
+ 			});
+ 		}); */
+ 		
+ 		$('button').click(function(){
+ 			$('h1').css('color', 'red')
+ 					 .slideUp(2000)
+ 					 .slideDown(2000, function(){
+ 					  $('h1').css('color', 'blue'); 
+ 				   });
+ 		});
+ 	});
+ </script>
+ 
+</head>
+<body>
+	<button> 클릭!!! </button>
+	<h1>Hello</h1>
+	
+</body>
+</html>
+
+
+
+

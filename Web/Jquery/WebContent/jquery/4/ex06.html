@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>th147 web sample</title>
+<script  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').click(function(){
+			$('#panel').stop();
+		});
+		
+		$('#slide').click(function(){
+			//$('#panel').slideDown();
+			//$('#panel').slideUp();
+			$('#panel').slideToggle(2000);
+		});
+	});
+</script>
+
+ <style type="text/css">
+ 	#slide, #panel {
+ 		padding : 5px;
+ 		background-color: #e5eeee;
+ 		border: 1px solid #c3c3c3;
+ 	}
+ 	
+ 	#panel {
+ 		padding: 50px;
+ 	}
+ </style>
+</head>
+<body>
+	
+	<button>멈춰!!!!</button>
+	<div id="slide">슬라이드가 내려갑니다</div>
+	<div id="panel">보입니까?</div>
+</body>
+</html>
