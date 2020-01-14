@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+form{
+
+margin: 3px 3px ;
+border : 2px solid yellow;
+padding : 30px 50px;
+
+width : 200px;
+}
+
+form input{
+
+margin: 5px 5px ;
+
+
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$('#txtname').val("happy");
+		$('input:radio').val([ "F" ]);
+		// [] 여러개 중 하나
+		// 여자가 처음에 selected 되어 있음
+		$('#isF').val([ "java", "spring" ]);
+		$("#remove").css('backgroundColor','green');
+		$("#print").css('backgroundColor','green');
+		$('#btnok').click(function() {
+
+			var msg = "";
+			msg += $("#txtname").val() + "\n";
+			msg += $("input:radio[name=gender]:checked").val() + "\n";
+			// check 되어 있는 값을 가져오기
+			msg += $("#isF").val().join("-");
+			alert(msg);
+
+		});
+
+		/* if( $("#myForm").children().is('input[type=submit]') ){
+			
+			alert("TRUE");
+			
+		}else{
+			alert("FALSE");
+		} */
+		list = "";
+		$("#print").click(function() {
+			var name = $('#puppy_name').val();
+			if(name==""){
+				alert("Put puppy's name");
+				return false;
+			}
+			
+			var age = $('#puppy_age').val();
+			if(age==""){
+				alert("Put puppy's age");
+				return false;
+			}
+			list += "강아지 이름:" + $('#puppy_name').val() + "\n";
+			list += "강아지 나이:" + $('#puppy_age').val() + "\n\n";
+			$("#print_puppy").text(list);
+			$("#remove").css('backgroundColor','yellow');
+			return false;
+		});
+
+		$("#remove").click(function() {
+
+			list ="";
+			$("#print_puppy").html(list);
+			$("#remove").css('backgroundColor','green');
+			return false;
+			
+		});
+	});
+</script>
+</head>
+<body>
+	Textbox:
+	<input type="text" id="txtname">
+	<br> RadioButton :
+	<input type="radio" name="gender" value="M">남
+	<input type="radio" name="gender" value="F">여
+	<br> selectList:
+	<select id="isF" multiple="multiple">
+		<option value="java">자바</option>
+		<option value="jquery">웹</option>
+		<option value="spring">스프링</option>
+	</select>
+	<br> Button:
+	<input type="button" value="확인" id="btnok">
+	<br>
+	<div id="myForm">
+		submitForm : <input type="submit" value="전송">
+	</div>
+
+	<hr>
+
+	<form action="">
+		이름: <input type="text" id="puppy_name"><br> 나이: <input
+			type="number" id="puppy_age"><br> <input type="submit"
+			id="print" value="출력"> 
+			<input type="reset" id="remove" value="지우기"><br>
+		<textarea id="print_puppy" rows="5" cols="">
+		</textarea>
+	</form>
+</body>
+</html>
