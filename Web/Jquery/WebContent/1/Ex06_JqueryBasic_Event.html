@@ -1,38 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#btnCopy').click(function() {
+
+			$("#txtCopyUserId").val($("#txtUserid").val())
+
+		});
+
+		/* change() -> 값이 바뀌면 */
+		$('#select_hobby').change(function() {
+
+			/* select_hobby 의 option 중에 selected된 것을 불러오기 */
+			var selectedValue = $('#select_hobby option:selected').text();
+			$('#txtSelect').val(selectedValue);
+
+		});
+
+		// keyup : key 에서 손이 떨여졌을 때 이벤트 발생
+		$('#txtpwd2').keyup(function() {
+
+			if ($('#txtpwd').val() != $("#txtpwd2").val()) {
+				$('#message').text("암호불일치");
+			} else {
+				$('#message').text("암호일치");
+			}
+
+		});
+/* 		$('form input').last().click(function(){
+			
+		}) */
+
+	});
 	
+	
+	function checkIt(){
+		
+		var id_tmp = $('#id').val();
+		var name_tmp = $('#name').val();
+		if(id_tmp == ""){
+			alert("Must Put your id!")
+			$('#submit').text("Must Put your id!");	
+			 $('#id').focus();
+			return false;
+		}
+		else if(name_tmp == ""){
+			alert("Must Put your name!")
+			$('#submit').text("Must Put your name!");
+			 $('#name').focus();
+			return false;
+		}
+		else{
+			$('#submit').text("Complete!");
+			return true;
+		}
+		
+	}
+	
+
+	/* 혹은 $(document).ready(function(){}) */
+</script>
+
 </head>
 <body>
-<div>
+	<form onsubmit = "return checkIt()">
+		<input type="text" id="id" placeholder="put your id"><br>
+		<input type="text" id="name" placeholder="put your name"><br>
+		<input type="submit" value="submit"><br>
+	</form>
+	<div id="submit" style="color: blue"></div>
+	<hr>
+	<div>
 		ID:<input type="text" id="txtUserid">
 		<hr>
-		<input type="button" id="btnCopy" value="copy" >
+		<input type="button" id="btnCopy" value="copy">
 		<hr>
 		CopyID : <input type="text" id="txtCopyUserId">
 		<hr>
 		<select id="select_hobby">
+
 			<option value="01">java</option>
 			<option value="02">Jquery</option>
 			<option value="03">JDBC</option>
+
 		</select>
 		<hr>
 		<input type="text" id="txtSelect">
 		<hr>
 		<table style="border: 1px solid red;">
 			<tr>
-				<td>��ȣ</td>
+				<td>암호</td>
 				<td><input type="password" id="txtpwd" size="20" maxlength="5"></td>
-			</tr>		
+			</tr>
 			<tr>
-				<td>��ȣȮ��</td>
+				<td>암호확인</td>
 				<td><input type="password" id="txtpwd2" size="20" maxlength="5"></td>
-			</tr>		
-					
+			</tr>
+
 		</table>
 		<div id="message" style="color: red"></div>
+		<hr>
+
+
 	</div>
 </body>
 </html>

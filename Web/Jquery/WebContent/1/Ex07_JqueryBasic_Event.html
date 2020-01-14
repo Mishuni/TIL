@@ -1,8 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<title>Key point</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script type="text/javascript"> 
+	
+	$(function(){
+		
+		$('p').each(function(index){
+			
+			console.log(this);
+			// attr() -> 속성 추가 함수
+			$(this).attr({"id":"param_"+index});
+			
+		});
+		
+		$('#btn').click(function(){
+			
+			alert($('#param_0').text());
+			$('#param_1').css('backgroundColor','yellow');
+			
+		});
+		
+		//var arr = new Array();
+		var array = [
+			
+			{name : "naver", link : "http://www.naver.com"},
+			{name : "daum", link : "http://www.daum.net"},
+			{name : "kakao", link : "http://www.kakao.com"}
+			
+		];
+		
+		//array[0].name     -> 		"naver"
+		
+		$.each(array, function(index, obj){
+			console.log(index + "/"+obj+"/"+obj.name+"/"+obj.link);
+		});
+		var l = "";
+		$.each(array, function(index, obj){
+			var tmp = "<a href=\""+obj.link+"\">"+obj.name+"</a><br />";
+			l+=tmp;
+			/* l += obj.link;
+			l += "<br />"; */
+			
+		});
+		$("#site").html(l);
+		
+	});
+	
+	</script>
 	
 </head>
 <body>
@@ -10,5 +57,7 @@
 	<p>jquery</p>
 	<p>Ajax</p>
 	<input type="button" value="click" id="btn">
+	<hr>
+	<span id="site"> </span>
 </body>
 </html>

@@ -1,27 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script type="text/javascript"> 
+		
+		$(function(){
+			
+			$('#txtname').val("happy"); 
+			$('input:radio').val(["F"]);  
+			// [] 여러개 중 하나
+			// 여자가 처음에 selected 되어 있음
+			$('#isF').val(["java","spring"]);
+			
+			$('#btnok').click(function(){
+				
+				var msg = "";
+				msg += $("#txtname").val() + "\n";
+				msg += $("input:radio[name=gender]:checked").val() + "\n";
+				// check 되어 있는 값을 가져오기
+				msg += $("#isF").val().join("-");
+				alert(msg);
+				
+			});
+			
+			if( $("#myForm").children().is('input[type=submit]') ){
+				
+				alert("TRUE");
+				
+			}else{
+				alert("FALSE");
+			}
+			
+		});
 	
+	</script>
 </head>
 <body>
 	Textbox:<input type="text" id="txtname"><br>
-	RadioButton : <input type="radio" name="gender" value="M">��
-				  <input type="radio" name="gender" value="F">��
+	RadioButton : <input type="radio" name="gender" value="M">남
+				  <input type="radio" name="gender" value="F">여
 	<br>
 	selectList:
 	<select id="isF" multiple="multiple">
-		<option value="java">�ڹ�</option>
-		<option value="jquery">��</option>
-		<option value="spring">������</option>
+		<option value="java">자바</option>
+		<option value="jquery">웹</option>
+		<option value="spring">스프링</option>
 	</select>
 	<br>
 	Button:
-		<input type="button" value="Ȯ��" id="btnok">
+		<input type="button" value="확인" id="btnok">
 	<br>
 	<div id="myForm">
-		submitForm : <input type="submit" value="����">
+		submitForm : <input type="submit" value="전송">
 	</div>	
+	
+	<hr>
+	문제] input type = 
 </body>
 </html>

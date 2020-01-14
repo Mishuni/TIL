@@ -16,16 +16,38 @@ p {
 .highlight {
 	background: yellow;
 }
+#target{
+	border : 1px solid red;
+	width : 70px;
+	margin : 6px;
+}
+
+#other {
+	border : 1px solid red;
+	width : 70px;
+	margin : 6px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
 
+	<div id="target">Double-click here</div>
+	<div id="other">Trigger the handler</div>
+	<br>
+	<hr>
+	<br>
 	<p>Hello</p>
 	<p>and</p>
 	<p>Goodbye</p>
 
 	<script>
+		$("#target").dblclick(function() {
+			alert("Handler for .dblclick() called.");
+		});
+		$( "#other" ).click(function() {
+			  $( "#target" ).dblclick();
+			});
 		$("p").first().addClass("highlight");
 		$("p").last().addClass("selected")
 	</script>
