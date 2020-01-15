@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<script src="../../js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$("button").click(function() {
+
+			if ($(this).attr('id') == "left") {
+				$('#rec').animate({
+					right : '0%',
+					left : '50%',
+
+				});
+			} else if($(this).attr('id') == "right"){
+				$('#rec').animate({
+					left : '0%',
+					right : '50%',
+
+				});
+			}else{
+				
+				$('#hello').animate({
+					left : '50%',
+					width : '700px',
+					height : '600px',
+					fontSize : '200px',
+					color : '#d43'
+
+				}, 2000);
+				
+			}
+
+		});
+
+	});
+</script>
+<title></title>
+</head>
+<body>
+	<button id="left"><<</button>
+	<button id="right">>></button>
+	<div id="rec"
+		style="position: relative; width: 200px; height: 200px; background-color: lightgreen;">
+	</div>
+	
+	<br><hr><br>
+	
+	<button id="joom"> >>RUN </button>
+	<div id="hello"
+		style="position: relative; width: 200px; height: 200px; background-color: lightgreen;">
+		HELLO
+	</div>
+</body>
+</html>
