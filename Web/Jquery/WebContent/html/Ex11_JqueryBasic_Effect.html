@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+
+
+$(function(){
+	
+	$("#btn").click(function(){
 		
+		/* toggle : 하나의 키로 두개의 기능을 지닌 함수 */
+		$("#first").slideToggle("show");
+		
+		
+	});
+	
+	$("span.more").click(function(){
+		
+		$("#moreRegion").animate(
+				
+			// 데이터 처리 방식(json 객체 parameter)
+			{
+				left : "300px",
+				opacity : "0.5",
+				height : "500px",
+				width : "200px",
+			}, 'slow'
+			
+		);
+		
+	});
+	
+});
+
+</script>
 </head>
 <body>
-<input type="button" id="btn" value="�����̵� ���">
-	<div id="first" style="display: none;background-color:gold;height: 100px">
-		First
-	</div>
+	<input type="button" id="btn" value="슬라이드 토글">
+	<div id="first"
+		style="
+		display: none; 
+		background-color: gold; 
+		height: 100px">
+		First</div>
 	<hr>
 	<span class="more">MoreContent</span>
-	<div id="moreRegion" style="background-color: red ;height: 100px;width: 100px;position: absolute;">
-		First
-	</div>
+	<div id="moreRegion"
+		style="background-color: red; 
+		height: 100px; 
+		width: 100px; 
+		position: absolute;">
+		Second</div>
 </body>
 </html>

@@ -5,14 +5,18 @@
 		<script>
 			$(document).ready( function(){
 				var obj = $("[name=hobby]");
+				var preObj ;
 				obj.change( function(){
 					//$("[name=hobby]").prop("checked",false);
 					//$(this).prop("checked",true);
 
 					var no = $("[name=hobby]:checked").length; 
-					if (no >1){
+					if (no > 2){
 						obj.prop("checked",false);
 						$(this).prop("checked",true);
+						$(preObj).prop("checked",true);
+					}else if(no==1 || no == 2){
+						preObj = $(this);
 					}
 
 					//$(this).siblings().prop("checked",false);
