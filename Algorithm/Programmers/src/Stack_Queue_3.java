@@ -3,31 +3,30 @@ import java.util.Arrays;
 public class Stack_Queue_3 {
 
 	public static void main(String[] args) {
-		int[] progresses= {93,30,55}; 
-		int[] speeds = {1,30,5};
-		int[] release = new int[speeds.length];
+		int[] priorities = {2,1,3,2};
+		boolean[] print = new boolean[priorities.length];
+		int location = 2 ;
+		int cnt = 1;
+		int max_value = 0;
+		int max_idx = 0;
 		
-		int cnt = 1 ;
-		int index= 0 ;
-		int tmp = (int) Math.ceil((double)(100-progresses[0]) / speeds[0]);
-		int pre = tmp;
-		
-		for(int i=1; i<progresses.length; ++i) {
-			tmp = (int) Math.ceil((double)(100-progresses[i]) / speeds[i]);
-			if(tmp>pre) {
-				pre = tmp ;
-				release[index++] = cnt;
-				cnt=1;
-			}else {
-				++cnt;
+		for(int i=0; i<priorities.length; ++i) {
+			if(priorities[i]>max_value) {
+				max_value = priorities[i];
+				max_idx = i;
 			}
 		}
-		release[index] = cnt;
-		int[] answer = new int[index+1];
-		for(int i=0; i<=index; ++i) {
-			answer[i] = release[i];
+		
+		
+		while(max_idx != location) {
+			
+			for(int i=0; i<priorities.length; ++i) {
+				if(priorities[i]>max_value && !print[i]) {
+					max_value = priorities[i];
+					max_idx = i;
+				}
+			}
 		}
-		System.out.println(Arrays.toString(answer));
 	}
 
 }
