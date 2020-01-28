@@ -1,13 +1,10 @@
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-public class Stack_Queue_3 {
+public class Stack_Queue_5 {
 
 	public static void main(String[] args) {
 		int[] priorities = {2,1,3,2};
 		boolean[] print = new boolean[priorities.length];
 		int location = 2 ;
+		int cnt = 1;
 		int max_value = 0;
 		int max_idx = 0;
 		
