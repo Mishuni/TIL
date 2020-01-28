@@ -25,5 +25,4 @@ public class Heap_1 {
 		System.out.println(cnt);
 
 	}
-
 }
