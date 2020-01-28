@@ -1,30 +1,29 @@
 public class Stack_Queue_5 {
 
 	public static void main(String[] args) {
-		int[] priorities = {2,1,3,2};
-		boolean[] print = new boolean[priorities.length];
-		int location = 2 ;
-		int cnt = 1;
-		int max_value = 0;
-		int max_idx = 0;
-		
-		for(int i=0; i<priorities.length; ++i) {
-			if(priorities[i]>max_value) {
-				max_value = priorities[i];
-				max_idx = i;
-			}
-		}
-		
-		
-		while(max_idx != location) {
+		String arrangement = "()(((()())(())()))(())";
+		int total = 0;
+		int current = 0;
+		for(int i=0; i<arrangement.length(); ++i) {
 			
-			for(int i=0; i<priorities.length; ++i) {
-				if(priorities[i]>max_value && !print[i]) {
-					max_value = priorities[i];
-					max_idx = i;
+			char tmp = arrangement.charAt(i);
+			if(tmp=='(') {
+				if(arrangement.charAt(i+1)==')') {
+					total += current;
+					++i;
+				}
+				else {
+					++current;
 				}
 			}
+			else {
+				++total;
+				--current;
+			}
+			
 		}
+		System.out.println(total); 
+		
 	}
 
 }

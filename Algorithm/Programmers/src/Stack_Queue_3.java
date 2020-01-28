@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 public class Stack_Queue_3 {
 
 	public static void main(String[] args) {
