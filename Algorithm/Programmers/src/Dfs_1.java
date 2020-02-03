@@ -1,75 +1,74 @@
 
 import java.util.Arrays;
 import java.util.LinkedList;
+
 public class Dfs_1 {
+
+	public static boolean[] primeNumbers;
+	public static int[] primeTarget;
+	public static String[] numSet;
+
 	public static void main(String[] args) {
-	System.out.println(Solution.solution("2425"));
+		String number = "17";
+		// 1. ì „ì²´ ìˆ«ì ì¤‘ ì†Œìˆ˜ ì°¾ê¸°
+		primeNumbers = new boolean[(int) Math.pow(10, number.length())];
+		primeNumbers[0] = true;
+		primeNumbers[1] = true;
+		for (int i = 2; i < primeNumbers.length / 2; ++i) {
+			for (int j = 2 * i; j < primeNumbers.length; j += i) {
+				if (!primeNumbers[j]) {
+					primeNumbers[j] = true;
+				}
+			}
+		}
+
+		// 2. ê° ë¬¸ì ì €ì¥í•˜ê³ , dfs(ì™„ì „íƒìƒ‰) ëŒë¦¬ê¸°
+		numSet = new String[number.length()];
+		for (int i = 0; i < number.length(); ++i) {
+			numSet[i] = number.substring(i, i + 1);
+		}
+
+		primeTarget = new int[(int) Math.pow(10, number.length())];
+		for (int targetCnt = 1; targetCnt <= number.length(); ++targetCnt) {
+			LinkedList<String> candidate = new LinkedList<String>();
+			boolean[] check = new boolean[number.length()];
+			dfsPrime(number.length(), targetCnt, candidate, check);
+		}
+
+		// 4. ê²°ê³¼ ê³„ì‚° ë° ì¶œë ¥
+		long result = Arrays.stream(primeTarget).filter(x -> x == 1).count();
+		System.out.println(result);
+	}
+
+	// 3. ì™„ì „ íƒìƒ‰
+	public static void dfsPrime(int length, int targetCnt, 
+			LinkedList<String> candidate, boolean[] check) {
+
+		// 3-1. ê¸°ì €ì‚¬ë¡€ (ê°¯ìˆ˜ë¥¼ ì±„ìš´ ê²½ìš°)
+		if (candidate.size() == targetCnt) {
+			StringBuilder target = new StringBuilder("");
+			for (String s : candidate) {
+				target.append(s);
+			}
+			int temp = Integer.parseInt(target.toString());
+			if (!primeNumbers[temp]) {
+				// 3-1-1. ì¡°í•©í•œ ê°’ì´ ì†Œìˆ˜ì¸ ê²½ìš°
+				primeTarget[temp] = 1;
+				// System.out.println(temp);
+			}
+			return;
+		}
+
+		// 3-2. ì¡°í•©í•  ê°¯ìˆ˜ê°€ ëª» ë¯¸ì¹˜ëŠ” ê²½ìš°
+		for (int i = 0; i < length; ++i) {
+			if (!check[i]) {
+				check[i] = true;
+				candidate.add(numSet[i]);
+				dfsPrime(length, targetCnt, candidate, check);
+				check[i] = false;
+				candidate.removeLast();
+			}
+		}
+
 	}
 }
-
-class Solution {
-    static boolean[] checked;
-    static int [] primeset;
-    static String[] numbers_arr;
-    public static int solution(String numbers) {
-        primeset=new int[10000000];
-        checked=new boolean[10000000];
-
-        for(int i=2;i*2<10000000;++i) {
-        	// check °¡ µÇ¾î ÀÖÀ¸¸é ³Ñ¾î°¡±â
-        	// ÀÛÀº ¼öÀÇ ¹è¼öÀÌ¸é ¼Ò¼ö°¡ ¾Æ´Ï´Ï±î true
-            if(!checked[i])
-            {
-                for(int j=i*2;j<10000000;j+=i) {
-                    checked[j]=true;
-                }
-            }
-        }
-        // 0°ú 1Àº ¼Ò¼ö°¡ ¾Æ´Ï´Ù
-        checked[0]=true;
-        checked[1]=true;
-        
-        numbers_arr=new String[numbers.length()+1];
-        for(int i=1;i<=numbers.length();++i){
-            numbers_arr[i]=numbers.substring(i-1,i);
-        }
-
-        for(int i=1;i<=numbers.length();++i){
-            int[] check = new int[numbers.length()+1];
-            LinkedList<String> rCom=new LinkedList<>();
-            rePermutation(numbers.length(),i,rCom,check);
-        }
-
-        long result=Arrays.stream(primeset).filter(x -> x==1).count();
-        int answer = (int)result;
-        return answer;
-    }
-    
-    private static void
-    rePermutation(int n, int r, LinkedList<String> rCom, int[] check) {
-        if(rCom.size() == r){
-            String result ="";
-            for(String i : rCom)
-                result+=i;
-            int comp=Integer.parseInt(result);
-            if(!checked[comp]){
-                primeset[comp]=1;
-            }
-            return;
-        }
-
-        for(int i=1; i<=n; i++){
-            if(check[i] == 0){
-                check[i] = 1;
-                rCom.add(numbers_arr[i]);
-                rePermutation(n, r, rCom, check);
-                check[i] = 0;
-                rCom.removeLast();
-            }
-        }
-
-    }
-    }
-
-
-
