@@ -2,7 +2,7 @@
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class Dfs_1 {
+public class Dfs_2 {
 
 	public static boolean[] primeNumbers;
 	public static int[] primeTarget;
