@@ -13,7 +13,14 @@ values(1,'java','홍길동',sysdate);
 INSERT INTO BOARD VALUES(1,'1번 게시물','공지사항입니다~!!!!!!!','USER1',sysdate, 11111, 0);
 INSERT INTO BOARD VALUES(2,'2번 게시물','공지사항아닙니다~','USER2',sysdate, 22222, 0);
 INSERT INTO BOARD VALUES(3,'3번 게시물','공지사항일까?','USER1',sysdate, 33333, 0);
+INSERT INTO BOARD VALUES(5,'5번 게시물','공지사항일까?','USER1',sysdate, 33333, 0);
 commit;
 SELECT * FROM BOARD
 
 select to_char(sysdate, 'YYYY-MM-DD HH24:MI:SS') from dual
+
+select count(*) from BOARD
+select max(seq)+1 from BOARD
+INSERT INTO BOARD VALUES((select max(seq)+1 from BOARD),'7번 게시물','공지사항이다.','USER1',sysdate, 33333, 0);
+
+update BOARD set TITLE = '3번 게시글이다.' ,CONTENTS='음하하하하', WRITER ='USER3',TIME=sysdate where SEQ=3;
