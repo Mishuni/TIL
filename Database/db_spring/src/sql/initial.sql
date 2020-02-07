@@ -24,3 +24,20 @@ select max(seq)+1 from BOARD
 INSERT INTO BOARD VALUES((select max(seq)+1 from BOARD),'7번 게시물','공지사항이다.','USER1',sysdate, 33333, 0);
 
 update BOARD set TITLE = '3번 게시글이다.' ,CONTENTS='음하하하하', WRITER ='USER3',TIME=sysdate where SEQ=3;
+
+
+-- SCOTT/TIGER 계정 생성 
+create user MULTI identified by 1234
+default TABLESPACE mc;
+-- 권한 부여
+grant connect,resource,dba to MULTI;
+
+
+
+select employee_id , first_name, last_name from employees;
+select * from employees;
+desc employees;
+
+insert into employees(employee_id,first_name,last_name,email,job_id,hire_date)
+		values((select nvl(max(employee_id),0)+1 from employees),
+		'miseon','yu','alt@dk.com', 'IT_PROG', sysdate)
