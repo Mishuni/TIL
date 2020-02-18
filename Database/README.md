@@ -108,3 +108,5 @@ alter user system identified by oracle;
 -> system 계정 비번 oracle 로 변경
 
 create user kingsmile identified by 1234;
+
+https://whitepaek.tistory.com/40 : docker 로 오라클 설치 (for mac os)

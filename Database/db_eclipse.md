@@ -49,6 +49,14 @@ C:\Program Files\Java\jre1.8.0_231\lib\ext 에다가 붙여넣기
 
 ext ? 장치 관련된 라이브러리가 저장된 곳
 
+# JDBC
+
+## 0. JDBC와  Oracle DB연동
+
+1. java 프로젝트> build path >  configure build path >  libraries > add external JARs >  ojdbc6.jar 선택 > apply
+
+
+
 ## 1. SQL 명령어
 
 DDL : ROLLBACK 불가(되돌리기 불가)

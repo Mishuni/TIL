@@ -1,14 +1,14 @@
--- °èÁ¤ »ý¼º 
+-- ê³„ì • ìƒì„± 
 create user MULTI identified by 1234
 default TABLESPACE mc;
--- ±ÇÇÑ ºÎ¿©
+-- ê¶Œí•œ ë¶€ì—¬
 grant connect,resource,dba to MULTI;
 
-DROP TABLE SUGBOARD;
-DROP TABLE REVIEWBOARD;
-DROP TABLE MCREVIEWBOARD;
 DROP TABLE USERS;
 DROP TABLE CLASS;
+DROP TABLE SUGBOARD;
+DROP TABLE REVIEWBOARD;
+DROP TABLE SUGBOARD;
 
 
 CREATE TABLE CLASS (
@@ -32,9 +32,8 @@ CREATE TABLE USERS (
 	TICKETS NUMBER(5),
 	TOTAL NUMBER(10)
 );
---select * from users;
-INSERT INTO USERS VALUES('admin','1234','admin','°ü¸®ÀÚ',0, 10000, 10000,0);
-INSERT INTO USERS VALUES('test','1234','user','À¯¹Ì¼±',1, 50, 0, null);
+INSERT INTO USERS VALUES('admin','1234','admin','ê´€ë¦¬ìž',0, 10000, 10000,0);
+INSERT INTO USERS VALUES('test','1234','user','ìœ ë¯¸ì„ ',1, 50, 0, null);
 
 
 CREATE TABLE SUGBOARD (
@@ -46,8 +45,8 @@ CREATE TABLE SUGBOARD (
 	VIEWCOUNT NUMBER(5)
 );
 
-INSERT INTO SUGBOARD VALUES(1,'°Ô½ÃÆÇ °øÁö»çÇ×ÀÔ´Ï´Ù.','ÀÌ·± ¾ç½ÄÀ» ÁöÄÑ ÁÖ¼¼¿ä!','admin',sysdate, 0);
-INSERT INTO SUGBOARD VALUES(2,'½Ä´Ü A °ÇÀÇ»çÇ×','°í±â Á» ¸¹ÀÌ ÁÖ¼¼¿ä','test',sysdate, 0);
+INSERT INTO SUGBOARD VALUES(1,'ê²Œì‹œíŒ ê³µì§€ì‚¬í•­ìž…ë‹ˆë‹¤.','ì´ëŸ° ì–‘ì‹ì„ ì§€ì¼œ ì£¼ì„¸ìš”!','admin',sysdate, 0);
+INSERT INTO SUGBOARD VALUES(2,'ì‹ë‹¨ A ê±´ì˜ì‚¬í•­','ê³ ê¸° ì¢€ ë§Žì´ ì£¼ì„¸ìš”','test',sysdate, 0);
 
 CREATE TABLE REVIEWBOARD (
 	SEQ NUMBER(5) PRIMARY KEY,
@@ -58,8 +57,8 @@ CREATE TABLE REVIEWBOARD (
 	VIEWCOUNT NUMBER(5)
 );
 
-INSERT INTO REVIEWBOARD VALUES(1,'°Ô½ÃÆÇ °øÁö»çÇ×ÀÔ´Ï´Ù.','ÀÌ·± ¾ç½ÄÀ» ÁöÄÑ ÁÖ¼¼¿ä!','admin',sysdate, 0);
-INSERT INTO REVIEWBOARD VALUES(2,'½Ä´Ü A ÈÄ±â','°í±â°¡ ¸ÀÀÖ¾î¿ä!','test',sysdate, 0);
+INSERT INTO REVIEWBOARD VALUES(1,'ê²Œì‹œíŒ ê³µì§€ì‚¬í•­ìž…ë‹ˆë‹¤.','ì´ëŸ° ì–‘ì‹ì„ ì§€ì¼œ ì£¼ì„¸ìš”!','admin',sysdate, 0);
+INSERT INTO REVIEWBOARD VALUES(2,'ì‹ë‹¨ A í›„ê¸°','ê³ ê¸°ê°€ ë§›ìžˆì–´ìš”!','test',sysdate, 0);
 
 CREATE TABLE MCREVIEWBOARD (
 	SEQ NUMBER(5) PRIMARY KEY,
@@ -70,5 +69,5 @@ CREATE TABLE MCREVIEWBOARD (
 	VIEWCOUNT NUMBER(5)
 );
 
-INSERT INTO MCREVIEWBOARD VALUES(1,'°Ô½ÃÆÇ °øÁö»çÇ×ÀÔ´Ï´Ù.','ÀÌ·± ¾ç½ÄÀ» ÁöÄÑ ÁÖ¼¼¿ä!','admin',sysdate, 0);
-INSERT INTO MCREVIEWBOARD VALUES(2,'ºòµ¥ÀÌÅÍ¸¦ È°¿ëÇÑ IOT B¹Ý ÈÄ±â','ÁÁ¾Æ¿ä','test',sysdate, 0);
+INSERT INTO MCREVIEWBOARD VALUES(1,'ê²Œì‹œíŒ ê³µì§€ì‚¬í•­ìž…ë‹ˆë‹¤.','ì´ëŸ° ì–‘ì‹ì„ ì§€ì¼œ ì£¼ì„¸ìš”!','admin',sysdate, 0);
+INSERT INTO MCREVIEWBOARD VALUES(2,'ë¹…ë°ì´í„°ë¥¼ í™œìš©í•œ IOT Bë°˜ í›„ê¸°','ì¢‹ì•„ìš”','test',sysdate, 0);
