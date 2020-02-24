@@ -8,7 +8,12 @@ public class Greedy_2 {
 		
 		// 상하는 A와 차이 절댓값
 		for(int i=0; i<name.length(); ++i) {
-			answer += Math.abs(name.charAt(i)-'A');
+			if(name.charAt(i)<='M') {
+				answer += Math.abs(name.charAt(i)-'A');
+			}
+			else {
+				answer += Math.abs(name.charAt(i)-'Z'+1);
+			}
 		}
 		System.out.println(answer);
 	}

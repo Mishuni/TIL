@@ -19,7 +19,7 @@
 
 2. edit vm setting > memory 2GB 로 늘림 > cd/dvd에서 use iso image file 클릭 > centOS 이미지 파일 찾아서 선택 > ok > play > 기다리면 os 설치 자동
 
-3. 언어 > 키보드 (영어:미국 추가) > 소프트웨어 선택 > 개발 및 창조를 위한 워크스테이션 > 설치 대상 > 디스크 그림 2번 클릭 > 파티션 설청 케즈 > 표준 파티션으로 바꾸고 + 버튼 클릭, 마운트 지점 swap , 2G 입력, 또 + 버튼 클릭 , / , 확인 버튼 > 네트워크 호스트 > 끔을 켬으로 바꾸고 > ip 가 잡히게 될 것 (난 안되는데 이거 나중에 터미널로 설정 가능) > root 암호 password 설정 > 사용자 생성 hadoop/hadoop 으로 생성 > 설정 완료 > kdump 설정 해제 (이거 하면 log 가 생겨서 용량 차지) > 재부팅
+3. 언어 > 키보드 (영어:미국 추가) > 소프트웨어 선택 > 개발 및 창조를 위한 워크스테이션 > 설치 대상 > 디스크 그림 2번 클릭 > 파티션 설정 체크 > 표준 파티션으로 바꾸고 + 버튼 클릭, 마운트 지점 swap , 2G 입력, 또 + 버튼 클릭 , / , 확인 버튼 > 네트워크 호스트 > 끔을 켬으로 바꾸고 > ip 가 잡히게 될 것 (난 안되는데 이거 나중에 터미널로 설정 가능) > root 암호 password 설정 > 사용자 생성 hadoop/hadoop 으로 생성 > 설정 완료 > kdump 설정 해제 (이거 하면 log 가 생겨서 용량 차지) > 재부팅
 
 4. root 로 접속 시스템 도구 . 소프트웨어 > 그래도 계속 클릭 > 상단에 소프트웨어 메뉴 누르고 > 최신 패키지만 끔 , 전용 패키지만 끔 , 스프트웨어 공급원 하지 않기
 
@@ -328,14 +328,16 @@ master
   [hadoop@master conf]$ start-all.sh
   Warning: $HADOOP_HOME is deprecated.
   
-  starting namenode, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-namenode-master.out
+  starting namenode, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-namenode-master
+  \
+  .out
   slave1: starting datanode, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-datanode-slave1.out
   slave3: starting datanode, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-datanode-slave3.out
   slave2: starting datanode, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-datanode-slave2.out
   slave1: starting secondarynamenode, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-secondarynamenode-slave1.out
   starting jobtracker, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-jobtracker-master.out
   slave1: starting tasktracker, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-tasktracker-slave1.out
-  slave2: starting tasktracker, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-tasktracker-slave2.out
+  slave2: starting tasktracker, lgging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-tasktracker-slave2.out
   slave3: starting tasktracker, logging to /home/hadoop/hadoop-1.2.1/libexec/../logs/hadoop-hadoop-tasktracker-slave3.out
   
   // 자바로 실행되고 있는 프로세스 확인
@@ -356,6 +358,16 @@ master
   45344 DataNode
   45612 Jps
   45469 TaskTracker
+  
+  == 하둡 시작 ==
+  -- master에서 --
+  hadoop namenode -format
+  start-all.sh
+  
+  == 하둡 종료 ==
+  -- master 에서 --
+  stop-all.sh
+  
   ```
 
   
