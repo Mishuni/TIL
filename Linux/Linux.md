@@ -529,9 +529,3 @@ window -> linux 옮겨가기 : deployee
 
    windows 개발 -> linux 운영
 
-# Hadoop
-
-> hadoop : 컴퓨터 여러 개 연결 해서 빅 데이터 처리
-
-java 기반으로 제공
-
