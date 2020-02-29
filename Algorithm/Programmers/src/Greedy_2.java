@@ -48,13 +48,3 @@ public class Greedy_2 {
 
 }
 
-// JEAAAEE -> 오1 왼3
-// JEAEEEE -> 왼6
-// JEEAEEE -> 왼6
-// JAAAAAE -> 왼1
-// JEAAAAE -> 오1 왼2
-// AAJEEEE -> 왼5
-// AJAJAJA -> 오5
-// JAEEAJJ -> 왼5
-// AAAEAAA -> 오3
-// ZZAZA
