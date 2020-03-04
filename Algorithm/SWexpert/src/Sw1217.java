@@ -1,16 +1,13 @@
-import java.util.Arrays;
 import java.util.Scanner;
-import java.io.FileInputStream;
+//import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Sw1217 {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		System.setIn(new FileInputStream("1217.txt"));
+		//System.setIn(new FileInputStream("1217.txt"));
 		Scanner sc = new Scanner(System.in);
 		
-		char[][] board = new char[8][8];
-
 		for(int test_case = 1; test_case <= 10; test_case++)
 		{ 	sc.nextInt();
 			int n = sc.nextInt();
