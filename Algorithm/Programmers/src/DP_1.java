@@ -7,9 +7,9 @@ public class DP_1 {
 	public static void main(String[] args) {
 		int N = 1, number = 8;
 
-		int answer = 1;
+		
 		if (N == number) {
-			System.out.println(answer);
+			System.out.println(1);
 			return;
 		}
 		int[] check = new int[(N==1)?number*10:(int) Math.pow(N, 8)+1];
