@@ -80,3 +80,100 @@ Tools > global Options (모든 프로젝트에 해당) > Code > Soft-wrap R sour
 ## Basic 02
 
 **EDA (탐색적 데이터 분석)** : 주어진 데이터 안에서 알고자 하는 데이터를 추출, 데이터에 숨겨진 특정한 사실을 유추하는 작업 
+
+**파일 입출력** : 자주 나는 인코딩 에러 해결법
+
+``` R
+# 파일에 있는 데이터 읽어 오기
+df <- read.table("./data/t.txt",sep=",",
+                header=TRUE) 
+# 경고 메세지 : txt 파일에서 맨 밑 공백 주면 없어짐
+df
+df <- read.table("./data/t.txt",sep=",",
+                 header=TRUE) 
+# 멀티바이트 에러 -> 한글 읽어들일 때 발생
+# R은 기본적으로 데이터를 읽어올 때, system encoding
+# cp949 인코딩으로 읽음 (파일은 UTF-8)
+df <- read.table("./data/t.txt",
+                 sep=",",
+                 header=TRUE,
+                 fileEncoding = "UTF-8")
+df
+```
+
+**데이터 교환, 전달 시에 사용하는 데이터 표준형식**
+
+1. CSV(comma seperated value) 방식
+    csv 파일을 이용해서 사용 -> 데이터를 컴마로 구분
+    예) 홍길동, 20, 서울
+ 장점 - 용량이 작다, 대용량 전달에 유리
+        부가적 데이터가 별로 없음(real data + ',')
+ 단점 - 데이터의 구조화가 힘듦
+        해당 데이터의 계층 구조 표현 어려움
+        받는 쪽에서 이를 위한 parser를 만들어야함
+        따라서, 유지보수 항상 필요(데이터 열 추가하면)
+
+ 2. XML (extened mark language) 방식
+    예) <name>hong</name><age>20</age>
+ 장점 - csv의 단점을 어느정도 보완
+ 단점 - redandent data(부가적 데이터)가 너무 큼
+        따라서 파일의 크기 증가
+        과거는 괜찮지만, packet이 돈인 모바일 환경 
+        -> 전달 횟수 줄여야함
+
+ 3. JSON(JavaScript Object Notation) 방식
+    예) {name:"홍길동",age:20,address:"서울"}
+ 장점 - xml에 비해 부가적 데이터가 적어서
+        요새 많이 쓰임, xml 은 과거에 많이 쓰임
+
+## R에서 JSON 처리 실습
+
+----
+
+(mysql5.6.47 버전, )
+
+1. DB생성, 간단한 servlet을 이용하여 JSON 받아오기
+
+
+2. Open API (영화진흥위원회 open api 사용)
+
+
+도서검색 프로그램을 이용해서 JSON을 이용해보기
+
+데이터베이스 생성 (Mysql 이용, standalone)
+
+1. mysql 설치 폴더 압축 풀기
+2. bin 폴더 안에 있는 mysqld명령어로 서버실행 (cmd로)
+3. 새로운 cmd 창에서 bin폴더 가고, mysql -u root 로 실행
+      root 권한으로 mysql 진입한다는 의미
+4. 새로운 사용자 생성
+
+```sql
+> create user rdata identified by "rdata";
+
+# 로컬호스트 계정 만들기
+> create user rdata@localhost identified by "rdata";
+```
+
+5. Table이 들어갈 저장 공간(database) 만들고, 권한 부여
+
+```sql
+# library라는 이름을 갖는 데이터베이스
+> create database library;
+# rdata유저한테, library안에 있는 모든 object에 모든 권한 부여
+> grant all privileges on library.* to rdata;
+> grant all privileges on library.* to rdata@localhost;
+> flush privileges;
+> exit;
+```
+
+6. 제공된 script를 이용해 db 구축
+
+   mysql의 bin 폴더에 script파일 복사 붙여넣기 하고 밑 명령어 실행으로 테이블 생성
+
+   mysql -u rdata -p library < _BookTableDump.spl
+
+```
+ 
+```
+
