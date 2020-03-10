@@ -160,3 +160,9 @@ myvar3 = 4:10
 # 작은 벡터를 순환시켜서 생성 [recycle rule]
 result = myvar1 * myvar3
 
+# vector에 대한 집합연산(합집합, 교집합, 차집합)
+var1 = 1:5
+var2 = 3:7
+union(var1,var2)
+intersect(var1,var2)
+setdiff(var1,var2)

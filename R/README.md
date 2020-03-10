@@ -18,7 +18,7 @@ File > new Project > New Project > 프로젝트 이름, 워크스페이스 위�
 
 Tools > global Options (모든 프로젝트에 해당) > Code > Soft-wrap R source files (줄바꿈 처리) > Saving > encoding쪽에 change > UTF-8 로 바꿔서 저장
 
-## Script
+## Basic 01
 
 **변수** : Weak Type 형식, Type 을 따로 선언해줄 필요 없음 ( Java 는 Strong Type 형식), 변수 이름은 보통 CamelCase 형태로 지음 ( ex firstVal)
 
@@ -55,8 +55,16 @@ Tools > global Options (모든 프로젝트에 해당) > Code > Soft-wrap R sour
 
 * homogeneous (같은 종류) : 같은 종류의 데이터 타입들만 있는 구조  
   1. vector : 1차원 선형구조, 순서 존재
+  
   2. matrix : 2차원 구조, 순서 존재
+  
   3. array : 3차원 이상의 같은 데이터 타입으로만 이루어진 구조
+  
+  4. factor : 범주형 데이터 구조, 값과 level(범위)를 둘 다 정의를 해야함
+  
+     level에 순서 개념이 있으면 : 순서형 (대, 중, 소)
+  
+     level에 순서 개념이 없으면 : 명목형 (비, 맑음, 흐림)
 * heterogeneous (다른 종류) : 데이터 타입들이 섞여 있는 구조 
   1. list (중첩 자료 구조) : 1차원 선형구조, 순서 존재, 실제로 저장되는 구조는 map 구조, map 과 배열을 짬뽕시킨 배열 (list 안에는 vector, matix, numeric 다 들어올 수 있음)
   2. data frame : 2차원 테이블 구조 
@@ -66,3 +74,9 @@ Tools > global Options (모든 프로젝트에 해당) > Code > Soft-wrap R sour
 **RData 파일**: R 전용 데이터 파일(.rda),  다른 파일들에 비해 R에서 일고 쓰는 속도가 빠르고 용량이 작음, R에서 분석 작업시에 RData파일을 이용하고, R을 사용하지 않는 사람과 파일을 주고받을 시에 CSV파일을 사용
 
 참고사이트 : [R documentation](https://www.rdocumentation.org/)
+
+
+
+## Basic 02
+
+**EDA (탐색적 데이터 분석)** : 주어진 데이터 안에서 알고자 하는 데이터를 추출, 데이터에 숨겨진 특정한 사실을 유추하는 작업 
