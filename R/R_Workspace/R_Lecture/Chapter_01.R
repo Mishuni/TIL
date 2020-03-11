@@ -69,7 +69,7 @@ c(TRUE,FALSE) && c(FALSE,FALSE,TRUE)
 abs(-3)
 factorial(4)
 
-exam <- read.csv("csv_exam.csv")
+exam <- read.csv("./data/csv_exam.csv")
 head(exam,10)
 View(exam)
 dim(exam)

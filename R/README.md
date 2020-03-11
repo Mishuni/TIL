@@ -130,7 +130,7 @@ df
 
 ----
 
-(mysql5.6.47 버전, )
+(개발 환경 : mysql5.6.47 버전, Tomcat 7 버전, )
 
 1. DB생성, 간단한 servlet을 이용하여 JSON 받아오기
 
@@ -143,9 +143,14 @@ df
 데이터베이스 생성 (Mysql 이용, standalone)
 
 1. mysql 설치 폴더 압축 풀기
+
 2. bin 폴더 안에 있는 mysqld명령어로 서버실행 (cmd로)
+
+      (만약 서버 종료하려면, mysqladmin -u root shutdown 입력)
+
 3. 새로운 cmd 창에서 bin폴더 가고, mysql -u root 로 실행
       root 권한으로 mysql 진입한다는 의미
+
 4. 새로운 사용자 생성
 
 ```sql
@@ -172,8 +177,101 @@ df
    mysql의 bin 폴더에 script파일 복사 붙여넣기 하고 밑 명령어 실행으로 테이블 생성
 
    mysql -u rdata -p library < _BookTableDump.spl
+   
+7. Ecilpse 실행, preferences > General > Workspace > encoding을 utf-8로 바꾸기
 
-```
- 
+   preferences > web > 다 utf-8 로
+
+8. Tomcat 7 설치하고 ecilpse 연동
+
+9. project import 하기, import > Genaral > Existing Projects into Workspace > select archive file > 압축 파일 (bookSearchProject.zip) 선택
+
+10. project 와 eclipse 환경 맞추기
+
+    Project > properties > java build path > JRE path 가 틀려서 (unbounded) error 발생 > library > jre library 더블 클릭 > Alternate JRE 선택
+
+11. META-INF> context.xml > username = "rdata", password = "rdata"
+
+12. web program 을 호출해보기
+
+    (context root 확인 : properties > web project setting 에 있음)
+
+    http://localhost:8080/bookSearch/search?keyword=java
+
+    위 url로 요청을 하면, Json 형태로 데이터가 전달될 것
+
+    url query에 한글이 있으면 encoding문제로 검색이 안될 것
+
+    -> WAS로 인한 문제
+
+    -> 해결법 : eclipse Server 프로젝트 > server.xml > 65번째 라인을 밑에 코드로 수정
+
+    ```xml
+ <Connector URIEncoding="UTF-8" connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    ```
+
+    round-trip 방식 : jsp (was 가 동작 후, 페이지 동쨰로 보내주는 것) -> 프로그램이 쉽다는 장점 : 모든 작업이 server 단에서 일어남 , client 사이드가 복잡하지 않음,  개발이 오히려 쉬움(빨리 만들 수 있음), 서버와 클라이언트가 주고 받는 용량이 많은 수 밖에없음,(html,이미지.. 다 주고 받으니까) -> 이게 옛날에는 문제가 되지 않았지만, 현재는 매우 중요(데이터 크기가 곧 비용 및 속도) 
+    
+    다른 방식 : jsp 안쓰고,  client 따로 만들기 (Front-end web application, server 는 순수 로직만) -> front-end(html,css,javascript) : server -> 사이에는 데이터만 왔다 갔다 하는 거 ! ( csv, xml, javascript ) -> 이런 방식은 SPA(single page application)
+    
+    javascript : jquery (client side) > library와 framework 차이? 프로그래밍 규칙이 없나 있나, library 를 이용한 구현은 유지보수 문제가 존재(절차가 명시되어 있지 않으니까) -> 그래서 jquery 로 client side 를 다 해버리면 문제가 있음 ,  유지보수 비용 발생> 
+    
+    이래서 나온 프레임웍(frontend size) : angular.js, react.js
+    
+    spring 과는 완전 별개, 둘은 data 만 주고 받는 관계다. 문제는? 서버와 클라이언트 둘 다 고용해야함
+    
+    웹 프로그램을 어떤 방식으로 사용하느냐에 따라 방식을 선택할 수 있음 (어떤게 더 좋고 나쁜게 아님)
+    
+    ```
+    단, jquery는 library 형태로 코드가 구현되기 때문에,
+    framework 기반(패턴 기반)의 개발을 할 수 없음
+    따라서, 유지보수에 문제가 발생
+    ex) 구글의 angular, 혹은 react 등과 같은 framework 를 이용해서 프론트엔드 개발
+    백엔드를 어느 정도 정리하고 (웬만한 웹 시스템을 개발할수있어)
+    정도가 되고 나서 프론트엔드를 공부하면 더욱 좋을 것임
+    ```
+    
+13. JSON : 데이터 전달 표준
+
+    => key와 value 가 쌍으로 표현
+
+```json
+[
+    {
+        "name":"김길동"
+    },
+    {
+        "name":"홍길동"
+    }
+] 
 ```
 
+http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=b32fad64739ee39bbbf10380f1489444&targetDt=20200310
+
+myKey = b32fad64739ee39bbbf10380f1489444
+
+**웹 스크랩핑**  : 원하는 부분 데이터를 가지고 오는거
+
+vs **크롤링** : 스크랩핑을 여러 페이지를 반복적으로 browsing 하는 행위 (데이터 수집을 하는 게 아니라)
+
+
+
+웹서버가 크롤러가 너무 심하면 막음 요즘 (서버 부하를 막기 위해) -> 크롤랑 데이터 수집? 매일 업데이트 되는 데이터를 일정량 가져와서 축적 시키는 경우 이용될 것
+
+jquery selector , xpass 를 알아야 web scraping 이 가능 
+
+웹사이트 상에서 내가 원하는 위치의 대한 정보를
+자동으로 추출해서 수집하는 기능 => Web Scraping
+자동화 봇인 web crawler가 정해진 규칙에 따라서
+복수개의 웹페이지를 browsing하는행위 => Web Crawling
+
+web scraping => 1) css,jquery(selector)를 이용하는 방식
+                			  2) XPATH 를 이용하는 방식
+
+Eclipse 는 Backend program을 작성에 최적화!
+
+Front-End는 webStorm 을 이용해서 알아보기 
+
+[WebStorm다운로드](https://www.jetbrains.com/ko-kr/webstorm/) : 30일 무료판 (재다운 받으면 다시 백업)
+
+![install_webstorm](..\image\install_webstorm.PNG)
