@@ -27,7 +27,7 @@ request_url
 page_html <- read_html(request_url, encoding="cp949") 
 page_html
 # 영화 제목
-# selector로 원하는 부분 찾기
+## selector로 원하는 부분 찾기
 nodes = html_nodes(page_html,"td.title > a.movie")
 nodes
 # elements가 가지고 있는 tag사이의 글자만 가져오기
@@ -60,3 +60,66 @@ for(i in 1:length(nodes)){
   print(con)
   print("----------------------------")
 }
+
+
+## XPATH 이용하기
+url <- "https://movie.naver.com/movie/point/af/list.nhn?&page="
+request_url <- str_c(url,1)
+request_url
+# read html 로 해당 페이지의 html 내용을 끌어오기
+page_html<-read_html(request_url,encoding="cp949")
+page_html
+# 영화 제목 추출 -> chrome에서 그 부분 xpath 복사할 수 있음
+# 같은 태그 다 추출하려면 loop 를 돌려야 한다는 단점이 있음
+# title_xpath = '//*[@id="old_content"]/table/tbody/tr[1]/td[2]/a[1]'
+movie_title = vector(mode="character", length = 10) # 빈 벡터 (영화 제목들 저장 벡터)
+i = 1
+for(i in 1:10){
+  myPath <- str_c('//*[@id="old_content"]/table/tbody/tr[',i,']/td[2]/a[1]/text()')
+  nodes <- html_nodes(page_html, xpath = myPath)
+  movie_title[i] = html_text(nodes)
+}
+movie_title
+nodes
+
+
+## 수행평가
+# 로튼토마토 사이트 2019 년 가장 인기 있었던 영화 100개의
+# 제목, user rating, 장르 추출해서 데이터 프레임으로 만든 후 파일로 저장하기
+install.packages("rvest") # scraping, crawling 할 때 쓸 수 있는 패키지
+library(rvest)
+library(stringr)
+
+url <- 'https://www.rottentomatoes.com/top/bestofrt/?year=2019'
+request_url <- url
+page_html <- read_html(request_url)
+tables <- html_table(page_html)[[3]]
+tables
+tables$`No. of Reviews`<-NULL
+# 영화 정보에서 장르 가져오기
+info_url <- 'https://www.rottentomatoes.com'
+html_table <- html_nodes(page_html,".table>tr>td>a")
+att <- html_attrs(html_table)
+att
+genres <- list(mode="chracter",length=100)
+
+for(i in 1:length(att)){
+  title<-att[[i]][1]
+  request_url <- str_c(info_url,title)
+  page_html <- read_html(request_url)
+  genre <- html_nodes(page_html," .meta-value>a")
+  genre <- html_nodes(page_html," section.panel.panel-rt.panel-box.movie_info.media > div > div > ul > li:nth-child(2) > div.meta-value")
+  genre <- html_text(genre)
+  genre <- str_remove_all(genre,"\n")
+  genre <- str_remove_all(genre," ")
+  genres[i] <- genre[[1]]
+}
+genre
+genres
+tables$Genre <- as.character(genres)
+tables$RatingTomatometer <- as.character(tables$RatingTomatometer)
+tables$Title <- as.character(tables$Title)
+tables
+write.csv(
+  tables, file ="C:/Users/student/TIL/R/R_Workspace/R_Lecture/data/rowtten_tomato_2019_rank.csv", row.names = FALSE 
+)
