@@ -107,7 +107,6 @@ for(i in 1:length(att)){
   title<-att[[i]][1]
   request_url <- str_c(info_url,title)
   page_html <- read_html(request_url)
-  genre <- html_nodes(page_html," .meta-value>a")
   genre <- html_nodes(page_html," section.panel.panel-rt.panel-box.movie_info.media > div > div > ul > li:nth-child(2) > div.meta-value")
   genre <- html_text(genre)
   genre <- str_remove_all(genre,"\n")
