@@ -133,7 +133,10 @@ movie <- str_split(attrs,",'")[[1]]
 title <- str_sub(movie[3],0,nchar(movie[3])-3)
 movieCode <- str_sub(movie[2],0,nchar(movie[2])-1)
 movieCode <- "89755"  # 레미제라블
-movieCode <- "186613" # 작은아씨들
+movieCode <- "171539" # 그린북
+  #"186610" # 신문기자
+  #"186613" # 작은아씨들
+
 # 무비 페이지에서 댓글 내용 추출 (scraping)
 movie_url <- 
   "https://movie.naver.com/movie/point/af/list.nhn?st=mcode&sword="
@@ -181,7 +184,7 @@ install.packages('wordcloud2')
 library('wordcloud2')
 df_word %>% 
   filter(str_length(word)>=2) %>% 
-  wordcloud2(fontFamily='Noto Sans CJK KR Bold',size=0.2,minSize = 0.3,shape ='star' )
+  wordcloud2(fontFamily='Noto Sans CJK KR Bold',size=0.5,minSize = 0.3,shape ='star')
 ?wordcloud2
 
 
