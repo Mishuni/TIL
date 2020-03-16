@@ -132,8 +132,8 @@ attrs <- attrs[3]
 movie <- str_split(attrs,",'")[[1]]
 title <- str_sub(movie[3],0,nchar(movie[3])-3)
 movieCode <- str_sub(movie[2],0,nchar(movie[2])-1)
-movieCode <- "89755"
-movieCode <- "66440"
+movieCode <- "89755"  # 레미제라블
+movieCode <- "186613" # 모아나
 # 무비 페이지에서 댓글 내용 추출 (scraping)
 movie_url <- 
   "https://movie.naver.com/movie/point/af/list.nhn?st=mcode&sword="
