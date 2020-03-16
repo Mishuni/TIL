@@ -87,8 +87,6 @@ library(ggplot2)
 
 mpg = as.data.frame(mpg)   # mpg data frame
 
-View(mpg)
-
 # 주요컬럼
 # manufacturer : 제조회사
 # displ : 배기량
@@ -149,6 +147,88 @@ head(df , 3)
 # 각 회사별 "compact" 차종 수를 내림차순으로 정렬해 출력하세요.
 df <- filter(mpg, class=="compact") %>% group_by(manufacturer) %>% summarise(cnt=n())
 df
+
+
+## 데이터 정제 ##
+
+# raw 데이터를 분석이 가능한 형태로 가공
+
+## 1. 결측치 NA를 해결 
+### 1-1) 가장 간단한 법 - 지우기
+# is.na() 라는 함수 이용
+df <- data.frame(   id=c(1,2,NA,4,NA,6),
+                    score=c(20,30,NA,50,70,NA))
+df
+is.na(df)
+is.na(df$id)
+
+# NA가 들어가 있는 데이터가 전체 데이터 크기에 비해 ( EX)10000개 중 1개면?)
+# 상대적으로 아주 작을때는 삭제하는게 좋을 수 있다.
+library(dplyr) # 데이터 프레임 제어
+# id 가 NA인 row는 삭제
+result <- df %>% filter(!is.na(df$id))
+result <- df %>% filter(!is.na(df$id),
+                        !is.na(df$score))
+# 더 간단하게 모든 NA를 다 찾아서 제거하기
+result <- na.omit(df) # 한개라도 NA가 있으면 행 제거
+
+
+### 1-2) NA값을 다른 값으로 대체하는 방법
+df <- data.frame(   id=c(1,2,NA,4,NA,6),
+                    score=c(20,30,NA,50,70,NA))
+# 점수 평균
+mean(df$score) #NA
+# NA 무시하고 계산 하기
+value<-mean(df$score, na.rm = TRUE) # 42.5
+# score의 NA값을 평균으로 대체
+df$score <- ifelse(is.na(df$score),value,df$score)
+df
+
+
+## 2. 이상치를 해결
+# 2-1) 이상치는 값이 없는 건 아닌데, 사용할 수 없는 값이 포함된 경우
+df <- data.frame(   id=c(1,2,NA,4,NA,6),
+                    score=c(20,30,NA,50,70,NA),
+                    gender=c('f','m','f','m','f','%'),
+                    stringsAsFactors = FALSE)
+df # gender 에서 '%' 는 이상치
+
+# 이상치를 NA로 변환 후, NA 처리
+df$gender <- ifelse(df$gender %in% c('f','m'),df$gender,NA)
+df
+df$gender <- ifelse(is.na(df$gender),'f',df$gender)
+df
+# 2-2) 극단치의 경우
+# 한계점을 넘는 값이 들어온 경우
+# 이런 극단치는 데이터 분석시에 결과에 영향이 클 수 있음
+# ex) 성인 몸무게 5g, 5000000kg
+# 극단치에 대한 논리적인 판단 근거 및 기준이 있어야함
+#   1 논리적으로 이상적인 범위 설정하기
+#   2 통계적인 방법으로 범위 설정하기
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

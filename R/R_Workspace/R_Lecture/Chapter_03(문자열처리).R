@@ -98,26 +98,16 @@ df = read.csv(file.choose(),
               fileEncoding = "UTF-8")
 df
 
-# excel 파일로 데이터 제공하는 경우
+# Excel 파일로 데이터 제공하는 경우
+# Excel file 사용하려면, 외부 pakage필요
+install.packages()
 install.packages("xlsx")
 library(xlsx)
-df = read.xlsx("data/student.xlsx",
-               sheetIndex = 1,
-               encoding = "UTF-8")
-df
-class(df) #자료구조가 뭔지 알려주는 함수
 
-# file에 데이터 프레임 저장
-write.table(df,
-            file="data/result.csv",
-            row.names = FALSE, # index 출력하지 말기
-            quote=FALSE # " 이거 잡지 말기
-            )
 
-# R에서 JSON 처리
-# JSON 데이터를 어디서 가져올까?
-# 1. DB생성, 간단한 servlet을 이용하여 JSON 받아오기
-# 2. Open API (영화진흥위원회 open api 사용)
+
+
+
 
 
 
