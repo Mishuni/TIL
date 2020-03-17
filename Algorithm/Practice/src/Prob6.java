@@ -3,6 +3,8 @@ import java.util.*;
 public class Prob6 {
 
 	public static void main(String[] args) {
+		// Prob1. 배열을 순차적으로 2개로 쪼개는데
+		// 왼쪽 배열의 총 합이 오른쪽 배열의 총 합보다 큰 경우의 수
 		List<Integer> list = new LinkedList<Integer>();
 
 		list.add(-5);

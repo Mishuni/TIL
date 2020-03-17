@@ -5,7 +5,10 @@ import java.util.List;
 public class Prob7 {
 
 	public static void main(String[] args) {
-
+		// Prob2. 웹에서 요청이 된 시간과 걸리는 시간
+		// 일을 처리하는 시간이 왔을 때 (최대 5개 작업 처리 가능)
+		// 총 처리한 일의 갯수
+		 
 		List<Integer> timestamp = new LinkedList<Integer>();
 		List<Integer> top = new LinkedList<Integer>();
 
