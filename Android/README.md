@@ -72,7 +72,21 @@
 
 2. Android Framework 의 동작 원리 (Lifecycle)
 
-   
+3. Activity 의 LifeCycle
+
+   : Activity는 사용자에 의해서 이벤트가 발생되면 그 상태(State)가 변화된다. 따라서 그에 따라 call back method 가 호출되는데 그 Callback에 대해서  알아둬야 한다.
+
+   1) Activity 는 class 상태로 존재
+
+   2) Activity가 화면에 나타나기 위해서는 객체화가 되어야 함(**Instance 화**)
+
+   3) **onCreate()** 라는 method가 callback => 화면구성을 주로 여기서 함
+
+   4) **onStart()** 라는 method가 callback => Activity의 초기화 작업들 수행 
+
+   5) Activity 가 foreground(전면)로 나타나면서 사용자와 interaction이 가능해짐
+
+   6) onResume() 라는 method가 callback
 
 > **Check!**)  library vs Framework
 >
@@ -122,4 +136,21 @@
 > **Check!**) 안드로이드 스튜디오 삭제 시에 
 >
 > 설치 폴더 + 환경 설정 파일이 남아있으므로 이는 수동으로 삭제 하기
+
+##### 코드
+
+AndroidManifext.xml
+
+```xml
+<activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />  
+                // LAUNCHER : 이 Activity가 시작 화면
+            </intent-filter>
+        </activity>
+```
+
+
 
