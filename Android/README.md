@@ -86,7 +86,23 @@
 
    5) Activity 가 foreground(전면)로 나타나면서 사용자와 interaction이 가능해짐
 
-   6) onResume() 라는 method가 callback
+   6) **onResume()** 라는 method가 callback
+
+   7) Activity가 **Running 상태**로 전환 -> 사용자와 interaction이 가능한 상태 (핸드폰에 앱이 켜져있는 상태)
+
+   8) Running 상태에서 다른 화면에 의해서 (ex. 갤럭시 밑에 네모 버튼 누르면 실행중인 activity가 stack처럼 쌓여 나오는 것) Activity의 일부분이 보이지 않는 상태 (너무 빨라서 우리 눈에는 다 한꺼번에 들어온 거 같아 보일 수 있지만) => pause 상태
+
+   9) **Pause 상태**가 되면 **onPause()** method callback <- 조금이라도 가려지는 순간 불려지는 함수
+
+   10) Activity 전체가 가려져서 보이지 않는 상태(**Stop 상태**) => **onStop()**method callback
+
+   11) 만약, Stop 상태에서 다시 Running 상태가 되면 onRestart() -> onStart() -> onResume() 
+
+   앞선 상태 주기와 달리 onCRresate대신에 onRestart가 실행
+
+   12) 사용하고 있는 activitty 종료하게 되면 killed 상태로 진입
+
+   13) 집입하기 전에 onDestroy() method callback
 
 > **Check!**)  library vs Framework
 >
