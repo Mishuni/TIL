@@ -44,6 +44,10 @@
 
      : 부하가 많이(load가 많은) 걸리는 작업처리 (db처리, 네트워크)는 주로 담당하지 않는다, 사용자에게 속도감 있게 출력을 전달해야 하기 때문
 
+     : 화면을 표현할 때는 Activity 하나와 하나 이상의 XML파일이 필요
+
+     : Activity 내에서 자바코드로 화면구성도 가능 but 권장되지는 않음(표현과 구현이 분리도지 않기 때문)
+
    * Service
 
      : 내부 로직 처리를 담당하는 Component
@@ -67,9 +71,9 @@
      : 모든 Android App은 sandbox model을 이용 -> 하나의 앱(각 앱이 하나의 box)이 관리하는 데이터는 그 앱만 사용할 수 있음, 하나의 앱의 데이터를 다른 데이터와 공유하지를 못하는 폐쇄적인 구조 그래서 필요한 Component
 
      ex. 주소록 앱에 담긴 전화번호들을 통화 앱에서 가져오는 것
-
+   
      
-
+   
 2. Android Framework 의 동작 원리 (Lifecycle)
 
 3. Activity 의 LifeCycle
@@ -98,7 +102,7 @@
 
    11) 만약, Stop 상태에서 다시 Running 상태가 되면 onRestart() -> onStart() -> onResume() 
 
-   앞선 상태 주기와 달리 onCRresate대신에 onRestart가 실행
+   앞선 상태 주기와 달리 onCreate대신에 onRestart가 실행
 
    12) 사용하고 있는 activitty 종료하게 되면 killed 상태로 진입
 
@@ -121,7 +125,7 @@
 * AVD(Android Virtual Device) : 가상의 디바이스를 이용하여 앱을 실행해볼 때, 사용하는 것
 * 실제 Android phone : 실제로 앱을 실행해볼 때 필요
 
-설치 및 실행
+##### 설치 및 실행
 
 1. [안드로이드 스튜디오 홈페이지](https://developer.android.com/studio) 에서 다운로드
 
@@ -166,6 +170,25 @@ AndroidManifext.xml
                 // LAUNCHER : 이 Activity가 시작 화면
             </intent-filter>
         </activity>
+```
+
+## Event Processing
+
+```
+Event Processing
+Event : all action that is made by users or system ex) Click
+
+Event Handling
+Java uses 'Event Delegation(위임) Model' for event handling
+Three Objects related to Event Handling
+1. Event Source Object : Object having event, 이벤트가 발생한 객체 ex) Button
+2. Event Handler Object (Listener) :
+   the Object processes Event, 이벤트를 처리하는 객체
+3. Event Object : it has Specific info about the event that is made
+                  , 발생한 Event 에 대한 세부정보 가지고 있는 객체
+attach Event Handler to Event Source
+Event Source 에 Event Handler 부착시켜서
+Event 가 발생되면 부착된 Handler 를 통해서 이벤트 처리
 ```
 
 
