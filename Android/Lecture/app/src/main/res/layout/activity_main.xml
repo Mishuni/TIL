@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green"
-        android:text="My App Traveling"
+        android:text="My App Travel"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textSize="10pt"
@@ -50,6 +50,19 @@
         android:id="@+id/btn5"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="06. Send Activity Message Example"
+        android:id="@+id/btn6"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="07. Receive Activity Message Example"
+        android:id="@+id/btn7"
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -57,5 +70,7 @@
         android:text="경품 추첨"
         android:id="@+id/btn_bonus"
         />
+
+
 
 </LinearLayout>
