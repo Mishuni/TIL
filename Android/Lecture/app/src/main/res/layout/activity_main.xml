@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green"
-        android:text="Wowwww"
+        android:text="My App Traveling"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:textSize="10pt"
@@ -21,6 +21,41 @@
         android:layout_height="wrap_content"
         android:text="01. Linear Layout Example"
         android:id="@+id/btn1"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="02. Widget Example"
+        android:id="@+id/btn2"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="03. Exception Processing Example"
+        android:id="@+id/btn3"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="04. TouchEvent Example"
+        android:id="@+id/btn4"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="05. SwipeEvent Example"
+        android:id="@+id/btn5"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="경품 추첨"
+        android:id="@+id/btn_bonus"
         />
 
 </LinearLayout>
