@@ -131,6 +131,10 @@
 
 => 필연적으로, thread 가 필요하게 된다.
 
+: Activity는 실질적으로 Thread로 동작 (UI Thread)
+
+: logic 처리는 background Thread를 이용해서 처리해야 함
+
 
 
 ## 개발환경
