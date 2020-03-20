@@ -67,6 +67,20 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="08. Activity ANR Example"
+        android:id="@+id/btn8"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="09. Counter Log Example"
+        android:id="@+id/btn9"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="경품 추첨"
         android:id="@+id/btn_bonus"
         />

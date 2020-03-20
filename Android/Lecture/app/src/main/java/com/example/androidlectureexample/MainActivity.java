@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         Button lecture5 = findViewById(R.id.btn5);
         Button lecture6 = findViewById(R.id.btn6);
         Button lecture7 = findViewById(R.id.btn7);
+        Button lecture8 = findViewById(R.id.btn8);
+        Button lecture9 = findViewById(R.id.btn9);
         Button bonus = findViewById(R.id.btn_bonus);
 
         lecture1.setOnClickListener(
@@ -197,6 +199,45 @@ public class MainActivity extends AppCompatActivity {
                 // requestCode
             }
         });
+
+
+
+        lecture8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 1. Explicit (명시적)
+                Intent in = new Intent();
+                // cname has the info about the class(=Activity) we would use
+                ComponentName cname =
+                        new ComponentName(
+                                "com.example.androidlectureexample",
+                                "com.example.androidlectureexample.Example08_ANRActivity"
+                        );
+                // intent hold component name we will exacute
+                in.setComponent(cname);
+                // start Activity using the info about the intent instance
+                startActivity(in);
+            }
+        });
+
+        lecture9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 1. Explicit (명시적)
+                Intent in = new Intent();
+                // cname has the info about the class(=Activity) we would use
+                ComponentName cname =
+                        new ComponentName(
+                                "com.example.androidlectureexample",
+                                "com.example.androidlectureexample.Example09_CounterLogActivity"
+                        );
+                // intent hold component name we will exacute
+                in.setComponent(cname);
+                // start Activity using the info about the intent instance
+                startActivity(in);
+            }
+        });
+        
 
         bonus.setOnClickListener(new View.OnClickListener() {
             @Override
