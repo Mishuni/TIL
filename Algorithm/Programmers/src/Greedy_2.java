@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Greedy_2 {
 
@@ -44,7 +45,10 @@ public class Greedy_2 {
 		answer += min_move;
 		
 		System.out.println(answer);
+		
+		
 	}
+	
 
 }
 
