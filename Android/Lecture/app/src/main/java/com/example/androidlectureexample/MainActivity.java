@@ -21,15 +21,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button lecture1 = findViewById(R.id.btn1);
-        Button lecture2 = findViewById(R.id.btn2);
-        Button lecture3 = findViewById(R.id.btn3);
-        Button lecture4 = findViewById(R.id.btn4);
-        Button lecture5 = findViewById(R.id.btn5);
-        Button lecture6 = findViewById(R.id.btn6);
-        Button lecture7 = findViewById(R.id.btn7);
-        Button lecture8 = findViewById(R.id.btn8);
-        Button lecture9 = findViewById(R.id.btn9);
+        Button lecture1 = (Button)findViewById(R.id.btn1);
+        Button lecture2 = (Button)findViewById(R.id.btn2);
+        Button lecture3 = (Button)findViewById(R.id.btn3);
+        Button lecture4 = (Button)findViewById(R.id.btn4);
+        Button lecture5 = (Button)findViewById(R.id.btn5);
+        Button lecture6 = (Button)findViewById(R.id.btn6);
+        Button lecture7 = (Button)findViewById(R.id.btn7);
+        Button lecture8 = (Button)findViewById(R.id.btn8);
+        Button lecture9 = (Button)findViewById(R.id.btn9);
+
+        Button lecture12 = findViewById(R.id.btn12);
         Button bonus = findViewById(R.id.btn_bonus);
 
         lecture1.setOnClickListener(
@@ -237,6 +239,57 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(in);
             }
         });
+
+
+        Button _10_CounterLogProgressBtn = (Button)findViewById(R.id.btn10);
+        _10_CounterLogProgressBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example10_CounterLogProgressActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
+
+        Button _11_CounterLogHandlerBtn = (Button)findViewById(R.id.btn11);
+        _11_CounterLogHandlerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example11_CounterLogHandlerActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
+
+
+
+
+
+        lecture12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 1. Explicit (명시적)
+                Intent in = new Intent();
+                // cname has the info about the class(=Activity) we would use
+                ComponentName cname =
+                        new ComponentName(
+                                "com.example.androidlectureexample",
+                                "com.example.androidlectureexample.Example12_SimpleBookSearchActivity"
+                        );
+                // intent hold component name we will exacute
+                in.setComponent(cname);
+                // start Activity using the info about the intent instance
+                startActivity(in);
+            }
+        });
+
+
+
+
         
 
         bonus.setOnClickListener(new View.OnClickListener() {

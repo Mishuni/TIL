@@ -1,6 +1,7 @@
 package com.test;
 
 // interface로 구현
+// 더 선호되는 방법 : 클래스의 종속도를 줄일 수 있어서
 class MyRunnable implements Runnable {
 
 	@Override
