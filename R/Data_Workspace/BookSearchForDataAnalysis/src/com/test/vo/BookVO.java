@@ -6,16 +6,18 @@ public class BookVO {
 	private String title;
 	private String author;
 	private String price;
+	private String isbn;
 	
 	public BookVO() {		
 	}
 
-	public BookVO(String img, String title, String author, String price) {
+	public BookVO(String img, String title, String author, String price, String isbn) {
 		super();
 		this.img = img;
 		this.title = title;
 		this.author = author;
 		this.price = price;
+		this.isbn = isbn;
 	}
 
 	public String getImg() {
@@ -49,5 +51,14 @@ public class BookVO {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	
 	
 }

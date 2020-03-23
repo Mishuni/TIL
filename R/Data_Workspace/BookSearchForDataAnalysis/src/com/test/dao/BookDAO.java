@@ -37,7 +37,7 @@ public class BookDAO {
 
 	public List<BookVO> selectBooks(String keyword) throws Exception {
 		List<BookVO> list = new ArrayList<BookVO>();
-		String sql = "select btitle,bimgurl,bauthor,bprice from book where btitle like ?";
+		String sql = "select btitle,bimgurl,bauthor,bprice,bisbn from book where btitle like ?";
 		
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, "%" + keyword + "%");
@@ -47,7 +47,9 @@ public class BookDAO {
 			BookVO book = new BookVO(rs.getString("bimgurl"), 
 					rs.getString("btitle"),
 					rs.getString("bauthor"),
-					rs.getString("bprice"));
+					rs.getString("bprice"),
+					rs.getString("bisbn")
+					);
 			list.add(book);
 		}
 		
