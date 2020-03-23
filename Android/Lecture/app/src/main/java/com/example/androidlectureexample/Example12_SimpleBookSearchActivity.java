@@ -7,10 +7,14 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Example12_SimpleBookSearchActivity extends AppCompatActivity {
 
@@ -100,7 +104,34 @@ class BookSearchRunnable implements Runnable {
         // Web Application call
         // 결과를 받아와서 예쁘게 만든 후 handler 를 통해서
         // activity 에게 전달
-        
+
+        // 1. url
+        String url = "http://localhost:8080/bookSearch/searchTitle?keyword="+keyword;
+        // 2. Must write Exception process if use Java Network
+        try{
+
+            // 3. create URL Object ( JAVA URL class )
+            URL obj = new URL(url);
+            // 4. try to connect using URL instance
+            HttpURLConnection con = (HttpURLConnection)obj.openConnection();
+            // 5. set the way of call of web application (GET OR POST)
+            con.setRequestMethod("GET"); // use GET
+            // 6. receive the responseCode
+            // that is the value of status of connection via HTTP protocol
+            // 200 : 접속 성공 , 404 : Not Found , 500 : internal server error
+            // 403 : forbidden (접속 차단)
+            int responseCode = con.getResponseCode();
+            Log.i("Book","response code :"+responseCode);
+            // java.io.IOException: Cleartext HTTP traffic to localhost not permitted
+            // 앱이 외부에 연결될 때, 보안적 이유로 연결이 되지 않는다.
+            // 7. 보안 설정
+            // You must set the security setting for using some function in Android App
+
+
+
+        }catch(Exception e){
+            Log.i("Book",e.toString());
+        }
 
     }
 
