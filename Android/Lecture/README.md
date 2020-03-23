@@ -23,3 +23,18 @@ http://70.12.60.109:8080/bookSearch/searchTitle?keyword=java
         android:usesCleartextTraffic="true"
 ```
 
+### jackson library for JSON
+
+```xml
+dependencies {
+				.
+				.
+				.
+
+implementation 'com.fasterxml.jackson-core:2.9.7'
+    implementation 'com.fasterxml.jackson-core:jackson-annotations:2.9.7'
+    implementation 'com.fasterxml.jackson-core:jackson-databind:2.9.7'
+}
+
+```
+
