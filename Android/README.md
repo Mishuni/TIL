@@ -114,6 +114,15 @@
 >
 > Framework 는 그 안에 담긴 rule이나 설계들을 이해해야 사용할 수 있음, 대신 공통된 구조 및 로직들이 정해져 있어 유지보수를 하는데 있어 편함
 
+
+> Activity 는 
+>
+> onCreate() -> onStart() -> onResume() -> onPause() -> onStop()
+>
+> Service 는 
+>
+> onCreate() -> onStartCommand() -> onDestroy()
+
 ---
 
 #### ANR 

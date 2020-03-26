@@ -56,4 +56,27 @@ public class BookService {
 
 	}
 	
+	public List<BookVO> getBooksAll(String keyword) {
+
+		Connection con = getConnection();
+		List<BookVO> list = null;
+		BookDAO dao = new BookDAO(con);
+		try {
+			list = dao.selectBooksAll(keyword);
+			if( list != null ) {
+				commit(con);
+			} else {
+				rollback(con);
+			}			
+		} catch(Exception e) {
+			rollback(con);
+			System.out.println(e);
+		} finally {
+			close(con);
+		}
+		
+		return list;
+
+	}
+	
 }

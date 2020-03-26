@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidlectureexample">
     <!-- 인터넷 접속 보안 허용 -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 전화 걸기 권한 허용 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Example12_01_BookDetailActivity"></activity>
+        <activity android:name=".Example13_01_BookDetailActivity"></activity>
+
+        <service
+            android:name=".Example17Sub_LifeCycleService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".Example17_ServiceLifeCycleActivity" />
+        <activity android:name=".Example14_Sub_implicitIntentActivity">
+            <intent-filter>
+                <action android:name="MY_ACTION" />
+                <!-- default 는 무조건 있어야함 -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="INTENT_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Example14_ImplicitIntentActivity" />
+        <activity android:name=".Example13_DetailBookSearchActivity" />
+        <activity android:name=".Example12_01_BookDetailActivity" />
         <activity android:name=".Example12_SimpleBookSearchActivity" />
         <activity android:name=".Example09_CounterLogActivity" />
         <activity android:name=".Example08_ANRActivity" />
@@ -22,17 +41,8 @@
         <activity android:name=".Example04_TouchEventActivity" />
         <activity android:name=".Example03_ExceptionActivity" />
         <activity android:name=".Example02_widgetActivity" />
-        <activity android:name=".Main2Activity">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
         <activity android:name=".Example01_LayoutActivity" />
+        <activity android:name=".Main2Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

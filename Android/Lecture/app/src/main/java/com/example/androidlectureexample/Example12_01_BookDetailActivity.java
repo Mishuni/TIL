@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -43,28 +44,15 @@ public class Example12_01_BookDetailActivity extends AppCompatActivity {
         final TextView priceView = (TextView)findViewById(R.id.price);
         final TextView isbnView = (TextView)findViewById(R.id.isbn);
 
+
         @SuppressLint("HandlerLeak") final Handler handler = new Handler(){
+
             @Override
             public void handleMessage(@NonNull Message msg){
                 super.handleMessage(msg);
-
                 Bundle bundle = msg.getData();
                 String[] book = bundle.getStringArray("book");
 
-                URL  url = null;
-                try {
-                    Log.i("BookDetail",book[0]);
-                    url = new URL(book[0]);
-                    Bitmap bitmap = BitmapFactory.decodeStream(url.openStream());
-                    iv.setImageBitmap(bitmap);
-
-                } catch (MalformedURLException e) {
-                    Log.i("BookDetail",e.toString());
-                } catch (IOException e) {
-                    Log.i("BookDetail",e.toString());
-                } catch (Exception e){
-                    Log.i("BookDetail",e.toString());
-                }
 
 
             }

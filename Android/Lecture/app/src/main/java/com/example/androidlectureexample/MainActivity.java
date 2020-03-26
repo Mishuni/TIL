@@ -8,11 +8,13 @@ import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +33,13 @@ public class MainActivity extends AppCompatActivity {
         Button lecture8 = (Button)findViewById(R.id.btn8);
         Button lecture9 = (Button)findViewById(R.id.btn9);
 
-        Button lecture12 = findViewById(R.id.btn12);
-        Button bonus = findViewById(R.id.btn_bonus);
+        Button lecture12 = (Button)findViewById(R.id.btn12);
+        Button lecture14 = (Button)findViewById(R.id.btn14);
+        Button lecture15 = (Button)findViewById(R.id.btn15);
+        Button lecture16 = (Button)findViewById(R.id.btn16);
+        Button lecture17 = (Button)findViewById(R.id.btn17);
+
+        Button bonus = (Button)findViewById(R.id.btn_bonus);
 
         lecture1.setOnClickListener(
                 new View.OnClickListener(){
@@ -203,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         lecture8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,10 +271,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
         lecture12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -287,10 +289,87 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button _13_BookSearchDetailBtn = (Button)findViewById(R.id._13_BookSearchDetailBtn);
+        _13_BookSearchDetailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                ComponentName cname = new ComponentName("com.example.androidlectureexample",
+                        "com.example.androidlectureexample.Example13_DetailBookSearchActivity");
+                i.setComponent(cname);
+                startActivity(i);
+            }
+        });
 
+        lecture14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 1. Explicit (명시적) Intent
+                Intent in = new Intent();
+                // cname has the info about the class(=Activity) we would use
+                ComponentName cname =
+                        new ComponentName(
+                                "com.example.androidlectureexample",
+                                "com.example.androidlectureexample.Example14_ImplicitIntentActivity"
+                        );
+                // intent hold component name we will exacute
+                in.setComponent(cname);
+                // start Activity using the info about the intent instance
+                startActivity(in);
+            }
+        });
 
+        lecture15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 전화걸기 Activity 로 호출하려면 2가지 중 1가지를 이용
+                // 1. 클래스명을 알면 호출할 수 있음 (Explicit intent)
+                // 2. Implicit Intent 를 이용해서 알려져있는 Action 통해서 전화
+                Intent i = new Intent();
+                i.setAction(Intent.ACTION_DIAL);
+                // 전화가 실제로 걸리는 건 아님
+                // 카테고리, action 값만 알면
+                // 내가 원하는 activity 를 찾을 수 있음
+                i.setData(Uri.parse("tel:01065584898"));
+                startActivity(i);
+            }
+        });
 
-        
+        lecture16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 특정 URL 을 이용 Browser 실행
+                Intent i = new Intent();
+                i.setAction(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://www.naver.com"));
+                startActivity(i);
+            }
+        });
+
+        // Service !!
+        // App 이 실행되었다고 해서 항상 Activity 가 보이는 건 아님
+        // 가장 대표적으로 카톡, 멜론 ...
+        // 카톡 전면에 없는데 메세지를 받으면 알림이 울림
+        // 멜론 Activity 가 안 보이는데 음악은 계속 들림
+        // 따라서 Service 는 화면이 없는 Activity 라고 생각하면 됨
+        // Activity 는 onCreate() -> onStart() -> onResume() -> onPause() -> onStop()
+        // Service 는 onCreate() -> onStartCommand() -> onDestroy()
+        // 눈에 보이지 않기 때문에, Background 에서 Logic 처리 하는데 많이 씀
+        lecture17.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Service 를 실행해보기
+                Intent in = new Intent();
+                ComponentName cname =
+                        new ComponentName(
+                                "com.example.androidlectureexample",
+                                "com.example.androidlectureexample.Example17_ServiceLifeCycleActivity"
+                        );
+                in.setComponent(cname);
+                startActivity(in);
+            }
+        });
+
 
         bonus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -307,6 +386,9 @@ public class MainActivity extends AppCompatActivity {
                 in.setComponent(cname);
                 // start Activity using the info about the intent instance
                 startActivity(in);
+                // Implicit Intent 는 다양한 class 로 activity 를 열 수 있는 옵션 제공
+                // 예로, 핸드폰에서 어떤 파일을 열 때,
+                // pdf 로 열까 ppt 로 열까, 카카오로 보낼까
             }
         });
 
