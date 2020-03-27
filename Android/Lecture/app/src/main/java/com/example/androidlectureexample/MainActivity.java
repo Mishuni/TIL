@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         Button lecture15 = (Button)findViewById(R.id.btn15);
         Button lecture16 = (Button)findViewById(R.id.btn16);
         Button lecture17 = (Button)findViewById(R.id.btn17);
+        Button lecture18 = (Button)findViewById(R.id.btn18);
+        Button lecture19 = (Button)findViewById(R.id.btn19);
 
         Button bonus = (Button)findViewById(R.id.btn_bonus);
 
@@ -364,6 +366,36 @@ public class MainActivity extends AppCompatActivity {
                         new ComponentName(
                                 "com.example.androidlectureexample",
                                 "com.example.androidlectureexample.Example17_ServiceLifeCycleActivity"
+                        );
+                in.setComponent(cname);
+                startActivity(in);
+            }
+        });
+
+        lecture18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent in = new Intent();
+                ComponentName cname =
+                        new ComponentName(
+                                "com.example.androidlectureexample",
+                                "com.example.androidlectureexample.Example18_ServiceDataTransferActivity"
+                        );
+                in.setComponent(cname);
+                startActivity(in);
+            }
+        });
+
+        lecture19.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent in = new Intent();
+                ComponentName cname =
+                        new ComponentName(
+                                "com.example.androidlectureexample",
+                                "com.example.androidlectureexample.Example19_KakaoBookActivity"
                         );
                 in.setComponent(cname);
                 startActivity(in);

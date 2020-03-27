@@ -86,13 +86,9 @@ public class Example13_DetailBookSearchActivity extends AppCompatActivity {
 
                         in.setComponent(cname);
 
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("bookList", bookList);
-                        in.putExtras(bundle);
-
                         Log.i("BookSearch",detailSearchList.getItemAtPosition(position).toString());
-                        in.putExtra("keyword", detailSearchList.getItemAtPosition(position).toString());
-                        startActivity(in);
+                        //in.putExtra("keyword", detailSearchList.getItemAtPosition(position).toString());
+                        //startActivity(in);
 
                     }
                 });
@@ -179,6 +175,9 @@ class MyBookInfoRunnable implements Runnable {
             ObjectMapper mapper = new ObjectMapper();
             BookVO[] resultArr =
                     mapper.readValue(responseTxt.toString(),BookVO[].class);
+
+            //String[] resultArr = mapper.readValue(responseTxt.toString(),String[].class);
+
             // 얻어온 JSON문자열 데이터를 Java의 String array로 변환했어요!
 
             // 최종 결과 데이터를 Activity에게 전달해야 해요!!(UI Thread에게 전달해서
@@ -188,6 +187,7 @@ class MyBookInfoRunnable implements Runnable {
             // 1. Bundle에 전달할 데이터를 붙여요!!
             Bundle bundle = new Bundle();
             bundle.putSerializable("BOOKLIST",resultArr);
+            //bundle.putStringArray("BOOKLIST",resultArr);
             // 2. Message를 만들어서 Bundle을 Message에 부착
             Message msg = new Message();
             msg.setData(bundle);

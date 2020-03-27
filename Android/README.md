@@ -205,8 +205,6 @@ AndroidManifext.xml
 ```
 
 ## Event Processing
-
-```
 Event Processing
 Event : all action that is made by users or system ex) Click
 
@@ -216,12 +214,36 @@ Three Objects related to Event Handling
 1. Event Source Object : Object having event, 이벤트가 발생한 객체 ex) Button
 2. Event Handler Object (Listener) :
    the Object processes Event, 이벤트를 처리하는 객체
-3. Event Object : it has Specific info about the event that is made
-                  , 발생한 Event 에 대한 세부정보 가지고 있는 객체
+3. Event Object : it has Specific info about the event that is made, 발생한 Event 에 대한 세부정보 가지고 있는 객체
 attach Event Handler to Event Source
 Event Source 에 Event Handler 부착시켜서
 Event 가 발생되면 부착된 Handler 를 통해서 이벤트 처리
-```
 
+---
 
+#### Activity 와 Service 를 이용해서 외부 API 를 이용한 APP
+
+1. Activity 생성
+
+   책을 검색하기 위한 화면
+
+   키워드를 넣고 버튼을 클릭하면 Service 시작
+
+2. Service 작업 생성
+
+   Network 를 통해서 Kakao 가 제공하는 OPEN API 를 호출
+
+   * kakaoDevelopers 에서 앱 등록하고, key 값 받기
+
+     
+
+   결과는 JSON 으로 동작
+
+   => JSON 을 처리해서 우리가 원하는 결과만 추출
+
+   => JACKSON library 사용해서 처리
+
+   => 도서 정보 중에 책 제목만 추출해서 보내기
+
+3. Activity가 책 정보를 받아서 ListView에 출력
 

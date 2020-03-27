@@ -137,6 +137,20 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="18. Transmission between Service &amp; Activity"
+        android:id="@+id/btn18"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="19. KAKAO BOOK SEARCH"
+        android:id="@+id/btn19"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text=" 경품 추첨 "
         android:id="@+id/btn_bonus"
         />

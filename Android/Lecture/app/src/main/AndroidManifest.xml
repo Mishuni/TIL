@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidlectureexample">
+
     <!-- 인터넷 접속 보안 허용 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 전화 걸기 권한 허용 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -13,7 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Example13_01_BookDetailActivity"></activity>
+        <service
+            android:name=".Example19Sub_Service"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".Example19_KakaoBookActivity" />
+
+        <service
+            android:name=".Example18Sub_Service"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".Example18_ServiceDataTransferActivity" />
+        <activity android:name=".Example13_01_BookDetailActivity" />
 
         <service
             android:name=".Example17Sub_LifeCycleService"
