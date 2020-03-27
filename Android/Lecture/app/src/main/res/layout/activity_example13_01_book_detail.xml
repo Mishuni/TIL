@@ -8,24 +8,28 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="3"
+        android:layout_marginTop="10pt"
+        android:layout_marginBottom="10pt"
         android:id="@+id/imageView"
+        android:background="@color/green"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:text="title"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:id="@+id/title"
+        android:background="@color/green"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:text="author"
         android:textAlignment="center"
         android:gravity="center_horizontal"
@@ -35,17 +39,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:text="price"
         android:textAlignment="center"
         android:gravity="center_horizontal"
         android:id="@+id/price"
+        android:background="@color/green"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:text="isbn"
         android:textAlignment="center"
         android:gravity="center_horizontal"

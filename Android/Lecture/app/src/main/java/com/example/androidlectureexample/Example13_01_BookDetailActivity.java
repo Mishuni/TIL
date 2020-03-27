@@ -15,7 +15,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class Example13_01_BookDetailActivity extends AppCompatActivity {
-    private BookVO target;
+    private BookVO bookVO;
     private Bitmap bm;
     Handler handler = new Handler();
     @Override
@@ -30,19 +30,22 @@ public class Example13_01_BookDetailActivity extends AppCompatActivity {
         final TextView isbnView = (TextView)findViewById(R.id.isbn);
 
         Intent i = getIntent();
-        String title = (String) i.getExtras().get("keyword");
-        Log.i("bookDetail",title);
-        final BookVO[] bookList = (BookVO[]) i.getSerializableExtra("bookList");
+        //String title = (String) i.getExtras().get("keyword");
+        final BookVO bookVO = (BookVO) i.getSerializableExtra("bookVo");
+        Log.i("BOOK",bookVO.getTitle());
+        Log.i("BOOK",bookVO.getImg());
+        titleView.setText(bookVO.getTitle());
+        authorView.setText(bookVO.getAuthor());
+        priceView.setText(bookVO.getPrice()+"원");
+        isbnView.setText("No."+bookVO.getIsbn());
 
-        for(int index=0; index<bookList.length; ++index){
-            if(bookList[index].getTitle().equals(title)){
-                target = bookList[index];
+
                 Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {    // 오래 거릴 작업을 구현한다
                         // TODO Auto-generated method stub
                         try{
-                            URL url = new URL(target.getImg());
+                            URL url = new URL(bookVO.getImg());
                             InputStream is = url.openStream();
                             bm = BitmapFactory.decodeStream(is);
                             handler.post(new Runnable() {
@@ -53,7 +56,7 @@ public class Example13_01_BookDetailActivity extends AppCompatActivity {
                             });
                             iv.setImageBitmap(bm); //비트맵 객체로 보여주기
                         } catch(Exception e){
-
+                            Log.i("BOOK",e.toString());
                         }
 
                     }
@@ -61,9 +64,6 @@ public class Example13_01_BookDetailActivity extends AppCompatActivity {
 
                 t.start();
 
-                break;
-            }
-        }
-        titleView.setText(title);
+
     }
 }

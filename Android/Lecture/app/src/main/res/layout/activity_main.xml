@@ -151,6 +151,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="20. KAKAO Translator"
+        android:id="@+id/btn20"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text=" 경품 추첨 "
         android:id="@+id/btn_bonus"
         />

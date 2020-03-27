@@ -15,9 +15,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <service
-            android:name=".Example19Sub_Service"
+            android:name=".Example20Sub_Service"
             android:enabled="true"
             android:exported="true"></service>
+
+        <activity android:name=".Example20_KakaoTranslatorActivity" />
+
+        <service
+            android:name=".Example19Sub_Service"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".Example19_KakaoBookActivity" />
 

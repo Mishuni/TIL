@@ -199,8 +199,8 @@ class BookSearchRunnable implements Runnable {
             // 가장 대표적인 JSON 처리 라이브러리 중 하나인 JACKSON library 를 이용
             // JSON library 설치 => gradle (gradle script) -> build.gradle(Module:app)
             // 10. 얻어온 json 문자열 데이터를 java의 string array 로 변환
-           ObjectMapper mapper = new ObjectMapper();
-           String[] resultArr = mapper.readValue(responseText.toString(),String[].class);
+            ObjectMapper mapper = new ObjectMapper();
+            String[] resultArr = mapper.readValue(responseText.toString(),String[].class);
 
             // 11. 최종 결과 데이터 Activity 에 전달
             // 데이터를 Activity 에게 전달하기

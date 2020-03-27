@@ -77,18 +77,13 @@ public class Example13_DetailBookSearchActivity extends AppCompatActivity {
                 detailSearchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent in = new Intent();
-                        ComponentName cname =
-                                new ComponentName(
-                                        "com.example.androidlectureexample",
-                                        "com.example.androidlectureexample.Example13_01_BookDetailActivity"
-                                );
+                        Intent in = new Intent(getApplicationContext(),
+                                Example13_01_BookDetailActivity.class);
+                        BookVO vo = bookList[position];
+                        in.putExtra("bookVo",vo);
 
-                        in.setComponent(cname);
-
-                        Log.i("BookSearch",detailSearchList.getItemAtPosition(position).toString());
                         //in.putExtra("keyword", detailSearchList.getItemAtPosition(position).toString());
-                        //startActivity(in);
+                        startActivity(in);
 
                     }
                 });
