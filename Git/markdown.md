@@ -65,7 +65,7 @@ def foo():
 
 ## 이미지
 
-![abc](image/abc.jpg)
+![abc](../image/abc.jpg)
 
 
 
