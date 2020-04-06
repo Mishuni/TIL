@@ -58,6 +58,8 @@ docker.io/library/centos:latest
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 centos              latest              470671670cac        8 weeks ago         237MB
+// centos run
+$ docker run -it centos:latest bash
 ```
 
 ### Docker Hub
