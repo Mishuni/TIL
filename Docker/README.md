@@ -60,7 +60,50 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 centos              latest              470671670cac        8 weeks ago         237MB
 // centos run
 $ docker run -it centos:latest bash
+// docker contatiner 삭제
+$ docker rm (container id | names)
+// docker image 삭제
+$ docker rmi (image)
 ```
+
+### Docker life cycle
+
+```cmd
+$ docker run -it ubuntu:bionic bash
+root@65d60d3dd306:/# apt update
+root@65d60d3dd306:/# apt install -y git
+root@65d60d3dd306:/# git --version
+git version 2.17.1
+
+$ docker diff 65d60d3dd306 | head
+$ docker run -it --rm ubuntu:bionic bash
+root@33f6039322df:/# git --version
+bash: git: command not found
+root@33f6039322df:/# exit
+
+$ docker commit 33f6039322df ubuntu:git
+sha256:12924460218feb38da74e9a64c95acd55d16297346b2698f47f396936636c93d
+$ REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              git                 12924460218f        4 seconds ago       186MB
+ubuntu              bionic              4e5021d210f6        8 hours ago         64.2MB
+
+$ docker run -i -t ubuntu:git bash
+root@2a00b9b2b7cc:/# git --version
+git version 2.17.1
+root@2a00b9b2b7cc:/# exit
+
+// image, contatiner 삭제
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                        PORTS               NAMES
+2a00b9b2b7cc        ubuntu:git          "bash"              2 minutes ago       Exited (130) 3 seconds ago                        cranky_franklin
+$ docker rm 2a00b9b2b7cc
+2a00b9b2b7cc
+$ docker rmi ubuntu:git
+```
+
+### Create Image using Dockerfile 
+
+
 
 ### Docker Hub
 
