@@ -103,7 +103,9 @@ $ docker rmi ubuntu:git
 
 ### Create Image using Dockerfile 
 
-
+```cmd
+$ docker build -t <image name>:<version> .
+```
 
 ### Docker Hub
 
