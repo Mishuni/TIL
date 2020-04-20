@@ -1,136 +1,37 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-//import java.io.FileInputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
+import java.util.Scanner;
 public class Sw1767 {
-	static class Location {
-		// ÄÚ¾î°¡ ÀÖ´Â À§Ä¡¸¦ ÀúÀå ÇÒ Å¬·¡½º
-		int row;
-		int column;
-
-		Location(int a, int b) {
-			this.row = a;
-			this.column = b;
-		}
-
-	}
-
-	static int[][] number;
-	static int core_cnt, min_len;
-	static ArrayList<Location> core; 		// core À§Ä¡µéÀÇ ¸ñ·Ï
-	static int[] dx = { -1, 1, 0, 0 };		// ÁÂ¿ì»óÇÏ
-	static int[] dy = { 0, 0, -1, 1 };
-	static int N;
-
-	public static void dfs(int idx, int cnt, int len) {
-		
-		// ±âÀú »ç·Ê ½ÃÀÛ (Base case)
-		if (core.size() - idx < core_cnt - cnt)
-			// 1. ³²Àº core °¹¼ö°¡ Ã¤¿ö¾ß ÇÒ °¹¼öº¸´Ù ÀûÀº °æ¿ì
-			// ¾îÂ÷ÇÇ ÃÖ´ë °¹¼öÀÇ core¸¦ ¿¬°áÇÏÁö ¸øÇÏ´Ï±î Á¾·á
-			return;
-
-		if (idx == core.size()) {
-			// 2. ¸¶Áö¸· core ±îÁö È®ÀÎÀÌ ³¡³­ °æ¿ì (DFSÀÇ ¸¶Áö¸· ±íÀÌ±îÁö °Ë»çÇÑ °æ¿ì)
-			if (cnt > core_cnt) {
-				// 2-1. ¿¬°á ÄÚ¾î °¹¼ö°¡ ÇöÀç±îÁöÀÇ ÃÖ´ë ¿¬°á °¹¼öº¸´Ù Å« °æ¿ì
-				core_cnt = cnt;
-				min_len = len;
-			} else if (len < min_len && cnt == core_cnt) {
-				// 2-2. ¿¬°á ÄÚ¾î°¡ ÃÖ´ë ¿¬°á °¹¼ö¿Í °°Àºµ¥ 
-				// ¿¬°á ±æÀÌ°¡ Áö±İ±îÁöÀÇ ÃÖ¼Ò ±æÀÌ º¸´Ù ÀÛÀº °æ¿ì
-				min_len = len;
-			}
-			return;
-		}
-		// ±âÀú »ç·Ê ³¡
-		
-		// ÇöÀç ´Ü°è °Ë»ç ½ÃÀÛ
-		int x = core.get(idx).column;
-		int y = core.get(idx).row;
-		
-		// 1. ÁÂ¿ì»óÇÏ ¼øÀ¸·Î dfs¹æ½ÄÀ¸·Î °Ë»ç
-		for (int i = 0; i < 4; ++i) {
-			int tmp_len = 0;
-			boolean check = false;
-			int new_x = x;
-			int new_y = y;
-			
-			// 1-1. ÇöÀç coreÀÇ ¶óÀÎÀ» ÇÑ ¹æÇâÀ¸·Î °Ë»ç
-			while (true) {
-				new_x += dx[i];
-				new_y += dy[i];
-				if (new_x < 0 || new_x > N - 1 || new_y > N - 1 || new_y < 0)
-					// 1-1-1. °Ë»ç ³¡³­ °æ¿ì
-					break;
-				if (number[new_y][new_x] == 1) {
-					// 1-1-2. ÇÑ ¶óÀÎ¿¡ ´Ù¸¥ ¼±ÀÌ³ª core¸¦ ¹ß°ßÇÑ °æ¿ì Á¾·á
-					check = true;
-					break;
-				} else {
-					// 1-1-3. ¼±À» ³õÀ» ¼ö ÀÖ´Â ±æÀÇ °æ¿ì ÀÓ½Ã ±æÀÌ Ãß°¡
-					++tmp_len;
-				}
-			}
-			
-			// 1-2. ´ÙÀ½ core°Ë»ç È£Ãâ
-			if (check) {
-				// 1-2-1. ÇöÀç core´Â ¿¬°áÇÏÁö ¸øÇÏ´Ï±î ¹Ù·Î ´ÙÀ½ core°Ë»ç ½ÃÀÛ
-				dfs(idx + 1, cnt, len);
-			} else {
-				// 1-2-2. ÇöÀç core¸¦ i¹øÂ° ¹æÇâÀ¸·Î ¼±À» ¿¬°áÇÏ°í ´ÙÀ½ core°Ë»ç ½ÃÀÛ
-				new_x = x;
-				new_y = y;
-				for (int j = 0; j < tmp_len; ++j) {
-					new_x += dx[i];
-					new_y += dy[i];
-					number[new_y][new_x] = 1;
-				}
-				dfs(idx + 1, ++cnt, len + tmp_len);
-				// 1-2-3. ´Ù½Ã ´Ù¸¥ ¹æÇâÀ¸·Îµµ °Ë»çÇØº¸±â À§ÇØ Áöµµ¸¦ ¿ø·¡´ë·Î µ¹·Á³õ±â
-				new_x = x;
-				new_y = y;
-				for (int j = 0; j < tmp_len; ++j) {
-					new_x += dx[i];
-					new_y += dy[i];
-					number[new_y][new_x] = 0;
-				}
-				--cnt;
-			}
-		}
-	}
 
 	public static void main(String[] args) throws FileNotFoundException {
-		//System.setIn(new FileInputStream("1767.txt"));
+		
+		System.setIn(new FileInputStream(".\\src\\1767.txt"));
 		Scanner sc = new Scanner(System.in);
-		int T = sc.nextInt();
-		core = new ArrayList<Location>();
+		int T;
+		T=sc.nextInt();
 
-		for (int t = 1; t <= T; t++) {
-			N = sc.nextInt();
-			core_cnt = 0;
-			number = new int[N][N];
-			for (int i = 0; i < N; ++i) {
-				for (int j = 0; j < N; ++j) {
-					number[i][j] = sc.nextInt();
-					if (number[i][j] == 1) {
-						if (i == 0 || j == 0 || i == N - 1 || j == N - 1) {
-							// º®¿¡ ºÙÀº core
-							++core_cnt;
-						} else{
-							core.add(new Location(i, j));
-						}
+		for(int test_case = 1; test_case <= T; test_case++)
+		{
+			
+			int N = sc.nextInt();
+			int minCore = 0;
+			
+			int[][] map = new int[N][N];
+			for(int i=0; i<N; ++i) {
+				for(int j=0; j<N; ++j) {
+					map[i][j]=sc.nextInt();
+					// 1. ê°€ì— ì½”ì–´ê°€ ì¡´ì¬í•˜ëŠ” ê²½ìš°
+					if(map[i][j]==1 && (i==0||j==0||i==N-1||j==N-1)) {
+						++minCore;
 					}
 				}
 			}
-			min_len = Integer.MAX_VALUE;
-			dfs(0, core_cnt, 0);
-			System.out.printf("#%d %d\n", t, min_len);
-			core.removeAll(core);
+			
+			
+			System.out.println(minCore);
+
 		}
 
-		sc.close();
 	}
 
 }
