@@ -74,6 +74,7 @@
    ```config
    # /etc/nginx/site-available/flaskconfig
    server {
+       # 80 번 포트를 다른 프로그램이 쓰고 있다면 다른 번호 할당 가능
        listen 80;
        server_name localhost;
    
@@ -84,7 +85,7 @@
    }
    ```
 
-   활성화 되어 있는 기본 구성 삭제하고 사이트를 활성화 하기
+	활성화 되어 있는 기본 구성 삭제하고 사이트를 활성화 하기
 
    ```sh
    cd /etc/nginx/sites-enabled
@@ -92,15 +93,15 @@
    sudo ln -s ../sites-available/flaskconfig /
    ```
 
-   nginx 다시 시작
+	nginx 다시 시작
 
    ```sh
    sudo service nginx restart
    ```
 
-   http://localhost/    
+	http://localhost/    
 
-   http://localhost/bye
+	http://localhost/bye
 
    를 통해 확인
 
