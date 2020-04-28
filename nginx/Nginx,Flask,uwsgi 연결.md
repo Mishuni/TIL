@@ -23,7 +23,6 @@
      $ sudo apt-get install -y nginx 
      ```
    
-
 2. Flask app
 
    ./app.py
@@ -84,53 +83,53 @@
    ```
 
    ```config
-   # /etc/nginx/sites-available/flaskconfig
-   # pm server
-   server {
-       # 외부 접근 포트 번호 설정
-       # 2000 번 포트를 다른 프로그램이 쓰고 있다면 다른 번호 할당 가능
-       listen 2000;
-       server_name localhost;
+# /etc/nginx/sites-available/flaskconfig
+# pm server
+server {
+   # 외부 접근 포트 번호 설정
+   # 2000 번 포트를 다른 프로그램이 쓰고 있다면 다른 번호 할당 가능
+   listen 2000;
+   server_name localhost;
    
-       location / {
-        include uwsgi_params;
-	        uwsgi_pass unix:///tmp/flask.sock;
-    }
+   location / {
+      include uwsgi_params;
+	  uwsgi_pass unix:///tmp/flask.sock;
    }
+}
    
-   # decenter model repo
-   server {
-       listen 5000;
-    server_name localhost;
+# decenter model repo
+server {
+   listen 5000;
+   server_name localhost;
 	
-    location / {
-           include uwsgi_params;
-           uwsgi_pass unix:///tmp/repo.sock;
-       }
-	}
+   location / {
+      include uwsgi_params;
+      uwsgi_pass unix:///tmp/repo.sock;
+   }
+}
    ```
 
 활성화 되어 있는 기본 구성 삭제하고 사이트를 활성화 하기
 
    ```sh
-   cd /etc/nginx/sites-enabled
-   sudo rm defalut
-   sudo ln -s ../sites-available/flaskconfig ./
+cd /etc/nginx/sites-enabled
+sudo rm defalut
+sudo ln -s ../sites-available/flaskconfig ./
    ```
 
    nginx 다시 시작
 
    ```sh
-   sudo service nginx restart
+sudo service nginx restart
    ```
 
    
 
    ```sh
-   $ curl http://localhost:5001
+$ curl http://localhost:5000
    
-   - ps aux | grep -i uwsgi
-   - sudo kill -9 {number}
+$ ps aux | grep -i uwsgi
+$ sudo kill -9 {number}
    ```
 
    를 통해 확인
@@ -180,39 +179,25 @@
 
 * nginx  설정 파일 수정
 
+  * flask 와의 연결 관련 설정
+  
   ```sh
   $ cd /etc/nginx/sites-available/
   $ cat flaskconfig
   $ sudo vi flaskconfig
   ```
-  ```config
-  # /etc/nginx/sites-available/flaskconfig
-  # pm server
-   server {
-      # 외부 접근 포트 번호 설정
-      # 5001 번 포트를 다른 프로그램이 쓰고 있다면 다른 번호 할당 가능
-      listen 8080;
-      server_name localhost;
-   
-      location / {
-       include uwsgi_params;
-	     uwsgi_pass unix:///tmp/flask.sock;
-   }
-  }
-   
-  # decenter model repo
-  server {
-      listen 5000;
-      server_name localhost;
-	
-   location / {
-          include uwsgi_params;
-          uwsgi_pass unix:///tmp/repo.sock;
-      }
-}
+  * nginx 서버 관련 설정
+  
+  ```sh
+  $ cd /etc/nginx
+  $ sudo vi nginx.conf
+  
+  # 업로드 용량 제한 없애는 설정 추가 하는 법
+  # http block 안에서
+  client_body_max_size 0;
 	```
-
-
+  
+  
 
 
 
