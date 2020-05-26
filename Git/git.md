@@ -156,10 +156,36 @@ $git push origin master
 
 
 
-## 3. pull
+### 3. pull
 
 ```bash
 $git pull origin master
 ```
 
-* 
+
+
+## Branch
+
+### 1. create branch
+
+```sh
+$ git checkout -b [branch name]
+$ git push origin [branch name]
+```
+
+### 2. delete branch
+
+```sh
+$ git checkout [other branch name]
+$ git branch --delete [branch name]
+# force
+$ git branch -D [branch name]
+$ git push origin :[branch name]
+```
+
+### 3. checkout branch
+
+```sh
+$ git checkout [branch name]
+```
+
