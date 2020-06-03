@@ -190,7 +190,7 @@ $ sudo kill -9 {number}
   
   ```sh
   $ cd /etc/nginx
-  $ sudo vi nginx.conf
+  $ sudo vi nginx.conf 
   
   # 업로드 용량 제한 없애는 설정 추가 하는 법
   # http block 안에서
