@@ -5,66 +5,51 @@ public class Array_2 {
 
 	public static void main(String[] args) {
 		
-		int[] numbers = {3, 30, 34, 5, 9,5,553,55,555,56,556};
-		
-		// 1. 첫 숫자가 제일 큰 거 먼저 도착 
-		// 2. 첫 숫자 빼고, 다음 제일 큰거 그 다음 도착
-		// 9, 5, 34, 3, 30 
-		// (3 ,30 ,34) : 제일 큰게 3이니까, 뒷 숫자가 3보다 크면 그거 아니면 그냥 3!
-		// (3 ,30) : 뒷 자리가 3보다 크지 않으니까 3 !
-		
+		int[] numbers = {34,343,212,21,36,363}; 
+		System.out.println(numbers.length);
+		// 0,0,0,0
+		// 212,21 => 21212 21221
+		// 34 , 340
+		// 34 , 343 => 34343 
+		// 36,363
 		StringBuilder answer = new StringBuilder("");
 		LinkedList<String> list = new LinkedList<String>();
-	
-		for (int number : numbers) {
-			String a = Integer.toString(number);
-			list.add(a);
+		for( int number : numbers) {
+			list.add(Integer.toString(number));
 		}
-		
+
 		list.sort(new Comparator<String>() {
 
 			@Override
 			public int compare(String o1, String o2) {
 				
 				if(o1.length()==o2.length()) {
-					if (Integer.parseInt(o1)>Integer.parseInt(o2)){
-						return -1;
-					}
-					else if(Integer.parseInt(o1)<Integer.parseInt(o2)) {
-						return 1;
-					}
-					return 0;
+					return o1.compareTo(o2) * -1;
 				}
+				if(o1.charAt(0)>o2.charAt(0)) return -1;
+				if(o1.charAt(0)<o2.charAt(0)) return 1;
 				
-				int end = (o1.length()>o2.length())?o2.length() : o1.length();
-				
-				// 일단, 작은 길이까지 비교
-				for(int i=0; i<end; ++i) {
-					if(o1.charAt(i)>o2.charAt(i)) {
-						return -1;
-					}
-					else if(o1.charAt(i)<o2.charAt(i)) {
-						return 1;
-					}
+				int length = (o1.length()>o2.length())? o1.length() : o2.length();
+				String newO1=o1, newO2=o2;
+				while(newO1.length()!=length) {
+					newO1 = newO1 +  o1.charAt(0);
 				}
-				
-				// 길이차가 있는 경우
-				if(o1.length() > o2.length()) {
-					for(int i=end; i<o1.length(); ++i) {
-						if(o2.charAt(end-1)>o1.charAt(i)) {
-							return 1;
-						}
-					}
-					
+				while(newO2.length()!=length) {
+					newO2 = newO2 + o2.charAt(0);
 				}
-				
-				// 길이 차 없고,숫자들 다 같은 경우
-				return 0;
+				if(newO1.compareTo(newO2)==0) {
+					if(newO1.charAt(0)>newO1.charAt(1)) {
+						return (o1.length()>o2.length())? -1: 1;
+					}
+					return (o1.length()>o2.length())? 1: -1;
+				}
+				return newO1.compareTo(newO2) * -1;
 			}
+			
+			
 		});
 		
-		System.out.println(list);
-		
+		if(list.get(0).compareTo("0")==0) {System.out.println(0); return;}
 		for(String num : list) {
 			answer.append(num);
 		}
