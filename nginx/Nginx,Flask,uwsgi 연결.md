@@ -44,6 +44,10 @@
 
    ./uwsgi.ini  [app.py 와 같은 디렉토리]
 
+   ```sh
+   $ sudo vi uwsgi.ini
+   ```
+
    ```ini
    [uwsgi]
    socket = /tmp/flask.sock
@@ -73,9 +77,8 @@
    이 위치에서, flaskconfig 파일을 생성한다.
 
    ```sh
-   cd /etc/nginx/site-available/
-   sudo touch flaskconfig
-   
+   $ cd /etc/nginx/sites-available/
+   $ sudo vi flaskconfig
    ```
 ### listening 포트 번호들 확인
    ```sh
@@ -197,9 +200,9 @@ $ sudo kill -9 {number}
   client_body_max_size 0;
 	```
   
-  
+* influxdb , seaborn
 
-
+sudo docker run -p 8086:8086  -d     -v influxdb:/var/lib/influxdb       influxdb 
 
 
 ## Reference
@@ -207,3 +210,4 @@ $ sudo kill -9 {number}
 [nginx와-함께-uwsgi-웹-서버를-사용하여-flask-응용-프로그램-배포](https://sodocumentation.net/ko/flask/topic/4637/nginx%EC%99%80-%ED%95%A8%EA%BB%98-uwsgi-%EC%9B%B9-%EC%84%9C%EB%B2%84%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-flask-%EC%9D%91%EC%9A%A9-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EB%B0%B0%ED%8F%AC)
 
 [uwsgi.ini 설정 목록들](https://twpower.github.io/43-run-uwsgi-by-using-ini-file)
+
