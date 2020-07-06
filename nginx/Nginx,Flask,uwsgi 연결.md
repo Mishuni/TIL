@@ -82,7 +82,7 @@
    ```
 ### listening 포트 번호들 확인
    ```sh
-   sudo netstat -tulpn | grep LISTEN
+$ sudo netstat -tulpn | grep LISTEN
    ```
 
    ```config
@@ -130,7 +130,7 @@ sudo service nginx restart
 
    ```sh
 $ curl http://localhost:5000
-   
+   sudo kill -9
 $ ps aux | grep -i uwsgi
 $ sudo kill -9 {number}
    ```
@@ -150,18 +150,31 @@ $ sudo kill -9 {number}
   ```sh
   $ cd
   $ cd DECENTER_AI_server
+  $ sudo uwsgi -i uwsgi.ini
   $ sudo uwsgi -i uwsgi.ini --plugin python3
   ```
 
-  2. PM_server
+2. PM_server
 
   ```sh
   $ cd
   $ cd T_Analysis/data_visual
+  $ sudo uwsgi -i uwsgi.ini
   $ sudo uwsgi -i uwsgi.ini --plugin python3
   ```
 
-  3. nginx
+  3. VIBE_server
+  ```sh
+  $ cd
+  $ cd VIBE_project/VIBES
+  $ sudo uwsgi -i uwsgi.ini
+  $ sudo uwsgi -i uwsgi.ini --plugin python3
+  # uwsgi add 
+  # wsgi-disable-file-wrapper = true
+  ```
+
+
+  4. nginx
 
   ```sh
   $ sudo service nginx restart
