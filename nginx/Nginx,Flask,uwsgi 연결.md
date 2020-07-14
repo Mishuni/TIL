@@ -126,8 +126,6 @@ sudo ln -s ../sites-available/flaskconfig ./
 sudo service nginx restart
    ```
 
-   
-
    ```sh
 $ curl http://localhost:5000
    sudo kill -9
@@ -141,37 +139,35 @@ $ sudo kill -9 {number}
 
 ## 실행 중지 및 재실행
 
-
-
 * uwsgi start
 
-  1. model_server
+1. model_server
 
-  ```sh
-  $ cd
-  $ cd DECENTER_AI_server
-  $ sudo uwsgi -i uwsgi.ini
-  $ sudo uwsgi -i uwsgi.ini --plugin python3
-  ```
+```sh
+$ cd
+$ cd DECENTER_AI_server
+$ sudo uwsgi -i uwsgi.ini
+$ sudo uwsgi -i uwsgi.ini --plugin python3
+```
 
 2. PM_server
 
-  ```sh
-  $ cd
-  $ cd T_Analysis/data_visual
-  $ sudo uwsgi -i uwsgi.ini
-  $ sudo uwsgi -i uwsgi.ini --plugin python3
-  ```
+```sh
+$ cd
+$ cd T_Analysis/data_visual
+$ sudo uwsgi -i uwsgi.ini
+$ sudo uwsgi -i uwsgi.ini --plugin python3
+```
 
-  3. VIBE_server
-  ```sh
-  $ cd
-  $ cd VIBE_project/VIBES
-  $ sudo uwsgi -i uwsgi.ini
-  $ sudo uwsgi -i uwsgi.ini --plugin python3
-  # uwsgi add 
-  # wsgi-disable-file-wrapper = true
-  ```
+3. VIBE_server
+```sh
+$ cd
+$ cd VIBE_project/VIBES
+$ sudo uwsgi -i uwsgi.ini
+$ sudo uwsgi -i uwsgi.ini --plugin python3
+# uwsgi add 
+# wsgi-disable-file-wrapper = true
+```
 
 
   4. nginx
