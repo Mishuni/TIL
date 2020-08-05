@@ -163,8 +163,8 @@ $ sudo uwsgi -i uwsgi.ini --plugin python3
 ```sh
 $ cd
 $ cd VIBE_project/VIBES
-$ sudo uwsgi -i uwsgi.ini
-$ sudo uwsgi -i uwsgi.ini --plugin python3
+$ sudo uwsgi -i uwsgi_vibe.ini
+$ sudo uwsgi -i uwsgi_vibe.ini --plugin python3
 # uwsgi add 
 # wsgi-disable-file-wrapper = true
 ```
