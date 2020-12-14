@@ -33,7 +33,7 @@ Initialized empty Git repository in C:/Users/student/Desktop/til/.git/
 ```bash
 $git add a.txt #file name
 $git add images/ #folder
-$git add * # all files in current directory
+$git add . # all files in current directory
 ```
 
 * add 전 상태
@@ -127,7 +127,7 @@ $ git commit -m "커밋 메세지"
 ### 1.원격 저장소 설정
 
 ```bash
-$git remote add origin {github url}
+$ git remote add origin {github url}
 ```
 
 * {github url}부분에서는 원격저장소 url을 작성한다.
