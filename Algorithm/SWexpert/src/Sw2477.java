@@ -1,25 +1,39 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Sw2477 {
+	
+	// 1. 손님의 상태를 저장할 클래스 정의
+	public static class Customer implements Comparable<Customer>{
 
+		int number;
+		int mediate;
+		int recep;
+		
+		Customer(int n,int mediate, int recep){
+			this.number = n;
+			this.mediate = mediate;
+			this.recep = recep;
+		}
+		
+		// 1-2. reception 이후에 순서 정리를 위한 함수
+		@Override
+		public int compareTo(Customer o) {
+			
+			// 1-2-1. reception 끝난 시간이 같은 경우 창구 번호순으로 정렬
+			if(this.mediate==o.mediate) {
+				return Integer.compare(this.recep,o.recep);
+			}
+			// 1-2-2. 끝난 시간에 따라 오름차순 정렬
+			return Integer.compare(this.mediate, o.mediate);
+		}
+		
+	}
+	
+	
 	public static void main(String[] args) throws FileNotFoundException {
-		// reception : N , ai
-		// repair : M , bj
-		// recep -> repair -> survey
-		// customers : K ( 1 ~ K ), arrived at tK
-		// 접수 우선 : 고객 번호 낮은 것, 창구 낮은 번호 부터
-		// 정비 우선 : 먼저 기다리는, 접수 창구 번호 낮은것 정비 창구 번호 낮은 곳
-		// 이동 시간 : 0
-		// 같은 접수 창구, 정비 창구 고객 번호의 합 , 없으면 -1
 		
 		System.setIn(new FileInputStream("./src/2477.txt"));
 
@@ -28,120 +42,105 @@ public class Sw2477 {
 		int T=sc.nextInt();
 		
 		for(int test_case = 1; test_case <= T; test_case++) {
-			// hashmap -> index : middle time
-			// a end base and save target list
-			// after a, sort by hashmap's value
-			// b end base and save target check
+			
+			// 2. Initialize : 초기화
 			int N = sc.nextInt();
 			int M = sc.nextInt();
 			int K = sc.nextInt();
 			int rct = sc.nextInt(); // reception target
 			int rpt = sc.nextInt(); // repair target
 			int sum = 0;
-			int[] receptions = new int[N];
-			int[] repairs = new int[M];
+			Customer[] people = new Customer[K]; 
 			
-			Map<Integer, ArrayList<Integer>> customers 
-				= new HashMap<Integer, ArrayList<Integer>>();
-			boolean[] check = new boolean[K];
-			int[] max_path = new int[N];
+			// 각 창구의 처리 시간 저장
+			int[] receptions = input(N,sc);
+			int[] repairs = input(M,sc);
 			
-			receptions = input(N,sc);
-			repairs = input(M,sc);
+			// 각 창구의 처리 중인 가장 마지막 시간을 저장하는 곳
+			int[] max_recep = new int[N+1];
+			int[] max_repair = new int[M+1];
 			
+			// 3. 사람들의 도착 시간 정보를 순서대로 받고 
+			//    그에 따른 reception 끝나는 시간 계산
 			for(int i=0; i<K; ++i) {
-				ArrayList<Integer> tmp = new ArrayList<>();
-				tmp.add(i);
-				tmp.add(sc.nextInt());
-				customers.put(i, tmp);
-			}
-			
-			Comparator<Entry<Integer,ArrayList<Integer>>> com 
-			=	new Comparator<Entry<Integer,ArrayList<Integer>>>(){
-
-				@Override
-				public int compare(Entry<Integer, ArrayList<Integer>> o1, 
-						Entry<Integer, ArrayList<Integer>> o2) {
-					
-					ArrayList<Integer> tmp1 = o1.getValue();
-					ArrayList<Integer> tmp2 = o2.getValue();
-					if(tmp1.get(1)==tmp2.get(1)) {
-						return tmp1.get(0).compareTo(tmp2.get(0));
-					}
-					return tmp1.get(1).compareTo(tmp2.get(1));
-				}
+				int start = sc.nextInt();
+				int min = Integer.MAX_VALUE;
+				int min_pos = 1 ;
 				
-			};
-			List<Entry<Integer, ArrayList<Integer>>> entries 
-			= new ArrayList<Entry<Integer,ArrayList<Integer>>>(customers.entrySet());
-		
-			Collections.sort(entries,com );
-			
-			for(int i=0; i<K; ++i) {
-				int start = entries.get(i).getValue().get(1);
-				int tmp_min = Integer.MAX_VALUE;
-				int rep = -1;
-				for(int a=0; a<N; ++a) {
-					if(max_path[a]<tmp_min) {
-						tmp_min = max_path[a];
-						rep = a;
-					}
-					if(max_path[a]<=start) {
-						if(a==rct-1) {
-							check[i]=true;
-						}
-						//ArrayList<Integer> tmp = new ArrayList<>();
-						//tmp.add(a);
-						max_path[a]=start+receptions[a];
-						entries.get(i).getValue().remove(1);
-						entries.get(i).getValue().add(max_path[a]);
-						//tmp.add(max_path[a]);
-						//customers.put(i, tmp);
+				// 3-1. 각 창구를 순서대로 체크
+				for(int r=1; r<=N; ++r) {
+					
+					// 3-1-1. 처리 끝나는 시간이 시작 시간보다 작은 경우
+					// 그곳에서 reception 처리하고 끝나는 시간으로 customer 저장 하고 체크 종료
+					if(max_recep[r]<=start) {
+						max_recep[r]=start+receptions[r];
+						people[i]= new Customer(i+1,max_recep[r],r);
 						break;
-					}
-					else if(a==N-1) {
-						max_path[rep]+=receptions[rep];
-						//ArrayList<Integer> tmp = new ArrayList<>();
-						//tmp.add(rep);
-						//tmp.add(max_path[rep]);
-						//customers.put(i, tmp);
-						entries.get(i).getValue().remove(1);
-						entries.get(i).getValue().add(max_path[rep]);
-						if(rep==rct-1) {
-							check[i]=true;
-						}
-					}
-				}
-			}
-			// map sort
-			Collections.sort(entries,com );
-			max_path = new int[M];
-			for(Entry<Integer,ArrayList<Integer>> entry : entries) {
-				int start = entry.getValue().get(1);
-				int tmp_min = Integer.MAX_VALUE;
-				int rep = -1;
-				for(int b=0; b<M; ++b) {
-					if(max_path[b]<tmp_min) {
-						tmp_min=max_path[b];
-						rep=b;
-					}
-					if(max_path[b]<=start) {
-						if(b==rpt-1 && check[entry.getKey()]) {
-							// add result
-							sum+=entry.getKey()+1;
-						}
-						max_path[b]=start+repairs[b];
-						break;
-					}
-					else if(b==M-1) {
-						max_path[rep]+=repairs[rep];
-						if(rep==rpt-1 && check[entry.getKey()]) {
-							sum+=entry.getKey()+1;
-						}
 					}
 					
+					// 3-1-2. 모든 창구를 바로 못가는 경우를 대비해
+					// 그 중에서 가장 빨리 끝나는 창구 찾기
+					if(max_recep[r]<min) {
+						min_pos = r;
+						min = max_recep[r];
+					}
+					
+					// 3-1-3. 모든 창구를 바로 못가고 기다려야 하는 경우
+					// 가장 빨리 처리가 끝나는 창구에서 reception 처리하고 customer 저장
+					if(r==N){
+						max_recep[min_pos] = min + receptions[min_pos]; 
+						people[i]= new Customer(i+1,max_recep[min_pos],min_pos);
+					}
 				}
 			}
+			
+			// 4. Sort people
+			// 위 클래스에서 지정한 비교 방식대로 손님 재정렬
+			Arrays.sort(people);
+			
+			// 5. 정렬된 순서로 repair 창구 처리 시작
+			for(int i=0; i<K; ++i) {
+				Customer current = people[i];
+				int start = current.mediate;
+				int min = Integer.MAX_VALUE;
+				int min_pos = 1 ;
+				
+				// 5-1. 각 창구를 순서대로 체크
+				for(int r=1; r<=M; ++r) {
+					
+					// 5-1-1. 처리 끝나는 시간이 시작 시간보다 작은 경우
+					// 그곳에서 repair 처리 하고 종료
+					// 대신, customer의 reception 창구와 현재 repair 창구가 목표 창구들과 같다면
+					// 결과 값에 해당 손님 번호를 더하기
+					if(max_repair[r]<=start) {
+						max_repair[r]=start+repairs[r];
+						if(current.recep==rct && r==rpt) {
+							sum+=current.number;
+						}
+						break;
+					}
+					
+					// 5-1-2. 모든 창구를 바로 못가는 경우를 대비해
+					// 그 중에서 가장 빨리 끝나는 창구 찾기
+					if(max_repair[r]<min) {
+						min_pos = r;
+						min = max_repair[r];
+					}
+					
+					// 5-2-3. 모든 창구를 바로 못가고 기다려야 하는 경우
+					// 가장 빨리 처리가 끝나는 창구에서 repair 처리하고
+					// customer의 reception 창구와 현재 repair 창구가 목표 창구들과 같다면
+					// 결과 값에 해당 손님 번호를 더하기
+					if(r==M){
+						max_repair[min_pos] = min + repairs[min_pos]; 
+						if(current.recep==rct && min_pos==rpt) {
+							sum+=current.number;
+						}
+					}
+				}
+			}
+			
+			// 6. sum에 더해진 값이 없으면 -1, 아니면 결과값 출력
 			sum = (sum==0)? -1: sum;
 			System.out.printf("#%d %d%n",test_case,sum);
 			
@@ -150,9 +149,10 @@ public class Sw2477 {
 
 	}
 	
+	// 창구 처리 시간 입력받는 함수
 	public static int[] input(int num, Scanner sc) {
-		int[] list = new int[num];
-		for(int i=0; i<num; ++i) {
+		int[] list = new int[num+1];
+		for(int i=1; i<=num; ++i) {
 			list[i] = sc.nextInt();
 		}
 		return list;

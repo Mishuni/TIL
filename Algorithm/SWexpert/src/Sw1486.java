@@ -7,7 +7,7 @@ public class Sw1486 {
 	static int result, subresult;
 
 	public static void main(String args[]) throws Exception {
-		System.setIn(new FileInputStream("1486.txt"));
+		System.setIn(new FileInputStream("./src/1486.txt"));
 		Scanner sc = new Scanner(System.in);
 		int T;
 		T = sc.nextInt();
