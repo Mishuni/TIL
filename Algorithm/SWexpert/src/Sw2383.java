@@ -1,162 +1,180 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Collections;
 import java.util.Scanner;
 
 
 public class Sw2383 {
-	// 기다리지 않으면 걸리는 시간 : 거리 + 계단 시간 -> x-x. + y-y. + s + [기다리는 시간]
-	public static ArrayList<ArrayList<Integer>> stairs;
-	public static ArrayList<ArrayList<Integer>> people;
-	public static int[][] time;
-	public static int[][] distance; 
-	public static int N;
-	public static int min_result;
 
+	// 사람 객체 정의
+	public static class People implements Comparable<People>{
+		public int x, y, start;
+		People(int x, int y){
+			this.x = x;
+			this.y = y;
+		}
+		
+		// 이동 거리 계산 함수
+		public void setPath(Stair s) {
+			this.start = (int)Math.abs(this.x-s.x) + (int)Math.abs(this.y-s.y);
+		}
+		
+		// People 정렬을 위한 비교 함수
+		@Override
+		public int compareTo(People o) {
+			return Integer.compare(this.start, o.start);
+		}
+	}
+	
+	// 계단 객체 정의
+	public static class Stair{
+		int x, y, height;
+		Stair(int x, int y, int h){
+			this.x = x ;
+			this.y = y;
+			this.height = h;
+		}
+	}
+	
+	// 공통 변수 정의
+	public static ArrayList<Stair> stairs;
+	public static ArrayList<People> people;
+	public static int min_result;
+	
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		
-		System.setIn(new FileInputStream("./src/2384_2.txt"));
+		System.setIn(new FileInputStream("./src/2383.txt"));
 
 		Scanner sc = new Scanner(System.in);
 		
 		int T=sc.nextInt();
-		stairs = new ArrayList<>();
-		people = new ArrayList<>();
 		
 		for(int test_case = 1; test_case <= T; test_case++) {
 			
-			N = sc.nextInt();
-			stairs.clear();
-			people.clear();
+			int N = sc.nextInt();
 			
-			for(int y=0; y<N; ++y) {
-				for(int x=0; x<N; ++x) {
+			// 1. Initialize
+			people = new ArrayList<>();
+			stairs = new ArrayList<>();
+			
+			// 1-1. 사람은 위치만, 계단은 위치와 계단 높이를 저장하여 각 배열에 추가
+			for(int i=0; i<N; ++i) {
+				for(int j=0; j<N; ++j) {
 					int tmp = sc.nextInt();
-					if(tmp>1) {
-						ArrayList<Integer> cor = new ArrayList();
-						cor.add(y);
-						cor.add(x);
-						cor.add(tmp);
-						stairs.add(cor);
+					if(tmp==1) {
+						people.add(new People(j,i));
 					}
-					else if(tmp==1) {
-						ArrayList<Integer> cor = new ArrayList();
-						cor.add(y);
-						cor.add(x);
-						people.add(cor);
+					else if(tmp!=0) {
+						stairs.add(new Stair(j,i,tmp));
 					}
 				}
 			}
 			
-			time = new int[2][people.size()];
-			distance = new int[2][people.size()];
-			int j= 0; 
-			for(ArrayList<Integer> stair : stairs) {
-				for(int i=0; i<people.size(); ++i) {
-					ArrayList<Integer> tmp = people.get(i);
-					distance[j][i] = Math.abs(tmp.get(0)-stair.get(0))+Math.abs(tmp.get(1)-stair.get(1));
-				}
-				//System.out.println(Arrays.toString(distance[j]));
-				++j;
-			}
+			// 1-2. min_result 는 최소 이동 완료 시간 저장하는 곳
+			// stair로 이름진 array는 
+			// 각 케이스마다 stair1을 지나는 사람 & stair2를 지나는 사람을 구분지어 저장하는 곳
 			min_result = Integer.MAX_VALUE;
-			dfs(0);
-			System.out.printf("#%d %d%n",test_case,min_result);
+			ArrayList<People> stair1 = new ArrayList<>();
+			ArrayList<People> stair2 = new ArrayList<>();
 			
+			// 1-3. bit operation으로 중복 순열로 케이스를 반복하기 위한 초기화
+			// 사람이 총 6명일 때, 6bit로 사람이 stair1으로 가는지 안 가는지를 표시해야 하기때문에
+			// 총 케이스는 000000 ~ 111111 까지 임으로 총 2^6-1 == 63개를 살펴봐야 함
+			int cnt = people.size();
+			int permutation = (int)Math.pow(2, cnt);
+			
+			
+			// 2. dfs : bit operation을 사용한 dfs
+			for(int p=0; p<permutation; ++p) {
+				stair1.clear();
+				stair2.clear();
+				// 2-1. 현재 케이스에서 각 비트를 검사
+				for(int i=cnt-1; i>=0; --i) {
+					
+					// 2-1-1. p에서 i번째 bit가 1인 경우
+					// 1번째 계단으로 이동했다고 간주하고 이동 시간 저장 후 stair1 배열에 추가
+					if((p&(1<<i))!=0) {
+						
+						people.get(i).setPath(stairs.get(0));
+						stair1.add(people.get(i));
+						
+					}
+					// 2-1-2. p에서 i번째 bit가 0인 경우
+					// 2번째 계단으로 이동했다고 간주하고 이동 시간 저장 후 stair2 배열에 추가
+					else {
+						
+						people.get(i).setPath(stairs.get(1));
+						stair2.add(people.get(i));
+						
+					}
+					
+				}
+				
+				// 2-2. sort
+				// 위에서 계산한 이동 시간 순서대로 정렬
+				Collections.sort(stair1);
+				Collections.sort(stair2);
+				
+				
+				// 2-3. calculate
+				
+				// 2-3-1. 정렬된 이동 시간을 이용해서 각 사람들의 총 이동 시간 계산
+				int[] paths1 = calPath(stair1,0);
+				int[] paths2 = calPath(stair2,1);
+				
+				// 2-3-2. 만약 둘 중에 null 이 하나라도 있는 경우
+				// 두 stairs 중 총 이동 시간이 지금의 min_result 보다 큰 경우 이므로 pass
+				if(paths1==null | paths2==null) {
+					continue;
+				}
+				// 2-3-3. 두 paths중에서 마지막 값(제일 마지막으로 처리가 끝난 시간)이 더 큰 값이 이동 완료 시간
+				// 그 이동 완료 시간이 min_result 값 보다 작은게 확실하니 그 값을 min_result 로 배정
+				else if(paths1[paths1.length-1]>=paths2[paths2.length-1]) {
+					min_result = paths1[paths1.length-1];
+				}else {
+					min_result = paths2[paths2.length-1];
+				}
+				
+			}
+			
+			// 3. 결과 출력
+			System.out.printf("#%d %d%n",test_case,min_result);
 			
 		}
 	}
 	
-	public static void dfs(int step) {
-		
-		if(step==people.size()) {
-			
-			int[][]time_copy = new int[2][people.size()] ;
-			time_copy[0] = time[0].clone();
-			time_copy[1] = time[1].clone();
-			Arrays.sort(time_copy[0]);
-			Arrays.sort(time_copy[1]);
-			
-			
-			Queue<Integer> q1 = new LinkedList();
-			Queue<Integer> q2 = new LinkedList();
-			ArrayList<Queue<Integer>> all = new ArrayList();
-			all.add(q1);
-			all.add(q2);
-			int[] sum = new int[2];
-			
-			for(int s=0; s<2; ++s) {
-				Queue<Integer> queue = all.get(s);
-				for(int i=0; i<people.size(); ++i) {
-					
-					if(time_copy[s][i]>0) {
-					// 들렀을 때
-						if(queue.size()>2) {
-							int first = queue.poll();
-							int a =  time_copy[s][i];
-							if(first<=a) {
-								a +=stairs.get(s).get(2)+1;
-							}
-							else {
-								a = first + stairs.get(s).get(2)+1 ;
-							}
-							queue.add(a);
-							sum[s] = a ;
-						}
-						else {
-							int a =  time_copy[s][i]+stairs.get(s).get(2)+1;
-							int limit = queue.size();
-//							for(int q = 0; q<limit; ++q) {
-//								if(queue.peek()>=a) {
-//									break;
-//								}
-//								else {
-//									queue.remove();
-//								}
-//							}
-							sum[s] = a ;
-							//System.out.println(sum[s]);
-							queue.add(a);
-						}
-						//System.out.println(sum[s]);
-						if(sum[s]>min_result) {
-							return;
-						}
-					}
-					
+	// 해당 계단에서 최종 이동 시간 계산
+	public static int[] calPath(ArrayList<People> current_stair, int idx) {
+		if(current_stair.size()==0) {
+			// 한 사람도 안 지나가는 경우 쓰레기 값 리턴
+			int[] tmp = {Integer.MIN_VALUE};
+			return tmp;
+		}
+		int[] paths = new int[current_stair.size()];
+		for(int s=0; s<current_stair.size(); ++s) {
+			// 처음 3개는 대기 시간 필요 없음
+			if(s<3) {
+				paths[s] = current_stair.get(s).start +1 + stairs.get(idx).height;
+			}
+			else {
+				// 3번째 앞에 사람의 이동 완료 시간이 현재 도착 시간 보다 큰 경우 대기 시간 필요
+				if(paths[s-3]>current_stair.get(s).start) {
+					// 대기 시간에 준비 시간이 포함됨
+					paths[s] = paths[s-3] + stairs.get(idx).height;
+				}
+				// 3명이 안 채워져 있는 경우 준비 후에 바로 내려가면 됨
+				else {
+					paths[s] = current_stair.get(s).start +1 + stairs.get(idx).height;
 				}
 			}
-			//System.out.println(sum[0]+", "+sum[1]);
-			
-			int res = (sum[0]>sum[1])? sum[0] : sum[1];
-			//if(res<min_result) {
-				System.out.println(res);
-				System.out.println(sum[0]+","+sum[1]);
-				System.out.println("0: "+Arrays.toString(time[0]));
-				System.out.println("1: "+Arrays.toString(time[1]));
-				
-			//}
-			min_result = (res<min_result)? res : min_result;
-			// 11 11 13 -> 11 13 19 -> 
-			
-			return;
-			
+			// 만약 계산한 이동 완료 값이 저장된 최소 이동 완료 시간 보다 크면 더 계산 할 것 없음
+			if(paths[s]>min_result) {
+				return null;
+			}
 		}
-		
-		time[1][step] = 0;
-		time[0][step] = distance[0][step];
-		dfs(step+1);
-		time[0][step] = 0;
-		time[1][step] = distance[1][step];
-		dfs(step+1);
-		
-		
-		
-		
+		return paths;
 	}
-
+	
 }
