@@ -6,7 +6,7 @@ public class Sw1244 {
 	public static int result;
 	public static void main(String[] args) throws FileNotFoundException {
 
-		System.setIn(new FileInputStream("/Users/yumiseon/TIL/Algorithm/SWexpert/src/1244.txt"));
+		System.setIn(new FileInputStream("./src/1244.txt"));
 
 		Scanner sc = new Scanner(System.in);
 		int T;
