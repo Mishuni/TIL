@@ -6,7 +6,6 @@
 
 * [Git](./Git)
 * [Java](./java)
-* [알고리즘](./Algorithm)
 * [Python](./Python)
 * [Database](./Database)
 * [Web](./Web)
@@ -15,6 +14,5 @@
 * [Android](./Android)
 * [Hadoop](./Hadoop)
 * [Docker](./Docker)
-## Posting Blog
-* [Mishuni Naver Blog](https://blog.naver.com/altjs543)
+## Blog
 * [Mishuni Tstory Blog](https://mishuni.tistory.com/)
