@@ -128,7 +128,6 @@ sudo service nginx restart
 
    ```sh
 $ curl http://localhost:5000
-   sudo kill -9
 $ ps aux | grep -i uwsgi
 $ sudo kill -9 {number}
    ```
